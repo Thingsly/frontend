@@ -12,9 +12,7 @@ async function setupApp() {
   setupStore(app);
   setupI18n(app);
   const sysSettingStore = useSysSettingStore();
-  // 确保系统设置在应用启动时加载
   await sysSettingStore.initSysSetting();
-  // 监听 system_name 的变化，并根据变化动态更新国际化消息
   watch(
     () => sysSettingStore.system_name,
     newSystemName => {
