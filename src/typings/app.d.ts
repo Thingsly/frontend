@@ -232,7 +232,7 @@ declare namespace App {
   namespace I18n {
     type RouteKey = import('@elegant-router/types').RouteKey;
 
-    type LangType = 'en-US' | 'zh-CN';
+    type LangType = 'en-US' | 'vi-VN';
 
     type LangOption = {
       label: string;
