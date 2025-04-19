@@ -10,9 +10,9 @@ import icon from './en-us/icon';
 
 const local: App.I18n.Schema = {
   default: '',
-  title: 'ThingsPanel',
+  title: 'Thingsly',
   system: {
-    title: 'ThingsPanel'
+    title: 'Thingsly'
   },
   common: {
     serviceConfi: 'Service Configuration',

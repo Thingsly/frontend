@@ -1,32 +1,60 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
+import { computed, onBeforeUnmount, onMounted } from 'vue';
+import { NConfigProvider, darkTheme } from 'naive-ui';
+import { useFullscreen } from '@vueuse/core';
+import json from 'highlight.js/lib/languages/json';
+import hljs from 'highlight.js/lib/core';
+import { useAppStore } from './store/modules/app';
+import { useThemeStore } from './store/modules/theme';
+import { naiveDateLocales, naiveLocales } from './locales/naive';
+import Content from './components/content/index.vue';
+hljs.registerLanguage('json', json);
+defineOptions({
+  name: 'App'
+});
+const appStore = useAppStore();
+const themeStore = useThemeStore();
+const { isFullscreen, toggle } = useFullscreen();
+const naiveDarkTheme = computed(() => (themeStore.darkMode ? darkTheme : undefined));
+
+const naiveLocale = computed(() => {
+  return naiveLocales[appStore.locale];
+});
+
+const naiveDateLocale = computed(() => {
+  return naiveDateLocales[appStore.locale];
+});
+const handleFullScreenChange = () => {
+  if (!document.fullscreenElement) {
+    if (isFullscreen) {
+      toggle();
+    }
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('fullscreenchange', handleFullScreenChange);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('fullscreenchange', handleFullScreenChange);
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-      <img src="/favicon.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <NMessageProvider>
+    <Content />
+  </NMessageProvider>
+  <NConfigProvider
+    :hljs="hljs"
+    :theme="naiveDarkTheme"
+    :theme-overrides="themeStore.naiveTheme"
+    :locale="naiveLocale"
+    :date-locale="naiveDateLocale"
+    class="h-full"
+  >
+    <AppProvider>
+      <RouterView class="bg-layout" />
+    </AppProvider>
+  </NConfigProvider>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
