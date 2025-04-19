@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld.vue';
 <template>
   <div>
     <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
+      <img src="/favicon.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
