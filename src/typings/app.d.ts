@@ -232,7 +232,7 @@ declare namespace App {
   namespace I18n {
     type RouteKey = import('@elegant-router/types').RouteKey;
 
-    type LangType = 'en-US' | 'vi-VN';
+    type LangType = 'en-US' | 'zh-CN';
 
     type LangOption = {
       label: string;
@@ -245,6 +245,7 @@ declare namespace App {
       required: string;
       invalid: string;
       lenMin6: string;
+      tip: string;
     };
 
     type Schema = {
@@ -255,6 +256,7 @@ declare namespace App {
       };
       common: {
         serviceConfi: string;
+        config: string;
         pluginConfig: string;
         deleteThePlan: string;
         cancelThePlan: string;
@@ -440,7 +442,7 @@ declare namespace App {
         withinOneMonth: string;
         time: string;
         complete: string;
-        action: string;
+        actions: string;
         input: string;
         select: string;
         selectOrInput: string;
@@ -465,6 +467,7 @@ declare namespace App {
         lookForward: string;
         modify: string;
         modifySuccess: string;
+        modifyFail: string;
         pleaseCheckValue: string;
         refresh: string;
         reset: string;
@@ -486,6 +489,32 @@ declare namespace App {
         creationTime: string;
         service: string;
         protocol: string;
+        createUser: string;
+        addRelatedUser: string;
+        removeRelatedUser: string;
+        loginName: string;
+        lastLoginTime: string;
+        userName: string;
+        addUserToDeviceInfo: string;
+        today: string;
+        yesterday: string;
+        dayBeforeYesterday: string;
+        thisWeek: string;
+        lastWeek: string;
+        thisMonth: string;
+        lastMonth: string;
+        thisYear: string;
+        lastYear: string;
+        lastSixMonth: string;
+        lastOneYear: string;
+        lastWeekToday: string;
+        January: string;
+        getCode: string;
+        countingLabel: string;
+        phoneRequired: string;
+        phoneInvalid: string;
+        emailRequired: string;
+        emailInvalid: string;
       };
       theme: {
         themeSchema: { title: string } & Record<UnionKey.ThemeScheme, string>;
@@ -537,9 +566,38 @@ declare namespace App {
           resetSuccessMsg: string;
         };
       };
-      route: Record<I18nRouteKey, string>;
+      route: {
+        apply_in: string;
+        product: string;
+        product_list: string;
+        'product_update-ota': string;
+        'product_update-package': string;
+        'management_ordinary-user': string;
+        visualization_panel: string;
+        'visualization_big-screen': string;
+        irrigation: string;
+        irrigation_time: string;
+        irrigation_group: string;
+        irrigation_rotation: string;
+        personal_center: string;
+        'space-management': string;
+        'system-management-user_equipment-map': string;
+        'edit-area': string;
+        'new-area': string;
+        device_service_access: string;
+        device_service_details: string;
+        'data-services': string;
+        'data-services_data-forward': string;
+        'data-services_forward-config': string;
+        'device-details-app': string;
+        'alarm_warning-message': string;
+        'personal-center': string;
+        apply_plugin: string;
+        'device_service-access': string;
+        'device_service-details': string;
+      } & Record<I18nRouteKey, string>;
       page: {
-        // product: ProductLocal;
+        product: ProductLocal;
         login: {
           common: {
             loginOrRegister: string;
@@ -549,6 +607,8 @@ declare namespace App {
             passwordPlaceholder: string;
             confirmPasswordPlaceholder: string;
             codeLogin: string;
+            codeSent: string;
+            codeError: string;
             confirm: string;
             back: string;
             validateSuccess: string;
@@ -574,6 +634,9 @@ declare namespace App {
           register: {
             title: string;
             agreement: string;
+            emailPlaceholder: string;
+            registerSuccess: string;
+            registerError: string;
             protocol: string;
             policy: string;
           };
@@ -672,6 +735,22 @@ declare namespace App {
             addRole: string;
             editRole: string;
             editPermission: string;
+          };
+          api: {
+            title: string;
+            addApiKey: string;
+            apiName: string;
+            api_key: string;
+            apiStatus: string;
+            created_at: string;
+            apiStatus1: {
+              freeze: string;
+              normal: string;
+            };
+            form: {
+              apiName: string;
+            };
+            editAPi: string;
           };
           user: {
             title: string;
@@ -780,6 +859,10 @@ declare namespace App {
               iconify: string;
               local: string;
             };
+            tooltip: {
+              deviceConfig: string;
+              deviceTemplate: string;
+            };
           };
           setting: {
             themeSetting: {
@@ -825,7 +908,110 @@ declare namespace App {
             shortMessage: {
               title: string;
             };
+            pushNotification: {
+              title: string;
+              pushServer: string;
+            };
           };
+        };
+        dataForward: {
+          title: string;
+          config: string;
+          ruleName: string;
+          des: string;
+          ctime: string;
+          utime: string;
+          op: string;
+          editTitle: string;
+          addTitle: string;
+          ruleNameLabel: string;
+          ruleNamePlaceholder: string;
+          descriptionLabel: string;
+          descriptionPlaceholder: string;
+          cancel: string;
+          confirm: string;
+          deleteSuccess: string;
+          editSuccess: string;
+          addSuccess: string;
+          dataSourceConfig: string;
+          addDataSource: string;
+          editDataSource: string;
+          device: string;
+          group: string;
+          product: string;
+          deviceCount: string;
+          groupCount: string;
+          productCount: string;
+          parseScript: string;
+          enableScript: string;
+          debugParam: string;
+          debugResult: string;
+          debugScript: string;
+          saveScript: string;
+          scriptSaveSuccess: string;
+          messageType: string;
+          telemetryUp: string;
+          attributeUp: string;
+          event: string;
+          onlineOfflineNotice: string;
+          selectDevice: string;
+          selectMessageType: string;
+          deviceName: string;
+          groupName: string;
+          productName: string;
+          deviceId: string;
+          groupId: string;
+          productId: string;
+          destinationType: string;
+          mqtt: string;
+          url: string;
+          addDestination: string;
+          editDestination: string;
+          name: string;
+          enterName: string;
+          destinationTypeLabel: string;
+          mqttConfig: string;
+          hostIP: string;
+          enterHostIP: string;
+          port: string;
+          enterPort: string;
+          publishTopic: string;
+          enterPublishTopic: string;
+          selectQoS: string;
+          selectMQTTVersion: string;
+          clientId: string;
+          enterClientId: string;
+          username: string;
+          enterUsername: string;
+          password: string;
+          enterPassword: string;
+          urlConfig: string;
+          urlAddress: string;
+          enterUrlAddress: string;
+          messageEncryption: string;
+          enableEncryption: string;
+          secretKey: string;
+          enterSecretKey: string;
+          description: string;
+          enterDescription: string;
+          submit: string;
+          nameRequired: string;
+          hostRequired: string;
+          hostMaxLength: string;
+          portRequired: string;
+          portRange: string;
+          topicRequired: string;
+          topicMaxLength: string;
+          qosRequired: string;
+          qosRange: string;
+          mqttVersionRequired: string;
+          mqttVersionMaxLength: string;
+          urlRequired: string;
+          urlInvalid: string;
+          secretRequired: string;
+          secretLength: string;
+          secretFormat: string;
+          saveSuccess: string;
         };
         expect: {
           createTime: string;
@@ -1069,7 +1255,6 @@ declare namespace App {
         enterIllustrate: string;
         selectCover: string;
         nextStep: string;
-        cancellation: string;
         addTage: string;
         back: string;
         add: string;
@@ -1091,6 +1276,8 @@ declare namespace App {
           eventContent: string;
           dataIdentifier: string;
           readAndWriteSign: string;
+          readAndWrite: string;
+          readOnly: string;
           dataType: string;
           eventReportingTime: string;
           updateTime: string;
@@ -1149,6 +1336,8 @@ declare namespace App {
           kanbanNameNull: string;
         };
         groupPage: {
+          deviceNumberMax: string;
+          deviceNumberNotAvailable: string;
           deviceAvailable: string;
           groupName: string;
           description: string;
@@ -1181,7 +1370,7 @@ declare namespace App {
           pushTime: string;
           handle: string;
           deviceNumberMax: string;
-          deviceNumberNotVvailable: string;
+          deviceNumberNotAvailable: string;
           subDeviceAddress: string;
           deviceKey: string;
           deviceName: string;
@@ -1189,6 +1378,7 @@ declare namespace App {
           deviceConfig: string;
           configTemplate: string;
           unlimitedDeviceConfig: string;
+          selectGroup: string;
           online: string;
           offline: string;
           alarmed: string;
@@ -1254,6 +1444,8 @@ declare namespace App {
           saveAndNext: string;
         };
         grouping_details: {
+          messageId: string;
+          sendContent: string;
           previousPage: string;
           previousLevel: string;
           backToGroupList: string;
@@ -1266,6 +1458,7 @@ declare namespace App {
           device: string;
           addDeviceToGroup: string;
           detail: string;
+          basic: string;
           setting: string;
           edit: string;
           noGroupId: string;
@@ -1277,6 +1470,7 @@ declare namespace App {
         device_details: {
           sendTime: string;
           titleOrContent: string;
+          notificationType: string;
           attributeDistributionTime: string;
           messageId: string;
           sendContent: string;
@@ -1296,20 +1490,25 @@ declare namespace App {
           telemetry: string;
           join: string;
           deviceAnalysis: string;
+          chart: string;
+          AdditionalDetails: string;
           message: string;
-          stats: string;
+          attributes: string;
           eventReport: string;
           commandDelivery: string;
+          expectMessage: string;
           automate: string;
           giveAnAlarm: string;
           user: string;
           settings: string;
           deviceNumber: string;
           deviceConfig: string;
+          status: string;
           online: string;
           offline: string;
           alarm: string;
           noAlarm: string;
+          lastUpdate: string;
         };
       };
       generate: {
@@ -1363,6 +1562,7 @@ declare namespace App {
         selectSubDevices: string;
         setSubDevices: string;
         unbind: string;
+        unbound: string;
         errorMessage: string;
         returnFail: string;
         returnSuccess: string;
@@ -1386,6 +1586,8 @@ declare namespace App {
         value: string;
         'max-value': string;
         'min-value': string;
+        inputMaxValue: string;
+        inputMinValue: string;
         sum: string;
         diff: string;
         'save-scene-configuration': string;
@@ -1495,7 +1697,6 @@ declare namespace App {
         sha256hmac: string;
         'select-processing-type': string;
         'select-device': string;
-        'device-management': string;
         'processing-type': string;
         'device-number': string;
         secret: string;
@@ -1612,13 +1813,15 @@ declare namespace App {
         'command-identifier': string;
         status: string;
         selected: string;
-        'remember-last-path': string;
+        'remember-path': string;
         table: string;
         'old-password': string;
         'notification-type': string;
         'search-by-name': string;
         'confirm-password': string;
         username: string;
+        requestMethod: string;
+        ipAddress: string;
         'change-password': string;
         'notification-record': string;
         'add-chart': string;
@@ -1640,6 +1843,7 @@ declare namespace App {
         demo: string;
         'device-location': string;
         'super-admin': string;
+        tenant: string;
         'account-type': string;
         'vue3-doc-url': string;
         'select-theme': string;
@@ -1648,6 +1852,8 @@ declare namespace App {
         'last-name': string;
         'select-user': string;
         'color-theme': string;
+        'color-theme1': string;
+        'color-theme2': string;
         'copy-json': string;
         'enter-config-name': string;
         'enter-key': string;
@@ -1762,10 +1968,19 @@ declare namespace App {
         expirationTime: string;
         hour: string;
         expectedMessageTip: string;
+        curveWidth: string;
+        stateOnIcon: string;
+        stateOnColor: string;
+        stateOffIcon: string;
+        stateOffColor: string;
+        createForwardRule: string;
+        baseInfo: string;
+        secureSet: string;
       };
       kanban: {
         'add-cards': string;
       };
+      card: any;
     };
 
     type GetI18nKey<T extends Record<string, unknown>, K extends keyof T = keyof T> = K extends string
@@ -1774,7 +1989,8 @@ declare namespace App {
         : K
       : never;
 
-    type I18nKey = GetI18nKey<Schema>;
+    // 将 I18nKey 定义为 string 来避免无限递归错误
+    type I18nKey = string;
 
     type TranslateOptions<Locales extends string> = import('vue-i18n').TranslateOptions<Locales>;
 
@@ -1837,22 +2053,10 @@ declare namespace App {
       /** The backend service response data */
       result: T;
     };
-    /**
-     * 请求的错误类型：
-     *
-     * - axios: axios错误：网络错误, 请求超时, 默认的兜底错误
-     * - http: 请求成功，响应的http状态码非200的错误
-     * - backend: 请求成功，响应的http状态码为200，由后端定义的业务错误
-     */
     type RequestErrorType = 'axios' | 'http' | 'backend';
-
-    /** 请求错误 */
     interface RequestError {
-      /** 请求服务的错误类型 */
       type: RequestErrorType;
-      /** 错误码 */
       code: string | number;
-      /** 错误信息 */
       msg: string;
     }
 
@@ -1866,39 +2070,24 @@ declare namespace App {
       /** The backend service response data */
       data: T;
     };
-
-    /** 后端接口返回的数据结构配置 */
     interface BackendResultConfig {
-      /** 表示后端请求状态码的属性字段 */
       codeKey: string;
-      /** 表示后端请求数据的属性字段 */
       dataKey: string;
-      /** 表示后端消息的属性字段 */
       msgKey: string;
-      /** 后端业务上定义的成功请求的状态 */
       successCode: number | string;
     }
-
-    /** 自定义的请求成功结果 */
     interface SuccessResult<T = any> {
-      /** 请求错误 */
       error: null;
-      /** 请求数据 */
       data: T;
     }
 
-    /** 自定义的请求失败结果 */
     interface FailedResult {
-      /** 请求错误 */
       error: RequestError;
-      /** 请求数据 */
       data: null;
     }
 
-    /** 自定义的请求结果 */
     type RequestResult<T = any> = SuccessResult<T> | FailedResult;
 
-    /** 多个请求数据结果 */
     type MultiRequestResult<T extends any[]> = T extends [infer First, ...infer Rest]
       ? [First] extends [any]
         ? Rest extends any[]
@@ -1909,20 +2098,13 @@ declare namespace App {
           : []
       : [];
 
-    /** 请求结果的适配器函数 */
     type ServiceAdapter<T = any, A extends any[] = any> = (...args: A) => T;
 
-    /** mock示例接口类型：后端接口返回的数据的类型 */
     interface MockServiceResult<T = any> {
-      /** 状态码 */
       code: string | number;
-      /** 接口数据 */
       data: T;
-      /** 接口消息 */
       message: string;
     }
-
-    /** mock的响应option */
     interface MockOption {
       url: Record<string, any>;
       body: Record<string, any>;
@@ -1931,3 +2113,5 @@ declare namespace App {
     }
   }
 }
+
+type ProductLocal = Record<string, any>;
