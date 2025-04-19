@@ -18,8 +18,8 @@ export default [
       {
         files: ['*.vue'],
         rules: {
-          'no-undef': 'off',
-          'vue/no-setup-props-destructure': 'off',
+          'no-undef': 'off', // use tsc to check the ts code of the vue
+          'vue/no-setup-props-destructure': 'off', // wait to fix this rule
           '@typescript-eslint/no-use-before-define': 'off',
           '@typescript-eslint/no-unused-vars': 'warn',
           'vue/no-undef-properties': 'warn',
