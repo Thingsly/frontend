@@ -11,8 +11,7 @@ import { deviceDetail } from '../api';
 import icons from './icon';
 const logger = createLogger('Indicator');
 
-const iconMap = new Map(icons.map(c => [c.name, c.value]));
-// 正式环境可根据api获取
+const iconMap = new Map(icons.map((c) => [c.name, c.value]));
 const value = ref(1);
 const detail: any = ref(null);
 const intervalNum = ref();
@@ -24,7 +23,10 @@ const props = defineProps<{
 let wsUrl = getWebsocketServerUrl();
 wsUrl += `/telemetry/datas/current/keys/ws`;
 // eslint-disable-next-line no-constant-binary-expression
-const keys = ['externalVol' || props?.card?.config?.source?.dataSource?.deviceSource?.[0]?.metricsId];
+const keys = [
+  'externalVol' ||
+    props?.card?.config?.source?.dataSource?.deviceSource?.[0]?.metricsId
+];
 const { data, send, close } = useWebSocket(wsUrl, {
   heartbeat: {
     message: 'ping',
@@ -40,7 +42,8 @@ if (
   const token = localStg.get('token');
   const dataw = {
     // eslint-disable-next-line no-constant-binary-expression
-    device_id: props?.card?.config?.source?.dataSource?.deviceSource?.[0]?.deviceId,
+    device_id:
+      props?.card?.config?.source?.dataSource?.deviceSource?.[0]?.deviceId,
     keys,
     token
   };
@@ -49,7 +52,7 @@ if (
 
 watch(
   () => data.value,
-  newVal => {
+  (newVal) => {
     if (newVal === 'pong') {
       logger.info(newVal);
     } else {
@@ -58,7 +61,7 @@ watch(
   }
 );
 
-const setSeries: (dataSource) => void = async dataSource => {
+const setSeries: (dataSource) => void = async (dataSource) => {
   const arr: any = dataSource;
   const querDetail = {
     device_id: dataSource?.deviceSource?.[0]?.deviceId ?? '',
@@ -118,9 +121,15 @@ onUnmounted(() => {
             />
           </NIcon>
           <div>
-            <span class="value">{{ detail?.data && detail.data[0] ? detail.data[0]?.value : '-1' }}</span>
+            <span class="value">{{
+              detail?.data && detail.data[0] ? detail.data[0]?.value : '-1'
+            }}</span>
           </div>
-          <span class="unit">{{ detail?.data && detail.data[0] ? detail.data[0]?.unit : $t('card.noUnit') }}</span>
+          <span class="unit">{{
+            detail?.data && detail.data[0]
+              ? detail.data[0]?.unit
+              : $t('card.noUnit')
+          }}</span>
         </div>
       </NCard>
     </div>

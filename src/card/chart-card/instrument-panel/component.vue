@@ -10,7 +10,6 @@ import type { ICardData } from '@/components/panel/card';
 import { telemetryDataCurrentKeys } from '@/service/api/device';
 import { $t } from '@/locales';
 
-// 注册 ECharts 所需的组件和渲染器
 use([CanvasRenderer, GaugeChart, TitleComponent, TooltipComponent, LegendComponent]);
 
 const initDetailValue = 8;
@@ -30,25 +29,25 @@ const chartOptions = ref({
       type: 'gauge',
       startAngle: 180,
       endAngle: -45,
-      min: 0, // 动态变化
-      max: 100, // 动态变化
+      min: 0, 
+      max: 100, 
       radius: '100%',
       center: ['50%', '80%'],
-      splitNumber: 1, // 只展示最大和最小值
+      splitNumber: 1,
       axisLine: {
         lineStyle: {
           width: 30,
           color: [
             [0.064, valueColor],
             [0.8, '#ddd']
-          ] // 动态变化
+          ]
         }
       },
       axisTick: { show: false },
       axisLabel: {
         show: true,
         fontSize: 14,
-        verticalAlign: 'bottom', // 垂直对齐方式
+        verticalAlign: 'bottom',
         align: 'center',
         distance: 12
       },

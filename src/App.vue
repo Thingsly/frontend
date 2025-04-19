@@ -15,7 +15,9 @@ defineOptions({
 const appStore = useAppStore();
 const themeStore = useThemeStore();
 const { isFullscreen, toggle } = useFullscreen();
-const naiveDarkTheme = computed(() => (themeStore.darkMode ? darkTheme : undefined));
+const naiveDarkTheme = computed(() =>
+  themeStore.darkMode ? darkTheme : undefined
+);
 
 const naiveLocale = computed(() => {
   return naiveLocales[appStore.locale];

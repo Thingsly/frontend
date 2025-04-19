@@ -15,7 +15,7 @@ export default {
     scene: 'all', // 'mobile' | 'pc' | 'all'; reserved for now, use 'all' by default
     minWH: {
       minW: 2, // Minimum card width — number of columns (default layout has 24 columns)
-      minH: 2  // Minimum card height — number of rows (1 row = 30px by default)
+      minH: 2 // Minimum card height — number of rows (1 row = 30px by default)
     },
     preset: {
       dataSource: {

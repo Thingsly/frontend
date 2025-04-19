@@ -21,7 +21,6 @@ const cardData = ref<any>({
   icon: 'fa-ban'
 });
 
-// 获取数据
 const getData: () => void = async () => {
   try {
     const response: { data: any } =
@@ -32,12 +31,10 @@ const getData: () => void = async () => {
       logger.error('Data does not contain the required properties or they are not numbers.');
     }
   } catch (error) {
-    // 处理请求数据时的错误
     logger.error('Error fetching data:', error);
   }
 };
 
-// 调用 getData 函数
 getData();
 </script>
 

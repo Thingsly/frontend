@@ -92,7 +92,6 @@ watch(
 watch(
   () => props.card?.config,
   () => {
-    // 配置变化时可能需要重新设置一些值，比如detail的范围等
     detail.value = Math.max(min.value, Math.min(max.value, detail.value));
   },
   { deep: true }

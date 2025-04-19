@@ -7,13 +7,13 @@ const props = defineProps<{
   data: CardData;
 }>();
 
-// 固定写法开始
+
 const ctx = inject<IConfigCtx>('kan-ban-config-ctx')!;
-// ctx.config会传递给看板编辑
+
 const changeCtxConfig = (key: string, data: any) => {
   ctx.config[key] = { ...data };
-}; // 改变ctx.config的方法
-// 固定写法结束
+}; 
+
 onMounted(() => {
   // ctx.config = {...props.data.config}
   ctx.config = props.data.config;
@@ -29,8 +29,7 @@ onMounted(() => {
     pane-wrapper-style="margin: 0 -4px"
     pane-style="padding-left: 4px; padding-right: 4px; box-sizing: border-box;"
   >
-    <!-- 固定模式基础配置，迭代时才需要修改下面的组件-->
-    <n-tab-pane name="basic" tab="基础配置">
+    <n-tab-pane name="basic" tab="Basic configuration">
       <CardBaseForm :default-basis-data="props.data.config.basis" :change-ctx-config="changeCtxConfig" />
     </n-tab-pane>
   </n-tabs>

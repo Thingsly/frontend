@@ -21,28 +21,33 @@ const cardData = ref<any>({
   icon: 'ant-design:bar-chart-outlined'
 });
 
-// 获取数据
 const getData: () => void = async () => {
   try {
     const response: { data: any } =
-      authStore?.$state.userInfo.authority === 'TENANT_ADMIN' ? await sumData() : await totalNumber();
+      authStore?.$state.userInfo.authority === 'TENANT_ADMIN'
+        ? await sumData()
+        : await totalNumber();
     if (response.data) {
       cardData.value.value = response.data.device_total;
     } else {
-      logger.error('Data does not contain the required properties or they are not numbers.');
+      logger.error(
+        'Data does not contain the required properties or they are not numbers.'
+      );
     }
   } catch (error) {
-    // 处理请求数据时的错误
     logger.error('Error fetching data:');
   }
 };
 
-// 调用 getData 函数
 getData();
 </script>
 
 <template>
-  <GradientBg class="access" :start-color="cardData.colors[0]" :end-color="cardData.colors[1]">
+  <GradientBg
+    class="access"
+    :start-color="cardData.colors[0]"
+    :end-color="cardData.colors[1]"
+  >
     <h3 class="text-16px">{{ cardData.title }}</h3>
     <div class="icon-items flex justify-between pt-30px">
       <SvgIcon :icon="cardData.icon" class="text-32px" />

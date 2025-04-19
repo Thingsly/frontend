@@ -15,7 +15,6 @@ const setInactiveIcon = (icon: string) => {
 };
 
 onMounted(() => {
-  // 设置配置项的默认值
   if (!ctx.config.activeIconName) ctx.config.activeIconName = 'BulbOutline';
   if (!ctx.config.inactiveIconName) ctx.config.inactiveIconName = 'Bulb';
   if (!ctx.config.activeColor) ctx.config.activeColor = '#FFA500';

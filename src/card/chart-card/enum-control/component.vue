@@ -6,13 +6,11 @@ import { createLogger } from '@/utils/logger';
 import { $t } from '@/locales';
 
 const logger = createLogger('Control');
-// Props接收传入的ICardData对象
 const props = defineProps<{
   card: ICardData;
 }>();
 const detail: any = ref('0');
 
-// 从props.card.config中获取按钮配置信息
 const configOptions = ref<Array<{ label: string; value: string | number }>>([
   { label: $t('card.heating'), value: 'heat' },
   { label: $t('card.cooling'), value: 'cool' },
@@ -54,7 +52,6 @@ const toRealValue: (inputValue: string) => any = (inputValue: string) => {
   return inputValue;
 };
 
-// 处理点击按钮的逻辑
 const handleClick = async (value: string | number) => {
   detail.value = value;
   const deviceSource = props.card?.dataSource?.deviceSource?.[0];
@@ -88,12 +85,10 @@ const handleClick = async (value: string | number) => {
 
 <template>
   <div class="ac-card">
-    <!-- 上方的文字通过props.card.dataSource.deviceSource[0]?.name获取 -->
     <div class="ac-title">
       {{ props.card?.dataSource?.deviceSource[0]?.metricsName || $t('card.airConditioningStatus') }}
     </div>
 
-    <!-- 按钮组 -->
     <div class="ac-buttons">
       <div
         v-for="(option, index) in configOptions"
@@ -136,7 +131,7 @@ const handleClick = async (value: string | number) => {
       font-size: 14px;
 
       &.active {
-        background-color: #6f42c1; /* 选中状态背景色 */
+        background-color: #6f42c1;
         color: white;
       }
 

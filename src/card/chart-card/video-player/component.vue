@@ -71,10 +71,9 @@ const createPlayer = async () => {
 
   player = videojs(m3u8_video.value, options, () => {
     videojs.log('The player is ready!');
-player.on('error', () => {
-  videojs.log('Player encountered a parsing error!', player.error());
-});
-
+    player.on('error', () => {
+      videojs.log('Player encountered a parsing error!', player.error());
+    });
   });
 };
 

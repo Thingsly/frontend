@@ -24,7 +24,7 @@ export function setupLoading() {
     : systemLogo.replace('<svg', `<svg class="size-128px text-primary"`);
 
   const dot = loadingClasses
-    .map(item => {
+    .map((item) => {
       return `<div class="absolute w-16px h-16px bg-primary rounded-8px animate-pulse ${item}"></div>`;
     })
     .join('\n');
