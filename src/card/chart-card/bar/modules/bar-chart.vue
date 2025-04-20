@@ -8,8 +8,18 @@ import { LineChart } from 'echarts/charts';
 import { v4 as uuid4 } from 'uuid';
 import VChart from 'vue-echarts';
 import * as echarts from 'echarts';
-import { DiscOutline, FilterCircleOutline, RefreshCircleOutline, TimeOutline } from '@vicons/ionicons5';
-import { GridComponent, LegendComponent, ToolboxComponent, TooltipComponent } from 'echarts/components';
+import {
+  DiscOutline,
+  FilterCircleOutline,
+  RefreshCircleOutline,
+  TimeOutline
+} from '@vicons/ionicons5';
+import {
+  GridComponent,
+  LegendComponent,
+  ToolboxComponent,
+  TooltipComponent
+} from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import type { ComposeOption } from 'echarts/core';
 import type { LineSeriesOption } from 'echarts/charts';
@@ -22,13 +32,27 @@ import type {
 import { addMonths } from 'date-fns';
 import { $t } from '@/locales';
 import type { ICardData } from '@/components/panel/card';
-import { telemetryDataCurrentKeys, telemetryDataHistoryList } from '@/service/api/device';
+import {
+  telemetryDataCurrentKeys,
+  telemetryDataHistoryList
+} from '@/service/api/device';
 import { createLogger } from '@/utils/logger';
 const logger = createLogger('Chart');
 type EChartsOption = ComposeOption<
-  TooltipComponentOption | LegendComponentOption | ToolboxComponentOption | GridComponentOption | LineSeriesOption
+  | TooltipComponentOption
+  | LegendComponentOption
+  | ToolboxComponentOption
+  | GridComponentOption
+  | LineSeriesOption
 >;
-use([TooltipComponent, LegendComponent, ToolboxComponent, GridComponent, LineChart, CanvasRenderer]);
+use([
+  TooltipComponent,
+  LegendComponent,
+  ToolboxComponent,
+  GridComponent,
+  LineChart,
+  CanvasRenderer
+]);
 const chartContainer = ref<HTMLElement | null>(null);
 const chartRef = ref();
 const isAggregate = ref<boolean>(false);
@@ -107,7 +131,6 @@ const option = ref<EChartsOption>({
     }
   },
   dataZoom: [
-
     {
       type: 'slider',
       show: true,
@@ -240,28 +263,28 @@ const updateAggregate = (v: string) => {
 };
 const updateDisabledOptions = (timeFrame: string) => {
   const disableBeforeIndex: { [key: string]: number } = {
-  'Last 3 Hours': 1,
-  'Last 6 Hours': 2,
-  'Last 12 Hours': 3,
-  'Last 24 Hours': 4,
-  'Last 3 Days': 5,
-  'Last 7 Days': 6,
-  'Last 15 Days': 7,
-  'Last 30 Days': 7,
-  'Last 60 Days': 8,
-  'Last 90 Days': 9,
-  'Last 6 Months': 9,
-  'Last 1 Year': 12,
-  'Today': 4,
-  'Yesterday': 4,
-  'The Day Before Yesterday': 4,
-  'Same Day Last Week': 4,
-  'This Week': 6,
-  'Last Week': 6,
-  'This Month': 7,
-  'Last Month': 7,
-  'This Year': 12,
-  'Last Year': 12
+    'Last 3 Hours': 1,
+    'Last 6 Hours': 2,
+    'Last 12 Hours': 3,
+    'Last 24 Hours': 4,
+    'Last 3 Days': 5,
+    'Last 7 Days': 6,
+    'Last 15 Days': 7,
+    'Last 30 Days': 7,
+    'Last 60 Days': 8,
+    'Last 90 Days': 9,
+    'Last 6 Months': 9,
+    'Last 1 Year': 12,
+    Today: 4,
+    Yesterday: 4,
+    'The Day Before Yesterday': 4,
+    'Same Day Last Week': 4,
+    'This Week': 6,
+    'Last Week': 6,
+    'This Month': 7,
+    'Last Month': 7,
+    'This Year': 12,
+    'Last Year': 12
   };
 
   aggregateOptions.forEach((item, index, array) => {
@@ -315,7 +338,8 @@ const updateTime = (v: number, o: SelectOption) => {
       // eslint-disable-next-line no-case-declarations
       const currentDayOfWeek = now.getDay(); // 当前是周几，周日为0
       // eslint-disable-next-line no-case-declarations
-      const distanceToMonday = currentDayOfWeek === 0 ? -6 : 1 - currentDayOfWeek;
+      const distanceToMonday =
+        currentDayOfWeek === 0 ? -6 : 1 - currentDayOfWeek;
       start_time = new Date();
       start_time.setDate(now.getDate() + distanceToMonday);
       start_time.setHours(0, 0, 0, 0);
@@ -361,7 +385,7 @@ const updateAggregateFunction = (v: string) => {
   params.aggregate_function = v;
 };
 
-const checkDateRange = value => {
+const checkDateRange = (value) => {
   const [start, end] = value;
   if (start && end && addMonths(start, 1) < end) {
     dateRange.value = null;
@@ -410,13 +434,15 @@ const getTelemetryData = async (device_id, key, index, metricName) => {
     },
     data: sampleData,
     tooltip: {
-      valueFormatter: value => value + (detail?.value?.data[0]?.unit || '')
+      valueFormatter: (value) => value + (detail?.value?.data[0]?.unit || '')
     }
   };
   if (!device_id || !key) return sampleObj;
 
   const aggregateFunction =
-    props.card?.dataSource?.deviceSource?.[index]?.aggregate_function || params.aggregate_function || 'avg';
+    props.card?.dataSource?.deviceSource?.[index]?.aggregate_function ||
+    params.aggregate_function ||
+    'avg';
 
   const metricsParams = {
     device_id,
@@ -427,18 +453,17 @@ const getTelemetryData = async (device_id, key, index, metricName) => {
 
   try {
     const { data } = await telemetryDataHistoryList(metricsParams);
-    const seriesData = data ? data.map(item => [item.x, item.y]) : sampleData;
+    const seriesData = data ? data.map((item) => [item.x, item.y]) : sampleData;
 
     sampleObj.data = seriesData;
 
     return sampleObj;
   } catch (error) {
-
     return sampleObj;
   }
 };
 
-const setSeries = async dataSource => {
+const setSeries = async (dataSource) => {
   if (!dataSource) return;
 
   const deviceSource = dataSource.deviceSource || [];
@@ -456,40 +481,47 @@ const setSeries = async dataSource => {
     // window.$message?.error("查询不到设备");
   }
 
+  const seriesPromises = deviceSource
+    .slice(0, deviceCount)
+    .map((item, index) => {
+      const metricName = item.metricsName || item.metricsId || '';
+      name.value = metricName;
+      legendData.value.push(metricName);
 
-  const seriesPromises = deviceSource.slice(0, deviceCount).map((item, index) => {
-    const metricName = item.metricsName || item.metricsId || '';
-    name.value = metricName;
-    legendData.value.push(metricName);
-
-
-    return getTelemetryData(item.deviceId, item.metricsId, index, metricName);
-  });
-
+      return getTelemetryData(item.deviceId, item.metricsId, index, metricName);
+    });
 
   const seriesData = await Promise.all(seriesPromises);
-
 
   option.value.series = seriesData;
 };
 
 defineExpose({
-  updateData: (deviceId: string | undefined, metricsId: string | undefined, data: any) => {
+  updateData: (
+    deviceId: string | undefined,
+    metricsId: string | undefined,
+    data: any
+  ) => {
     if (params.aggregate_window !== 'no_aggregate') {
       logger.info('Update data: Curve is aggregate, return directly');
       return;
     }
     const deviceIndex = props?.card?.dataSource?.deviceSource?.findIndex(
-      item => item.deviceId === deviceId && item.metricsId === metricsId
+      (item) => item.deviceId === deviceId && item.metricsId === metricsId
     );
     // const seriesData = JSON.parse(JSON.stringify(option.value.series[deviceIndex]))?.data;
     const seriesData =
-      option.value.series && option.value.series[deviceIndex || 0] ? option.value.series[deviceIndex || 0].data : [];
+      option.value.series && option.value.series[deviceIndex || 0]
+        ? option.value.series[deviceIndex || 0].data
+        : [];
     const value = metricsId && data && data[metricsId];
 
     if (value && data.systime) {
       const timestamp = new Date(data.systime).getTime();
-      if (seriesData.length === 0 || timestamp !== seriesData[seriesData.length - 1][0]) {
+      if (
+        seriesData.length === 0 ||
+        timestamp !== seriesData[seriesData.length - 1][0]
+      ) {
         const len = seriesData?.push([timestamp, value]);
         if (len >= 100) {
           seriesData.shift();
@@ -505,7 +537,9 @@ const throttledWatcher = debounce(() => {
 
 const initDateTimeRange = () => {
   if (props.card?.dataSource?.dataTimeRange) {
-    const timeOption = timeOptions.find(item => item.id === props.card?.dataSource?.dataTimeRange);
+    const timeOption = timeOptions.find(
+      (item) => item.id === props.card?.dataSource?.dataTimeRange
+    );
     if (timeOption) {
       timeOptionsValue.value = timeOption.value;
       updateTime(timeOption.value as number, timeOption);
@@ -513,7 +547,9 @@ const initDateTimeRange = () => {
         updateAggregate(props.card?.dataSource?.dataAggregateRange);
       }
       if (props.card?.dataSource?.deviceSource?.length === 1) {
-        updateAggregateFunction(props.card?.dataSource?.deviceSource[0]?.aggregate_function);
+        updateAggregateFunction(
+          props.card?.dataSource?.deviceSource[0]?.aggregate_function
+        );
       }
     }
   }
@@ -542,7 +578,7 @@ watch(
 );
 watch(
   () => props.card?.dataSource?.dataTimeRange,
-  newDateTiemRange => {
+  (newDateTiemRange) => {
     if (newDateTiemRange) {
       initDateTimeRange();
     } else {
@@ -635,7 +671,13 @@ onUnmounted(() => {
         </n-icon>
       </div>
     </div>
-    <VChart :key="uuid4()" ref="chartRef" class="chart flex-1" :option="option" autoresize />
+    <VChart
+      :key="uuid4()"
+      ref="chartRef"
+      class="chart flex-1"
+      :option="option"
+      autoresize
+    />
   </div>
 </template>
 

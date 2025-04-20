@@ -1,0 +1,441 @@
+:root {
+  --chart-legend-color: auto;
+}
+
+.vue-grid-item {
+  touch-action: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  transition-property: left, top, right;
+}
+
+.vue-grid-item.no-touch {
+  touch-action: none;
+}
+
+.vue-grid-item.css-transforms {
+  transition-property: transform;
+  left: 0;
+  right: auto;
+}
+
+.vue-grid-item.resizing {
+  opacity: 0.6;
+  z-index: 3;
+}
+
+.vue-grid-item.vue-draggable-dragging {
+  transition: none;
+  z-index: 3;
+}
+
+.vue-grid-item.vue-grid-placeholder {
+  z-index: 2;
+  transition-property: width, height, transform;
+  @apply select-none bg-blue-500/20;
+}
+
+.vue-grid-item > .vue-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 200;
+  bottom: 0;
+  right: 0;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  padding: 0 3px 3px 0;
+  background-origin: content-box;
+  box-sizing: border-box;
+  cursor: se-resize;
+  &:before {
+    content: '';
+    @apply h-2 absolute right-0 bottom-0 w-0.5 dark:bg-gray-500 block duration-200 bg-gray-300;
+  }
+  &:after {
+    content: '';
+    @apply w-2 absolute right-0 bottom-0 h-0.5 dark:bg-gray-500 block duration-200 bg-gray-300;
+  }
+  &:hover {
+    &:before,
+    &:after {
+      @apply dark:bg-gray-300 bg-gray-500;
+    }
+  }
+}
+
+.vue-grid-item.disable-user-select {
+  user-select: none;
+}
+
+.vue-grid-layout {
+  position: relative;
+  transition: height 0.2s ease;
+}
+
+.--theme--applied.vue-grid-layout .n-data-table .n-data-table-th,
+.--theme--applied.vue-grid-layout .n-data-table .n-data-table-table,
+.--theme--applied.vue-grid-layout .n-data-table .n-data-table-thead,
+.--theme--applied.vue-grid-layout .n-data-table .n-data-table-td,
+.--theme--applied.vue-grid-layout .n-pagination .n-pagination-item.n-pagination-item--disabled.n-pagination-item--active,
+.--theme--applied.vue-grid-layout .n-pagination .n-pagination-item.n-pagination-item--disabled.n-pagination-item--button,
+.--theme--applied.vue-grid-layout .n-base-selection .n-base-selection-label
+{
+  background-color: inherit;
+}
+
+.vue-grid-layout .n-card {
+  --chart-legend-color: rgb(51, 54, 57);
+}
+
+/* Light Mode - Light Green */
+.theme-light-mode-light-green.vue-grid-layout {
+  background: linear-gradient(135deg, #4a8c7b 0%, #76b39d 100%);
+  color: #333333;
+}
+.theme-light-mode-light-green.vue-grid-layout .n-card {
+  color: #2c5543;
+  background-color: rgba(164, 219, 193, 0.7);
+  border-radius: 10px;
+  border-width: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #2c5543;
+}
+
+/* Light Mode - Light Red */
+.theme-light-mode-light-red.vue-grid-layout {
+  background: linear-gradient(135deg, #f0a3a3 0%, #f5c4c4 100%);
+  color: #333333;
+}
+.theme-light-mode-light-red.vue-grid-layout .n-card {
+  background-color: #fbd1bc;
+  color: #4a4a4a;
+  border: 1px solid #f3a68b;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #4a4a4a;
+}
+
+/* Light Mode - Light Orange */
+.theme-light-mode-light-orange.vue-grid-layout {
+  background: linear-gradient(135deg, #ffd194 0%, #ffeecc 100%);
+  color: #333333;
+}
+.theme-light-mode-light-orange.vue-grid-layout .n-card {
+  background-color: #F4D5A2;
+  color: #57564F;
+  border: 1px solid #F4C89B;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #57564F;
+}
+
+/* Light Mode - Light Blue */
+.theme-light-mode-light-blue.vue-grid-layout {
+  background: linear-gradient(135deg, #a8d8ff 0%, #d4e8ff 100%);
+  color: #333333;
+}
+.theme-light-mode-light-blue.vue-grid-layout .n-card {
+  background-color: rgba(210, 230, 255, 0.7);
+  color: #2c4b6e;
+  border: 1px solid rgba(173, 216, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #2c4b6e;
+}
+
+/* Dark Mode - Light Blue */
+.theme-dark-mode-light-blue.vue-grid-layout {
+  background: linear-gradient(135deg, #1e2a3a 0%, #2c3e50 100%);
+  color: #e0e0e0;
+}
+.theme-dark-mode-light-blue.vue-grid-layout .n-card {
+  background-color: rgba(158, 167, 190, 0.8);
+  color: rgba(34, 34, 40, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: rgba(34, 34, 40, 0.9);
+}
+
+/* Dark Mode - Dark Red */
+.theme-dark-mode-dark-red.vue-grid-layout {
+  background: linear-gradient(135deg, #8B4433 0%, #A45A52 50%, #C26E61 100%);
+  color: #F0E0D6;
+}
+.theme-dark-mode-dark-red.vue-grid-layout .n-card {
+  background-color: #8B4513;
+  color: #FFFFFF;
+  border: 1px solid #A0522D;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #FFFFFF;
+}
+
+/* Dark Mode - Dark Orange */
+.theme-dark-mode-dark-orange.vue-grid-layout {
+  background: linear-gradient(135deg, #8B5E3C 0%, #A06E3F 50%, #C08756 100%);
+  color: #F0E0D6;
+}
+.theme-dark-mode-dark-orange.vue-grid-layout .n-card {
+  background-color: #AD784C;
+  color: #FFFFFF;
+  border: 1px solid #895B32;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #FFFFFF;
+}
+
+/* Dark Mode - Dark Blue */
+.theme-dark-mode-dark-blue.vue-grid-layout {
+  background: linear-gradient(135deg, #1A2636 0%, #253649 50%, #2E425C 100%);
+  color: #E0E0E0;
+}
+.theme-dark-mode-dark-blue.vue-grid-layout .n-card {
+  background-color: #414C6B;
+  color: #FFFFFF;
+  border: 1px solid #2C3448;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #FFFFFF;
+}
+
+/* Dark Mode - Dark Green */
+.theme-dark-mode-dark-green.vue-grid-layout {
+  background: linear-gradient(135deg, #2A3C2F 0%, #3A4F40 50%, #4A6251 100%);
+  color: #E0E0E0;
+}
+.theme-dark-mode-dark-green.vue-grid-layout .n-card {
+  background-color: #3D5643;
+  color: #FFFFFF;
+  border: 1px solid #2B3C2E;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #FFFFFF;
+}
+
+/* Dark Mode - Light Green */
+.theme-dark-mode-light-green.vue-grid-layout {
+  background: linear-gradient(135deg, rgba(48, 75, 63, 0.9) 0%, rgba(56, 87, 73, 0.85) 100%);
+  color: #E0E0E0;
+}
+.theme-dark-mode-light-green.vue-grid-layout .n-card {
+  background-color: #A5BDAE;
+  color: #647269;
+  border: 1px solid #6A7A6C;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #647269;
+}
+
+/* Light Mode - Dark Green */
+.theme-light-mode-dark-green.vue-grid-layout {
+  background: linear-gradient(135deg, #3a5a40 0%, #588157 100%);
+  color: #f0f0f0;
+}
+.theme-light-mode-dark-green.vue-grid-layout .n-card {
+  background-color: rgba(144, 190, 150, 0.7);
+  color: #1f3528;
+  border: 1px solid rgba(88, 129, 87, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #1f3528;
+}
+
+/* Light Mode - Dark Red */
+.theme-light-mode-dark-red.vue-grid-layout {
+  background: linear-gradient(135deg, #8e3b46 0%, #a45a52 100%);
+  color: #f0f0f0;
+}
+.theme-light-mode-dark-red.vue-grid-layout .n-card {
+  background-color: rgba(215, 140, 140, 0.7);
+  color: #4a1f1f;
+  border: 1px solid rgba(164, 90, 82, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #4a1f1f;
+}
+
+/* Light Mode - Dark Orange */
+.theme-light-mode-dark-orange.vue-grid-layout {
+  background: linear-gradient(135deg, #c65102 0%, #e87604 100%);
+  color: #f0f0f0;
+}
+.theme-light-mode-dark-orange.vue-grid-layout .n-card {
+  background-color: rgba(255, 185, 128, 0.7);
+  color: #6b2d00;
+  border: 1px solid rgba(232, 118, 4, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #6b2d00;
+}
+
+/* Light Mode - Dark Blue */
+.theme-light-mode-dark-blue.vue-grid-layout {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+  color: #f0f0f0;
+}
+.theme-light-mode-dark-blue.vue-grid-layout .n-card {
+  background-color: rgba(138, 180, 224, 0.7);
+  color: #0f1e2f;
+  border: 1px solid rgba(44, 82, 130, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #0f1e2f;
+}
+
+/* Dark Mode - Light Red */
+.theme-dark-mode-light-red.vue-grid-layout {
+  background: linear-gradient(135deg, #5c2a2a 0%, #7a3e3e 100%);
+  color: #e0e0e0;
+}
+.theme-dark-mode-light-red.vue-grid-layout .n-card {
+  background-color: #c27878;
+  color: #2f1c1c;
+  border: 1px solid #9e5e5e;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #2f1c1c;
+}
+
+/* Dark Mode - Light Orange */
+.theme-dark-mode-light-orange.vue-grid-layout {
+  background: linear-gradient(135deg, #5c3c1f 0%, #7a522d 100%);
+  color: #e0e0e0;
+}
+.theme-dark-mode-light-orange.vue-grid-layout .n-card {
+  background-color: #c29a78;
+  color: #2f241c;
+  border: 1px solid #9e7e5e;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #2f241c;
+}
+/* 科技蓝 */
+.theme-tech-blue.vue-grid-layout {
+  background: linear-gradient(135deg, #04206c, #0b47ed);
+  color: rgb(253, 253, 255);
+}
+
+.theme-tech-blue.vue-grid-layout .n-card {
+  color: rgb(219, 234, 254,1);
+  background-color: rgb(37 99 235/0.8);
+  border-width: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: rgb(219, 234, 254);
+}
+/* 添加悬停效果 */
+.theme-tech-blue.vue-grid-layout .n-card:hover {
+  background-color: rgba(69, 66, 243, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.theme-tech-blue.vue-grid-layout .n-card .n-data-table .n-data-table-th,
+.theme-tech-blue.vue-grid-layout .n-card .n-data-table .n-data-table-td,
+.theme-tech-blue.vue-grid-layout .n-card .n-pagination .n-pagination-item,
+.theme-tech-blue.vue-grid-layout .n-card .n-base-selection .n-base-selection-label .n-base-selection-input {
+  color: rgba(255, 255, 255, 1);
+}
+.theme-tech-blue.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-th,
+.theme-tech-blue.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-td {
+  color: black;
+}
+/* 苹果紫 */
+.theme-royal-purple.vue-grid-layout {
+  background: linear-gradient(135deg, #ae04c1, #3307e0);
+  color: #ffffff;
+}
+
+.theme-royal-purple.vue-grid-layout .n-card {
+  color:  rgba(255, 255, 255, 1);
+  background-color: rgba(230, 230, 250, 0.2);
+  border-radius: 0.5rem;
+  border-width: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --chart-legend-color: #f8f7fa;
+}
+.theme-royal-purple.vue-grid-layout .n-card .n-data-table .n-data-table-th,
+.theme-royal-purple.vue-grid-layout .n-card .n-data-table .n-data-table-td,
+.theme-royal-purple.vue-grid-layout .n-card .n-pagination .n-pagination-item,
+.theme-royal-purple.vue-grid-layout .n-card .n-base-selection .n-base-selection-label .n-base-selection-input {
+  color: rgba(255, 255, 255, 1);
+}
+.theme-royal-purple.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-th,
+.theme-royal-purple.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-td {
+  color: black;
+}
+
+/* 添加悬停效果 */
+.theme-royal-purple.vue-grid-layout .n-card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 微软Windows风格 */
+.theme-microsoft-style.vue-grid-layout {
+  background: linear-gradient(135deg, #0078D4, #005A9E);  /* 微软蓝色渐变 */
+  color: #ffffff;
+}
+
+.theme-microsoft-style.vue-grid-layout .n-card {
+  color: rgba(255, 255, 255, 0.9);  /* 略微降低文字不透明度 */
+  background-color: rgba(255, 255, 255, 0.1);  /* 降低卡片背景不透明度 */
+  border-radius: 0.5rem;  /* 稍微减小圆角 */
+  border-width: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);  /* 调整阴影 */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);  /* Safari支持 */
+  --chart-legend-color: rgba(255, 255, 255, 0.7);  /* 调整图表图例颜色 */
+  transition: all 0.2s ease;  /* 平滑过渡效果 */
+}
+
+/* 添加悬停效果 */
+.theme-microsoft-style.vue-grid-layout .n-card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-microsoft-style.vue-grid-layout .n-card .n-data-table .n-data-table-th,
+.theme-microsoft-style.vue-grid-layout .n-card .n-data-table .n-data-table-td,
+.theme-microsoft-style.vue-grid-layout .n-card .n-pagination .n-pagination-item,
+.theme-microsoft-style.vue-grid-layout .n-card .n-base-selection .n-base-selection-label .n-base-selection-input {
+  color: rgba(255, 255, 255, 1);
+}
+.theme-microsoft-style.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-th,
+.theme-microsoft-style.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-td {
+  color: black;
+}
+
+/* 酷炫黑风格 */
+.theme-cool-black.vue-grid-layout {
+  background: linear-gradient(135deg, #000000, #020010);  /* 微软蓝色渐变 */
+  color: #ffffff;
+}
+.theme-cool-black.vue-grid-layout .n-card {
+  color: rgba(255, 255, 255, 0.9);  /* 略微降低文字不透明度 */
+  background-color: rgb(12, 2, 45);  /* 降低卡片背景不透明度 */
+  border-radius:  0.5rem;  /* 稍微减小圆角 */
+  border-width: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);  /* 调整阴影 */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);  /* Safari支持 */
+  --chart-legend-color: rgba(255, 255, 255, 0.7);  /* 调整图表图例颜色 */
+  transition: all 0.2s ease;  /* 平滑过渡效果 */
+}
+
+/* 添加悬停效果 */
+.theme-cool-black.vue-grid-layout .n-card:hover {
+  background-color: rgb(13, 2, 69);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-cool-black.vue-grid-layout .n-card .n-data-table .n-data-table-th,
+.theme-cool-black.vue-grid-layout .n-card .n-data-table .n-data-table-td,
+.theme-cool-black.vue-grid-layout .n-card .n-pagination .n-pagination-item,
+.theme-cool-black.vue-grid-layout .n-card .n-base-selection .n-base-selection-label .n-base-selection-input {
+  color: rgba(255, 255, 255, 1);
+}
+.theme-cool-black.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-th,
+.theme-cool-black.vue-grid-layout .n-card .n-data-table .n-data-table-tr:not(.n-data-table-tr--summary):hover > .n-data-table-td {
+  color: black;
+}
