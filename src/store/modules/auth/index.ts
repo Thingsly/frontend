@@ -9,7 +9,11 @@ import { fetchGetUserInfo, fetchLogin, logout } from '@/service/api';
 import { transformUser } from '@/service/api/auth';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
-import { encryptDataByRsa, generateRandomHexString, validPassword } from '@/utils/common/tool';
+import {
+  encryptDataByRsa,
+  generateRandomHexString,
+  validPassword
+} from '@/utils/common/tool';
 import { useRouteStore } from '../route';
 import { useTabStore } from '../tab';
 import { clearAuthStorage, getToken, getUserInfo } from './shared';
@@ -18,7 +22,8 @@ const { dialog } = createDiscreteApi(['dialog']);
 
 export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const routeStore = useRouteStore();
-  const { route, toLogin, redirectFromLogin, routerPush } = useRouterPush(false);
+  const { route, toLogin, redirectFromLogin, routerPush } =
+    useRouterPush(false);
   const { loading: loginLoading, startLoading, endLoading } = useLoading();
 
   const token = ref(getToken());
@@ -51,9 +56,11 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   async function login(userName: string, password: string) {
     startLoading();
     let newP = password;
-    const data = localStorage.getItem('enableZcAndYzm') ? JSON.parse(localStorage.getItem('enableZcAndYzm')) : [];
+    const data = localStorage.getItem('enableZcAndYzm')
+      ? JSON.parse(localStorage.getItem('enableZcAndYzm'))
+      : [];
     let salt: string | null = null;
-    if (data.find(v => v.name === 'frontend_res')?.enable_flag === 'enable') {
+    if (data.find((v) => v.name === 'frontend_res')?.enable_flag === 'enable') {
       salt = generateRandomHexString(16);
       newP = encryptDataByRsa(password + salt);
     }
@@ -64,7 +71,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
         const password_last_updated = info.password_last_updated;
         const now = new Date();
         const cha = moment(now).diff(password_last_updated, 'days');
-        const tipFunc = str => {
+        const tipFunc = (str) => {
           dialog.warning({
             content: str,
             positiveText: $t('common.confirm'),
