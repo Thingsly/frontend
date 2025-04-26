@@ -31,13 +31,10 @@ const model: FormModel = reactive({
 });
 
 const commonDomains = [
-  'qq.com',
-  '163.com',
   'gmail.com',
-  'outlook.com',
-  'sina.com',
-  'hotmail.com',
-  'yahoo.com'
+  'thingsly.vn',
+  'hust.edu.vn',
+  'sis.hust.edu.vn'
 ];
 
 const emailOptions = computed(() => {
@@ -139,6 +136,12 @@ async function handleSubmit() {
 setTimeout(() => {
   readOnly.value = false;
 }, 1000);
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ResetPwd'
+};
 </script>
 
 <template>

@@ -137,7 +137,7 @@ const columns: Ref<DataTableColumns<UserManagement.User>> = ref([
   },
   // {
   //   key: 'gender',
-  //   title: '性别',
+  //   title: 'Gender',
   //   align: 'center',
   //   render: row => {
   //     if (row.gender) {
@@ -222,7 +222,6 @@ function handleAddTable() {
   setModalType('add');
 }
 
-/** 切换用户 */
 async function handleEnter(rowId: string) {
   await authStore.enter(rowId);
 }
@@ -270,7 +269,6 @@ function init() {
   getTableData();
 }
 
-// 初始化
 init();
 </script>
 

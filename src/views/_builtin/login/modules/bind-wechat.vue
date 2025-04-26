@@ -4,6 +4,12 @@ defineOptions({
 });
 </script>
 
+<script lang="ts">
+export default {
+  name: 'BindWechat'
+};
+</script>
+
 <template>
   <div></div>
 </template>

@@ -69,6 +69,12 @@ async function handleSubmit() {
 }
 </script>
 
+<script lang="ts">
+export default {
+  name: 'Register'
+};
+</script>
+
 <template>
   <NForm ref="formRef" :model="model" :rules="rules" size="large" :show-label="false">
     <NFormItem path="phone">

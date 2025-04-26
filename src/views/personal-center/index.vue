@@ -1,11 +1,3 @@
-<!--
- * @Descripttion:
- * @version:
- * @Author: zhaoqi
- * @Date: 2024-03-17 09:14:38
- * @LastEditors: zhaoqi
- * @LastEditTime: 2024-03-20 17:23:40
--->
 <script setup lang="tsx">
 import { onMounted, ref, toRefs } from 'vue';
 import { NButton } from 'naive-ui';
@@ -37,7 +29,7 @@ const userInfoData = ref({
   email: '',
   phone_num: ''
 });
-/** 初始from数据 */
+
 const formData = ref({
   name: '',
   old_password: '',
@@ -100,7 +92,6 @@ function editName() {
   // setModalType('amend');
 }
 
-/** 取消编辑模式 */
 function closeEdit() {
   editType.value = false;
 }
@@ -108,7 +99,7 @@ function closeEdit() {
 function changeBtnType(btn: any) {
   currentIndex.value = btn;
 }
-/** 更新用户信息 */
+
 async function updataUserInfo() {
   console.log('user', userInfoData.value);
 
@@ -117,13 +108,13 @@ async function updataUserInfo() {
     window.$message?.success($t('custom.grouping_details.operationSuccess'));
   }
 }
-/** 重置密码 */
+
 const resetPass = async () => {
   formData.value.old_password = '';
   formData.value.passwords = '';
   formData.value.password = '';
 };
-/** 修改密码 */
+
 const submitPass = async () => {
   await validate();
   const data = localStorage.getItem('enableZcAndYzm') ? JSON.parse(localStorage.getItem('enableZcAndYzm')) : [];
@@ -146,7 +137,6 @@ const submitPass = async () => {
 
 async function handleFinish({ event }: { event?: ProgressEvent }) {
   const response = JSON.parse((event?.target as XMLHttpRequest).response);
-  // 字符串转成对象
   const obj = JSON.parse(userInfoData.value.additional_info);
   obj.user_icon = response.data.path;
   const info = JSON.stringify(obj);
@@ -351,7 +341,7 @@ onMounted(async () => {
             </n-gi>
             <n-gi>
               <NButton class="mt-5" @click="changePassword">{{ $t('generate.change-password') }}</NButton>
-            </n-gi> 
+            </n-gi>
 -->
         </n-grid>
       </div>

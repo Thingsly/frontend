@@ -43,13 +43,10 @@ const canSubmit = computed(() => {
 });
 
 const commonDomains = [
-  'qq.com',
-  '163.com',
   'gmail.com',
-  'outlook.com',
-  'sina.com',
-  'hotmail.com',
-  'yahoo.com'
+  'thingsly.vn',
+  'hust.edu.vn',
+  'sis.hust.edu.vn'
 ];
 
 const emailOptions = computed(() => {
@@ -162,6 +159,12 @@ async function handleSubmit() {
 }
 </script>
 
+<script lang="ts">
+export default {
+  name: 'RegisterByEmail'
+};
+</script>
+
 <template>
   <NForm
     ref="formRef"
@@ -241,7 +244,6 @@ async function handleSubmit() {
 </template>
 
 <style scoped>
-/* 保留这个样式，防止自动填充背景变黄 */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -251,7 +253,6 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* 添加晃动动画 */
 @keyframes shake {
   0%,
   100% {

@@ -1,11 +1,3 @@
-<!--
- * @Descripttion:
- * @version:
- * @Author: zhaoqi
- * @Date: 2024-03-17 13:31:30
- * @LastEditors: zhaoqi
- * @LastEditTime: 2024-03-20 17:13:33
--->
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue';
 import type { FormItemRule, FormRules } from 'naive-ui';
@@ -16,7 +8,6 @@ import { $t } from '@/locales';
 import { encryptDataByRsa, generateRandomHexString, validName, validPasswordByExp } from '@/utils/common/tool';
 
 export interface Props {
-  /** 弹窗可见性 */
   visible: boolean;
   type?: 'amend' | 'changePassword';
 }
@@ -60,20 +51,19 @@ const estimate = computed(() => {
   return titles[props.type];
 });
 
-/** 初始from数据 */
 const formData = ref({
   name: '',
   old_password: '',
   password: '',
   passwords: ''
 });
-/** 关闭弹框 */
+
 const closeModal = () => {
   modalVisible.value = false;
   formData.value.name = '';
 };
 /**
- * 修改姓名
+ * Edit name
  *
  * @param name
  */

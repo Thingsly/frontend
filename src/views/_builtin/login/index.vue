@@ -48,6 +48,11 @@ const activeModule = computed(() => {
   const findItem = modules.find(item => item.key === props.module);
   return findItem || modules[0];
 });
+
+const activeModuleLabel = computed(() => {
+  return activeModule.value.label;
+});
+
 console.log(activeModule.value.label);
 const bgThemeColor = computed(() =>
   themeStore.darkMode ? getColorPalette(themeStore.themeColor, 7) : themeStore.themeColor
@@ -82,7 +87,7 @@ watch(moduleTitle, newTitle => {
 </script>
 
 <template>
-  <div class="relative size-full flex-center overflow-hidden" :style="{ backgroundColor: bgColor }">
+  <div class="relative size-full flex items-center justify-end overflow-hidden pr-8" :style="{ backgroundColor: bgColor }">
     <!--
  <div class="absolute left-48px top-24px z-99">
       <div class="flex-center">
@@ -99,8 +104,8 @@ watch(moduleTitle, newTitle => {
           @change-lang="appStore.changeLocale"
         />
       </div>
-    </div> 
--->
+    </div> -->
+
 
     <!--    <WaveBg :theme-color="bgThemeColor" />-->
     <NCard :bordered="false" class="relative z-4 w-auto rd-12px">
@@ -124,7 +129,7 @@ watch(moduleTitle, newTitle => {
           </div>
         </header>
         <main class="pt-24px">
-          <h3 class="text-18px text-primary font-medium">{{ $t(activeModule.label as any) }}</h3>
+          <h3 class="text-18px text-primary font-medium">{{ $t(activeModuleLabel) }}</h3>
           <div class="pt-24px">
             <Transition :name="themeStore.page.animateMode" mode="out-in" appear>
               <component :is="activeModule.component" />

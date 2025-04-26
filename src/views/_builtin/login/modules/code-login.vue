@@ -52,6 +52,12 @@ async function handleSubmit() {
 }
 </script>
 
+<script lang="ts">
+export default {
+  name: 'CodeLogin'
+};
+</script>
+
 <template>
   <NForm ref="formRef" :key="locale" :model="model" :rules="rules" size="large" :show-label="false">
     <NFormItem path="phone">

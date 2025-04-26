@@ -16,6 +16,12 @@ const bgColor = computed(() => {
 });
 </script>
 
+<script lang="ts">
+export default {
+  name: 'LoginBg'
+};
+</script>
+
 <template>
   <div class="absolute-lt z-1 wh-full overflow-hidden">
     <!--

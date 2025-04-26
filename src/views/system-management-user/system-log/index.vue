@@ -123,7 +123,7 @@ const columns: Ref<DataTableColumns<DataService.Data>> = ref([
   },
   {
     key: '',
-    title: '操作',
+    title: 'Thao tác',
     minWidth: '140px',
     align: 'left',
     render: row => {
