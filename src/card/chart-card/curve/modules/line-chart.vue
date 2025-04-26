@@ -279,8 +279,8 @@ const updateDisabledOptions = (timeFrame: string) => {
     'Last 90 Days': 9, // 6 hours
     'Last 6 Months': 9, // 6 hours
     'Last 1 Year': 12, // 1 month
-    Today: 4, // 5 minutes
-    Yesterday: 4, // 5 minutes
+    'Today': 4, // 5 minutes
+    'Yesterday': 4, // 5 minutes
     'The Day Before Yesterday': 4, // 5 minutes
     'Same Day Last Week': 4, // 5 minutes
     'This Week': 6, // 30 minutes

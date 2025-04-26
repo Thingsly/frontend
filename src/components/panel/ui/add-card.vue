@@ -20,10 +20,10 @@ const props = defineProps<{
 const formRef = ref<ICardFormIns>();
 const tabValue = ref('builtin');
 const tabList = [
-  { tab: '系统', type: 'builtin' },
-  { tab: '设备', type: 'device' },
-  { tab: '插件', type: 'plugin' },
-  { tab: '图表', type: 'chart' }
+  { tab: 'System', type: 'builtin' },
+  { tab: 'Device', type: 'device' },
+  { tab: 'Plugin', type: 'plugin' },
+  { tab: 'Chart', type: 'chart' }
 ];
 const state = reactive({
   curCardData: null as null | Record<string, any>

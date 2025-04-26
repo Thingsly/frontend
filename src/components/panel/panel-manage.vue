@@ -40,7 +40,7 @@ const dataFetched = ref(false);
 const layout = ref<ICardView[]>([]);
 const theme = ref(NO_THEME);
 const preTheme = ref(NO_THEME);
-const preLayout = ref<ICardView[]>([]); // 用来保存用户修改前的内容
+const preLayout = ref<ICardView[]>([]);
 const fetchBroad = async () => {
   const { data } = await getBoard(props.panelId);
   if (data) {
@@ -256,22 +256,6 @@ onUnmounted(() => {
             { label: $t('card.applePurpleTheme'), value: 'theme-royal-purple' },
             { label: $t('card.msStyleTheme'), value: 'theme-microsoft-style' },
             { label: $t('card.blackTheme'), value: 'theme-cool-black' }
-            /*{ label: $t('清新浅绿主题'), value: 'theme-light-mode-light-green' },
-            { label: $t('静谧浅蓝主题'), value: 'theme-light-mode-light-blue' },
-            { label: $t('温暖浅橙主题'), value: 'theme-light-mode-light-orange' },
-            { label: $t('活力浅红主题'), value: 'theme-light-mode-light-red' },
-            { label: $t('暗调清新绿主题'), value: 'theme-dark-mode-light-green' },
-            { label: $t('暗调静谧蓝主题'), value: 'theme-dark-mode-light-blue' },
-            { label: $t('暗调温暖橙主题'), value: 'theme-dark-mode-light-orange' },
-            { label: $t('暗调活力红主题'), value: 'theme-dark-mode-light-red' },
-            { label: $t('深邃暗绿主题'), value: 'theme-dark-mode-dark-green' },
-            { label: $t('宁静暗蓝主题'), value: 'theme-dark-mode-dark-blue' },
-            { label: $t('炽热暗橙主题'), value: 'theme-dark-mode-dark-orange' },
-            { label: $t('热烈暗红主题'), value: 'theme-dark-mode-dark-red' },
-            { label: $t('明净深绿主题'), value: 'theme-light-mode-dark-green' },
-            { label: $t('明净深蓝主题'), value: 'theme-light-mode-dark-blue' },
-            { label: $t('明净炽橙主题'), value: 'theme-light-mode-dark-orange' },
-            { label: $t('明净烈红主题'), value: 'theme-light-mode-dark-red' }*/
           ]"
         ></NSelect>
         <NButton v-if="isEditing" @click="quitEditMode">{{ $t('card.quitEdit') }}</NButton>

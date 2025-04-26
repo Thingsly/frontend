@@ -88,8 +88,8 @@ const updateDisabledOptions = (timeFrame: string) => {
     'Last 90 Days': 9,
     'Last 6 Months': 9,
     'Last 1 Year': 12,
-    Today: 4,
-    Yesterday: 4,
+    'Today': 4,
+    'Yesterday': 4,
     'The Day Before Yesterday': 4,
     'Same Day Last Week': 4,
     'This Week': 6,
@@ -100,7 +100,6 @@ const updateDisabledOptions = (timeFrame: string) => {
     'Last Year': 12
   };
 
-  // 默认不禁用"不聚合"，根据时间范围禁用其余选项
   dataAggregateRangeOptions.forEach((item, index, array) => {
     if (!disableBeforeIndex[timeFrame]) {
       item.disabled = false;
@@ -437,7 +436,6 @@ const isNoAggregate = computed(
 <style scoped>
 .custom-select-container .v-binder-follower-container {
   width: 300px !important;
-  /* 只会影响该组件内的 NSelect 下拉宽度 */
 }
 .metrics-name-input {
   max-width: 140px;

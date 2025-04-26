@@ -25,7 +25,7 @@ const { layouts, addItem, updateLayout, panelDate, removeItem, updateLayouts } =
 const saveKanBan = async () => {
   if (!props.panelId) {
     window.NMessage.destroyAll();
-    window.NMessage.error('无效的看板id');
+    window.NMessage.error('Invalid dashboard ID');
   } else {
     const layoutJson = JSON.stringify(layouts.value);
 

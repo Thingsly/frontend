@@ -334,7 +334,7 @@ function onWindowResize() {
     state.width = wrapper.value.offsetWidth;
   }
   if (props.responsive) {
-    responsiveGridLayout(); // 确保布局在调整窗口大小时更新
+    responsiveGridLayout();
   }
   emitter.emit('resizeEvent');
 }
@@ -501,7 +501,6 @@ function responsiveGridLayout() {
 
   state.lastBreakpoint = newBreakpoint;
   emitter.emit('setColNum', getColsFromBreakpoint(newBreakpoint, props.cols));
-  // 添加这行代码以确保布局在调整窗口大小时更新，解决堆叠问题
   currentLayout.value = [...layout];
 }
 
