@@ -6,7 +6,7 @@ export default {
   actions: 'Thao tác',
   view: 'Xem',
   removeFromGroup: 'Xóa khỏi nhóm',
-  createGroupButton: '+Tạo nhóm',
+  createGroupButton: '+ Tạo nhóm',
   deviceGroupPlaceholder: 'Vui lòng nhập tên nhóm thiết bị',
   selectParentGroup: 'Vui lòng chọn nhóm cha',
   enterGroupName: 'Vui lòng nhập tên nhóm',

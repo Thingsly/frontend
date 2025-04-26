@@ -80,7 +80,7 @@ onMounted(async () => {
   .to-create:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: #646cff;
+    color: #cf0e23;
   }
 
   .m-b-10 {

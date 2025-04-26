@@ -249,7 +249,7 @@ export default {
   creativity: 'Creativity',
   'data-parsing': 'Data Parsing',
   '+add-scene-linkage': '+ Add Scene Linkage',
-  'add-device': 'Add Device',
+  'add-device': ' Add Device',
   'select-authentication-type': 'Select Authentication Type',
   'add-sub-device': 'Add Sub-device',
   'parent-group': 'Parent Group',

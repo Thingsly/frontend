@@ -1,5 +1,5 @@
 export default {
-  addKanBan: 'Tạo bảng mới',
+  addKanBan: ' Tạo bảng mới',
   editKanban: 'Chỉnh sửa bảng',
   cardName: {
     date: {

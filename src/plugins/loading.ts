@@ -5,7 +5,7 @@ import { localStg } from '@/utils/storage';
 import systemLogo from '@/assets/svg-icon/logo.svg?raw';
 
 export function setupLoading() {
-  const themeColor = localStg.get('themeColor') || '#646cff';
+  const themeColor = localStg.get('themeColor') || '#cf0e23';
   const logoLoading = localStg.get('logoLoading') || '';
 
   const { r, g, b } = getRgbOfColor(themeColor);

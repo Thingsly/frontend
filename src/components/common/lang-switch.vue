@@ -31,8 +31,12 @@ const tooltipContent = computed(() => {
   return $t('icon.lang');
 });
 
-const currentLangText = computed(() => {
-  return props.lang === 'en-US' ? 'EN' : 'VI';
+// const currentLangText = computed(() => {
+//   return props.lang === 'en-US' ? 'EN' : 'VI';
+// });
+
+const currentIcon = computed(() => {
+  return props.lang === 'en-US' ? 'twemoji:flag-united-states' : 'twemoji:flag-vietnam';
 });
 
 function changeLang(lang: App.I18n.LangType) {
@@ -44,7 +48,8 @@ function changeLang(lang: App.I18n.LangType) {
   <NDropdown :value="lang" :options="langOptions" trigger="hover" @select="changeLang">
     <div>
       <ButtonIcon :tooltip-content="tooltipContent" tooltip-placement="left">
-        <span class="text-16px font-medium">{{ currentLangText }}</span>
+        <!-- <span class="text-16px font-medium">{{ currentLangText }}</span> -->
+        <SvgIcon :icon="currentIcon" />
       </ButtonIcon>
     </div>
   </NDropdown>
