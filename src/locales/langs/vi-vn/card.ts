@@ -11,7 +11,7 @@ export default {
   barChart: 'Biểu đồ cột',
   curve: 'Đường cong',
   selectedIcon: 'Biểu tượng đã chọn',
-  digitalIndicator: 'Chỉ số kỹ thuật số',
+  digitalIndicator: 'Chỉ số kỹ thuật số ',
   humidity: 'Độ ẩm',
   numControl: 'Điều khiển số',
   customData: 'Gửi dữ liệu tùy chỉnh',

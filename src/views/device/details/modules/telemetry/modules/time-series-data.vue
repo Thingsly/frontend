@@ -151,8 +151,8 @@ const initialOptions = ref({
   },
   yAxis: {
     type: 'value',
-    // min: 0, 
-    // max: 0, 
+    // min: 0,
+    // max: 0,
     scale: true
   },
   series: [
@@ -436,7 +436,7 @@ const initData = () => {
 
 const exportData = () => {
   const excelData = [
-    ['时间', (props.theName ? props.theName : props.theKey) + (props.theUnit ? `(${props.theUnit})` : '')],
+    ['Time', (props.theName ? props.theName : props.theKey) + (props.theUnit ? `(${props.theUnit})` : '')],
     ...tableData.value.map(item => [dayjs(item.x).format('YYYY-MM-DD HH:mm:ss'), item.y])
   ];
   // save as csv
