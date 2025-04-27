@@ -56,7 +56,7 @@ const dataAggregateRangeOptions = [
   { label: $t('common.hours6'), value: '6h', disabled: false },
   { label: $t('common.days1'), value: '1d', disabled: false },
   { label: $t('common.days7'), value: '7d', disabled: false },
-  { label: '1月', value: '1mo', disabled: false }
+  { label: '1 month', value: '1mo', disabled: false }
 ];
 const aggregateFunctionOptions: SelectOption[] = [
   { label: $t('common.average'), value: 'avg' },
