@@ -14,5 +14,6 @@ export default {
   countryRegion: 'Country/Region',
   gaodeMap: 'Gaode Map',
   tencentMap: 'Tencent Map',
-  baiduMap: 'Baidu Map'
+  baiduMap: 'Baidu Map',
+  openstreetMap: 'OpenStreet Map'
 };

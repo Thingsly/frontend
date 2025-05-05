@@ -70,7 +70,7 @@ const setSeries: (dataSource) => void = async (dataSource) => {
   if (querDetail.device_id && querDetail.keys) {
     detail.value = await deviceDetail(querDetail);
   } else {
-    // window.$message?.error("查询不到设备");
+    // window.$message?.error("");
   }
 };
 

@@ -60,7 +60,7 @@ const queryData = ref({
 const associatedFormRules = ref({
   // device_ids: {
   //   required: true,
-  //   message: '请选择设备',
+  //   message: '',
   //   trigger: 'change'
   // },
 });

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { $t } from '@/locales';
-import { BaiduMap, GaodeMap, TencentMap } from './components';
+import { BaiduMap, GaodeMap, TencentMap, OpenStreetMap } from './components';
 
 interface Map {
   id: string;
@@ -10,6 +10,7 @@ interface Map {
 }
 
 const maps: Map[] = [
+  { id: 'openstreet', label: $t('custom.plugin.openstreetMap'), component: OpenStreetMap },
   { id: 'gaode', label: $t('custom.plugin.gaodeMap'), component: GaodeMap },
   { id: 'tencent', label: $t('custom.plugin.tencentMap'), component: TencentMap },
   { id: 'baidu', label: $t('custom.plugin.baiduMap'), component: BaiduMap }
