@@ -14,7 +14,7 @@ export default {
   deviceKey: 'Lỗi xác thực key, dịch vụ không khả dụng',
   deviceName: 'Tên thiết bị',
   deviceNumber: 'Mã thiết bị',
-  deviceConfig: 'Cấu hình thiết bị',
+  deviceConfig: 'Mẫu thiết bị',
   configTemplate: 'Mẫu cấu hình',
   unlimitedDeviceConfig: 'Không giới hạn mẫu thiết bị',
   selectGroup: 'Vui lòng chọn nhóm',

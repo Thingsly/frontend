@@ -61,13 +61,13 @@ export const request = createFlatRequest<App.Service.DEVResponse>(
       if (error?.response?.status === 401) {
         window.$message?.error('Unauthorized access. Please log in again.');
 
-        setTimeout(() => {
-          localStg.remove('token');
-          localStg.remove('refreshToken');
-          localStg.remove('userInfo');
+        // setTimeout(() => {
+        //   localStg.remove('token');
+        //   localStg.remove('refreshToken');
+        //   localStg.remove('userInfo');
 
-          window.location.reload();
-        }, 200);
+        //   window.location.reload();
+        // }, 200);
 
         return;
       }

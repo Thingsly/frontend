@@ -14,7 +14,7 @@ const cardData = ref<any>({
   id: 'tenant-count',
   title: $t('card.tenantCount.title'),
   value: 0,
-  unit: $t('card.tenantCount.unit', '个'),
+  unit: $t('card.tenantCount.unit', 'items'),
   colors: ['#3b82f6', '#60a5fa'],
   icon: 'mdi:account-group'
 });

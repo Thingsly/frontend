@@ -7,6 +7,7 @@ import dashboard_panel from './vi-vn/dashboard_panel';
 import form from './vi-vn/form';
 import dropdown from './vi-vn/dropdown';
 import icon from './vi-vn/icon';
+import theme from './vi-vn/theme';
 
 const local: App.I18n.Schema = {
   default: '',
@@ -279,89 +280,7 @@ const local: App.I18n.Schema = {
     fetchDataFailed: 'Lấy dữ liệu thất bại',
     noMoreData: 'Không còn dữ liệu nữa'
   },
-  theme: {
-    themeSchema: {
-      title: 'Chế độ giao diện',
-      light: 'Chế độ sáng',
-      dark: 'Chế độ tối',
-      auto: 'Theo hệ thống'
-    },
-    layoutMode: {
-      title: 'Chế độ bố trí',
-      vertical: 'Chế độ menu bên trái',
-      'vertical-mix': 'Chế độ menu bên trái kết hợp',
-      horizontal: 'Chế độ menu trên cùng',
-      'horizontal-mix': 'Chế độ menu trên cùng kết hợp'
-    },
-    themeColor: {
-      title: 'Màu giao diện',
-      primary: 'Màu chính',
-      info: 'Màu thông tin',
-      success: 'Màu thành công',
-      warning: 'Màu cảnh báo',
-      error: 'Màu lỗi',
-      followPrimary: 'Theo màu chính'
-    },
-    scrollMode: {
-      title: 'Chế độ cuộn',
-      wrapper: 'Cuộn ngoài cùng',
-      content: 'Cuộn nội dung'
-    },
-    page: {
-      animate: 'Hiệu ứng chuyển trang',
-      mode: {
-        title: 'Loại hiệu ứng chuyển trang',
-        'fade-slide': 'Trượt',
-        fade: 'Mờ dần',
-        'fade-bottom': 'Mờ dần từ dưới',
-        'fade-scale': 'Mờ dần và thu nhỏ',
-        'zoom-fade': 'Mờ dần và phóng to',
-        'zoom-out': 'Chớp nhoáng',
-        none: 'Không có'
-      }
-    },
-    fixedHeaderAndTab: 'Đầu trang và thanh tab cố định',
-    header: {
-      height: 'Chiều cao đầu trang',
-      breadcrumb: {
-        visible: 'Hiển thị breadcrumb',
-        showIcon: 'Hiển thị biểu tượng breadcrumb'
-      }
-    },
-    tab: {
-      visible: 'Hiển thị thanh tab',
-      cache: 'Lưu lại trang tab',
-      height: 'Chiều cao thanh tab',
-      mode: {
-        title: 'Kiểu thanh tab',
-        chrome: 'Phong cách Google',
-        button: 'Phong cách nút'
-      }
-    },
-    sider: {
-      inverted: 'Thanh bên tối',
-      width: 'Chiều rộng thanh bên',
-      collapsedWidth: 'Chiều rộng thanh bên khi thu gọn',
-      mixWidth: 'Chiều rộng thanh bên trong bố cục kết hợp',
-      mixCollapsedWidth: 'Chiều rộng thanh bên khi thu gọn trong bố cục kết hợp',
-      mixChildMenuWidth: 'Chiều rộng menu con trong bố cục kết hợp'
-    },
-    footer: {
-      visible: 'Hiển thị chân trang',
-      fixed: 'Cố định chân trang',
-      height: 'Chiều cao chân trang',
-      right: 'Căn phải chân trang'
-    },
-    themeDrawerTitle: 'Cấu hình giao diện',
-    pageFunTitle: 'Chức năng trang',
-    configOperation: {
-      copySuccess: 'Sao chép thành công',
-      copyConfig: 'Sao chép cấu hình',
-      copySuccessMsg: 'Sao chép thành công, vui lòng thay thế biến themeSettings trong src/theme/settings.ts',
-      resetConfig: 'Đặt lại cấu hình',
-      resetSuccessMsg: 'Đặt lại thành công'
-    }
-  },
+  theme,
   route: {
     login: 'Đăng nhập',
     403: 'Không có quyền',

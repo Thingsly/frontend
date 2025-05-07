@@ -112,10 +112,8 @@ export default {
   serviceName: 'Service Name',
   serviceIdentifier: 'Service Identifier',
   type: 'Type',
-  version: 'Version',
   enterVersion: 'Please enter the version',
   description: 'Description',
-  enterDescription: 'Please enter description',
   pluginName: 'Plugin Name',
   running: 'Running',
   selectSong: 'Select Song',
@@ -246,5 +244,113 @@ export default {
   cancel: 'Cancel',
   confirm: 'Confirm', // Using Confirm as it seems more appropriate here
   componentSettings: 'Component Settings',
-  basicSettings: 'Basic Settings'
+  basicSettings: 'Basic Settings',
+  pleaseSelectDevice: 'Please select device',
+  someDevicesNotSetTemplate: 'Template not set for some selected devices or operation failed',
+  serviceAccessIdNotSet: 'Service access ID not set, cannot submit',
+  checkedDeviceTemplateNotSet: 'Template not set for some selected devices on the current page. Please check.',
+  alarmCount: 'Alarm Count',
+  alarmUnit: 'Count',
+  memoryUsage: 'Memory Usage',
+  memoryUnit: '%',
+  cpuUsage: 'CPU Usage',
+  cpuUnit: '%',
+  diskUsage: 'Disk Usage',
+  diskUnit: '%',
+  viewAll: 'View All Data',
+  operationGuide: 'Operation Guide',
+  reportedData: {
+    title: 'Latest Reported Data',
+    refreshing: 'Refreshing',
+    startRefresh: 'Start Refresh',
+    noTelemetry: 'No telemetry data',
+  },
+  operationGuideCard: {
+    guideItems: {
+      addDevice: {
+        title: 'Add Device',
+        description: 'Add your IoT devices to the platform, establish connections, and manage them.'
+      },
+      configureDevice: {
+        title: 'Configure Device',
+        description: 'Set parameters and attributes for devices, customize data collection rules.'
+      },
+      createDashboard: {
+        title: 'Create Dashboard',
+        description: 'Visualize device data and create real-time monitoring dashboards.'
+      }
+    }
+  },
+  view: 'View',
+  noData: 'No Data',
+  uiSettings: 'UI Settings',
+  serialBgColor: 'Serial BG', // Abbreviated for potential space constraints
+  itemBgColor: 'Item BG',
+  itemHoverBgColor: 'Item Hover BG',
+  titleColor: 'Title Color',
+  descriptionColor: 'Desc Color',
+  guideList: 'Guide List',
+  pleaseEnterLink: 'Please enter link', // Already exists
+  recentlyVisited: {
+    title: 'Recently Visited',
+    description: 'List of recently visited pages',
+    noRecords: 'No records yet'
+  },
+  alarmInfo: {
+    title: 'Alarm Information',
+    viewAll: 'View All',
+    noAlarms: 'No alarm information'
+  },
+  common: {
+    loading: 'Loading...',
+    highAlarm: 'High',
+    intermediateAlarm: 'Medium',
+    lowAlarm: 'Low',
+    normal: 'Normal'
+  },
+  systemMetricsHistory: {
+    title: 'System Metrics History',
+    description: 'Displays historical curves for CPU, Memory, Disk usage'
+  },
+  operationGuideTenant: {
+    title: 'Operation Guide - Tenant'
+  },
+  operationGuideAdmin: {
+    title: 'Operation Guide - Admin',
+    guideItems: {
+      createTenant: {
+        title: 'Create Tenant',
+        description: 'Tenant configuration and creation, manage platform users and permissions'
+      },
+      configureNotification: {
+        title: 'Configure Notification',
+        description: 'Email and SMS notifications, configure system event alert methods'
+      },
+      configurePlugin: {
+        title: 'Configure Plugin',
+        description: 'Protocol access and third-party access, manage device connection methods'
+      }
+    }
+  },
+  tenantCount: {
+    title: 'Tenant Count',
+    unit: ''
+  },
+  tenantChart: {
+    title: 'Monthly User Growth',
+    description: 'Displays the number of new users per month',
+    seriesName: 'New Users',
+    totalUsers: 'Total Users',
+    addedMonth: 'Added This Month',
+    addedYesterday: 'Added Yesterday'
+  },
+  appDownload: {
+    title: 'Download Mobile App',
+    scanOrClick: 'Scan or Click to Download'
+  },
+  version: {
+    title: 'Version Information',
+    currentVersion: 'Current Version',
+    latest: 'Latest'
+  }
 };

@@ -8,21 +8,21 @@
       <!-- Left: Stats using wrapper div for color -->
       <div class="w-1/3 flex flex-col justify-around py-2 flex-shrink-0 border-r border-gray-200 dark:border-gray-700 pr-4">
         <div class="text-center"> 
-          <n-statistic :label="$t('card.tenantChart.totalUsers', '总用户数')">
+          <n-statistic :label="$t('card.tenantChart.totalUsers', 'Total Users')">
              <div :class="[themeStore.isDark ? 'text-blue-400' : 'text-blue-600']">
                 <NNumberAnimation :from="0" :to="stats.user_total" />
              </div>
           </n-statistic>
         </div>
         <div class="text-center">
-           <n-statistic :label="$t('card.tenantChart.addedMonth', '本月新增')" >
+           <n-statistic :label="$t('card.tenantChart.addedMonth', 'New This Month')" >
              <div :class="[themeStore.isDark ? 'text-green-400' : 'text-green-600']">
                <NNumberAnimation :from="0" :to="stats.user_added_month"  />
             </div>
            </n-statistic>
         </div>
         <div class="text-center">
-            <n-statistic :label="$t('card.tenantChart.addedYesterday', '昨日新增')">
+            <n-statistic :label="$t('card.tenantChart.addedYesterday', 'New Yesterday')">
              <div :class="[themeStore.isDark ? 'text-amber-400' : 'text-amber-600']"> 
                <NNumberAnimation :from="0" :to="stats.user_added_yesterday" />
              </div>

@@ -140,34 +140,33 @@ const dateRangeRef = ref<[number, number] | null>(null);
 
 
 const timeRangeOptions = ref([
-  { label: '自定义', value: 'custom' },
-  { label: '最近5分钟', value: 'last_5m' },
-  { label: '最近15分钟', value: 'last_15m' },
-  { label: '最近30分钟', value: 'last_30m' },
-  { label: '最近1小时', value: 'last_1h' },
-  { label: '最近3小时', value: 'last_3h' },
-  { label: '最近6小时', value: 'last_6h' },
-  { label: '最近12小时', value: 'last_12h' },
-  { label: '最近24小时', value: 'last_24h' },
-  { label: '最近3天', value: 'last_3d' },
-  { label: '最近7天', value: 'last_7d' },
-  { label: '最近15天', value: 'last_15d' },
-  { label: '最近30天', value: 'last_30d' },
-  { label: '最近60天', value: 'last_60d' },
-  { label: '最近90天', value: 'last_90d' },
-  { label: '最近6个月', value: 'last_6m' },
-  { label: '最近1年', value: 'last_1y' }
+  { label: 'Custom', value: 'custom' },
+  { label: 'Last 5 minutes', value: 'last_5m' },
+  { label: 'Last 15 minutes', value: 'last_15m' },
+  { label: 'Last 30 minutes', value: 'last_30m' },
+  { label: 'Last 1 hour', value: 'last_1h' },
+  { label: 'Last 3 hours', value: 'last_3h' },
+  { label: 'Last 6 hours', value: 'last_6h' },
+  { label: 'Last 12 hours', value: 'last_12h' },
+  { label: 'Last 24 hours', value: 'last_24h' },
+  { label: 'Last 3 days', value: 'last_3d' },
+  { label: 'Last 7 days', value: 'last_7d' },
+  { label: 'Last 15 days', value: 'last_15d' },
+  { label: 'Last 30 days', value: 'last_30d' },
+  { label: 'Last 60 days', value: 'last_60d' },
+  { label: 'Last 90 days', value: 'last_90d' },
+  { label: 'Last 6 months', value: 'last_6m' },
+  { label: 'Last 1 year', value: 'last_1y' }
 ]);
 
 const aggregateFunctionOptions = ref([
-  { label: '平均值', value: 'avg' },
-  { label: '最大值', value: 'max' },
-  { label: '最小值', value: 'min' },
-  { label: '总和', value: 'sum' },
-  { label: '差值', value: 'diff' }
+  { label: 'Average', value: 'avg' },
+  { label: 'Maximum', value: 'max' },
+  { label: 'Minimum', value: 'min' },
+  { label: 'Sum', value: 'sum' },
+  { label: 'Difference', value: 'diff' }
 ]);
 
-// --- 计算属性 ---
 const currentMinWindowSeconds = computed(() => {
   if (filterParams.time_range === 'custom') {
     if (dateRangeRef.value && dateRangeRef.value.length === 2) {
@@ -198,25 +197,24 @@ const aggregateWindowOptions = computed<AggregateWindowOption[]>(() => {
   }));
 });
 
-// 计算属性：判断是否显示聚合函数选择器
+
 const showAggregateFunction = computed(() => filterParams.aggregate_window !== 'no_aggregate');
 
 // *** ADDED: Computed properties for selected labels ***
 const selectedTimeRangeLabel = computed(() => {
-  return timeRangeOptions.value.find(opt => opt.value === filterParams.time_range)?.label ?? '选择时间'; // Fallback text
+  return timeRangeOptions.value.find(opt => opt.value === filterParams.time_range)?.label ?? 'Select time'; // Fallback text
 });
 
 const selectedAggregateWindowLabel = computed(() => {
   // Use allAggregateWindowOptions to find the label based on value
-  return allAggregateWindowOptions.find(opt => opt.value === filterParams.aggregate_window)?.label ?? '选择间隔'; // Fallback text
+  return allAggregateWindowOptions.find(opt => opt.value === filterParams.aggregate_window)?.label ?? 'Select Interval'; // Fallback text
 });
 
 const selectedAggregateFunctionLabel = computed(() => {
   if (!showAggregateFunction.value) return ''; // Don't compute if not shown
-  return aggregateFunctionOptions.value.find(opt => opt.value === filterParams.aggregate_function)?.label ?? '选择方法'; // Fallback text
+  return aggregateFunctionOptions.value.find(opt => opt.value === filterParams.aggregate_function)?.label ?? 'Select Method'; // Fallback text
 });
 
-// --- 数据获取逻辑 ---
 const fetchData = async (isExport = false) => {
   if (!props.deviceId || !props.theKey) {
     logger.warn('Device ID or Key is missing, skipping fetch.');
@@ -228,14 +226,13 @@ const fetchData = async (isExport = false) => {
   startLoading();
   emit('update:loading', true);
 
-  // 构造请求参数
   const params: any = {
     device_id: props.deviceId,
     key: props.theKey,
     ...filterParams,
   };
 
-  // 清理无效的参数组合
+  
   if (params.time_range !== 'custom') {
     delete params.start_time;
     delete params.end_time;
@@ -243,7 +240,7 @@ const fetchData = async (isExport = false) => {
   if (params.aggregate_window === 'no_aggregate') {
     delete params.aggregate_function;
   } else if (!params.aggregate_function) {
-    params.aggregate_function = 'avg'; // 默认聚合函数
+    params.aggregate_function = 'avg'; 
   }
 
   if (isExport) {
@@ -252,7 +249,7 @@ const fetchData = async (isExport = false) => {
 
   try {
     logger.info(`Fetching telemetry data (${isExport ? 'Export' : 'Display'}). Params:`, JSON.parse(JSON.stringify(params))); // Log clean params
-    // 修改：API响应类型现在假设为 { data: TimeSeriesItem[] | null, error: any } 或导出时的结构
+    
     const response: { data: TimeSeriesItem[] | null; error: any } = await telemetryDataHistoryList(params);
     logger.info('API Response:', response);
 
@@ -260,33 +257,30 @@ const fetchData = async (isExport = false) => {
       if (isExport) {
         // TODO: Handle export file download (e.g., using response.data.filePath)
         logger.info('Export successful:', response.data);
-        window.$message?.success('导出任务已启动'); // Example user feedback
+        window.$message?.success('Export task has started'); // Example user feedback
       } else {
-        // --- 修改数据提取逻辑 ---
-        // 直接从 response.data 获取数组，并断言类型
         const receivedData: TimeSeriesItem[] = (response.data || []) as TimeSeriesItem[];
         timeSeriesData.value = receivedData;
-        emit('update:data', timeSeriesData.value); // 确保发出的是处理后的数据
-        // --- 修改结束 ---
+        emit('update:data', timeSeriesData.value);
       }
     } else {
       logger.error('API Error or invalid response:', response?.error);
       if (!isExport) { // Only clear data/show error for display fetches
          timeSeriesData.value = [];
-         emit('update:data', []); // 确保错误时也发出空数组
-         window.$message?.error(`获取数据失败: ${response?.error?.message || '未知错误'}`);
+         emit('update:data', []);
+         window.$message?.error(`Failed to fetch data: ${response?.error?.message || 'Unknown error'}`);
       } else {
-         window.$message?.error(`导出失败: ${response?.error?.message || '未知错误'}`);
+         window.$message?.error(`Export failed: ${response?.error?.message || 'Unknown error'}`);
       }
     }
   } catch (error: any) {
     logger.error('Fetch exception:', error);
      if (!isExport) {
         timeSeriesData.value = [];
-        emit('update:data', []); // 确保异常时也发出空数组
-         window.$message?.error(`获取数据异常: ${error.message}`);
+        emit('update:data', []);
+         window.$message?.error(`Data fetch error: ${error.message}`);
      } else {
-         window.$message?.error(`导出异常: ${error.message}`);
+         window.$message?.error(`Export error: ${error.message}`);
      }
   } finally {
     endLoading();
@@ -294,7 +288,6 @@ const fetchData = async (isExport = false) => {
   }
 };
 
-// --- 监听器和生命周期钩子 ---
 // Watcher for custom date range selection
 watch(dateRangeRef, (newRange) => {
   if (newRange && newRange.length === 2) {
@@ -431,11 +424,9 @@ onMounted(() => {
    validateAndFetch(); // Use central validation function
 });
 
-// --- 事件处理 ---
-// 导出按钮点击处理函数
 const handleExport = () => {
   if (filterParams.time_range === 'custom' && (!filterParams.start_time || !filterParams.end_time)) {
-      window.$message?.warning('请先选择自定义时间范围后再导出');
+      window.$message?.warning('Please select a custom time range before exporting');
       return;
   }
   logger.info('Export button clicked.');
@@ -443,8 +434,6 @@ const handleExport = () => {
   emit('update:filterParams', JSON.parse(JSON.stringify(filterParams)));
   fetchData(true);
 };
-
-// TODO: 添加表单元素，并将其绑定到 filterParams
 
 </script>
 
@@ -483,7 +472,7 @@ const handleExport = () => {
       type="datetimerange"
       clearable
       format="yyyy-MM-dd HH:mm:ss"
-      placeholder="选择自定义时间范围"
+      placeholder="Select Custom Time Range"
       size="small"
       style="min-width: 280px;"
       :disabled="filterParams.time_range !== 'custom'"
@@ -554,7 +543,7 @@ const handleExport = () => {
         size="small"
         ghost
       >
-        导出
+      Export
       </n-button>
       <!-- Simple Export Button (Icon with Tooltip) -->
       <n-tooltip v-else trigger="hover">
@@ -569,7 +558,7 @@ const handleExport = () => {
             <n-icon :component="ImportExportOutlined" />
           </n-button>
         </template>
-        导出
+        Export
       </n-tooltip>
     </template>
   </n-space>

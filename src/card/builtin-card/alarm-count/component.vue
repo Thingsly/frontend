@@ -17,7 +17,6 @@ const cardData = ref<any>({
   icon: 'fa-bell' // Example alarm icon
 });
 
-// 获取数据
 const getData: () => void = async () => {
   try {
     // TODO: Replace with actual API call and response handling for alarm count
@@ -34,13 +33,11 @@ const getData: () => void = async () => {
       cardData.value.value = 0; // Set to 0 if data is invalid or missing
     }
   } catch (error) {
-    // 处理请求数据时的错误
     logger.error('Error fetching alarm count data:', error);
     cardData.value.value = 0; // Set to 0 on error
   }
 };
 
-// 调用 getData 函数
 getData();
 </script>
 

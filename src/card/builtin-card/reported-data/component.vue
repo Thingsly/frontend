@@ -121,7 +121,6 @@ defineOptions({
   name: 'ReportedDataCard'
 });
 
-// --- 在组件内部定义数据结构接口 ---
 interface TelemetryItem {
   key: string;
   label: string | null;
@@ -137,13 +136,11 @@ interface DeviceData {
   telemetry_data: TelemetryItem[];
 }
 
-// 定义 API 响应的本地接口
 interface ApiLatestTelemetryResponse {
   data: DeviceData[] | null;
-  error: any; // 使用 any 避免复杂的错误类型定义
+  error: any;
 }
 
-// --- 创建响应式变量 ---
 const devices = ref<DeviceData[]>([]);
 const loading = ref(true);
 const error = ref<Error | null>(null);
@@ -152,15 +149,11 @@ const refreshIntervalId = ref<NodeJS.Timeout | null>(null);
 const REFRESH_INTERVAL = 6000;
 const isFetchingUpdate = ref(false);
 
-// --- 计算属性：将遥测数据配对用于两列显示 ---
 interface PairedTelemetryItem {
   left: TelemetryItem | null;
   right: TelemetryItem | null;
 }
 
-// 为每个设备创建一个计算属性，返回配对后的遥测数据
-// 注意：这不能直接在 v-for 内部定义 computed，我们需要一个方法或在渲染时处理
-// 更简单的方法是创建一个方法来处理配对
 const getPairedTelemetry = (telemetry: TelemetryItem[]): PairedTelemetryItem[] => {
   if (!Array.isArray(telemetry)) return [];
   const paired: PairedTelemetryItem[] = [];
@@ -173,7 +166,6 @@ const getPairedTelemetry = (telemetry: TelemetryItem[]): PairedTelemetryItem[] =
   return paired;
 };
 
-// --- 数据获取函数 ---
 const fetchData = async (initialLoad = false) => {
   if (!initialLoad) {
       isFetchingUpdate.value = true;
@@ -189,7 +181,7 @@ const fetchData = async (initialLoad = false) => {
     console.log('[ReportedData] API Response:', response);
 
     if (response.error) {
-      let errorMessage = 'API 返回错误';
+      let errorMessage = 'API returned an error';
       if (typeof response.error === 'string') errorMessage = response.error;
       else if (typeof response.error === 'object' && response.error !== null && (response.error as any).message) errorMessage = (response.error as any).message;
       console.error('[ReportedData] API error during fetch:', errorMessage);
@@ -203,10 +195,10 @@ const fetchData = async (initialLoad = false) => {
   } catch (err) {
     console.error('[ReportedData] Error in fetchData catch block:', err);
     if (initialLoad) {
-        error.value = err instanceof Error ? err : new Error('加载数据时发生未知错误');
+        error.value = err instanceof Error ? err : new Error('An unknown error occurred while loading data');
         devices.value = [];
     } else {
-        error.value = err instanceof Error ? err : new Error('刷新数据时发生错误');
+        error.value = err instanceof Error ? err : new Error('An error occurred while refreshing data');
     }
   } finally {
     if (initialLoad) {
@@ -217,7 +209,6 @@ const fetchData = async (initialLoad = false) => {
   }
 };
 
-// --- 轮询控制函数 ---
 const startPolling = () => {
   stopPolling(); // Clear any existing timer first
   if (!isRefreshing.value) return; // Don't start if toggled off
@@ -237,7 +228,6 @@ const stopPolling = () => {
   }
 };
 
-// --- 切换刷新状态 --- 
 const toggleRefresh = () => {
   isRefreshing.value = !isRefreshing.value;
   if (isRefreshing.value) {
@@ -250,7 +240,6 @@ const toggleRefresh = () => {
   }
 };
 
-// --- 组件挂载和卸载 ---
 onMounted(() => {
   fetchData(true); // Initial data load
   if (isRefreshing.value) {
@@ -262,27 +251,22 @@ onUnmounted(() => {
   stopPolling();
 });
 
-// --- 添加辅助函数 ---
-
-// 格式化相对时间
 const formatRelativeTime = (timeStr: string | null | undefined): string => {
   if (!timeStr) return '-';
   const time = dayjs(timeStr);
   if (!time.isValid()) return '-'; // Handle invalid date strings
   const now = dayjs();
-  if (now.diff(time, 'minute') < 1) return '刚刚';
-  if (now.diff(time, 'hour') < 1) return `${now.diff(time, 'minute')}分钟前`;
-  if (now.diff(time, 'day') < 1) return `${now.diff(time, 'hour')}小时前`;
+  if (now.diff(time, 'minute') < 1) return 'Just now';
+  if (now.diff(time, 'hour') < 1) return `${now.diff(time, 'minute')} minutes ago`;
+  if (now.diff(time, 'day') < 1) return `${now.diff(time, 'hour')} hours ago`;
   return time.fromNow();
 };
 
-// 根据索引获取设备背景色 (模拟图片效果)
 const getDeviceBgColor = (index: number): string => {
    if (index === 0) return 'bg-blue-50 border border-blue-100 border-l-4 border-l-blue-500';
    return 'bg-gray-50 border border-gray-100';
 };
 
-// 格式化顶层值或递归中的基本类型
 const formatValue = (item: TelemetryItem | any): string => {
    if (item !== null && typeof item !== 'object') {
      if (typeof item === 'string') return item;
@@ -326,7 +310,6 @@ const formatValue = (item: TelemetryItem | any): string => {
 </script>
 
 <style scoped>
-/* 可以添加一些微调样式 */
 .reported-data-card {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }

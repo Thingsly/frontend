@@ -62,17 +62,18 @@ const columns: Ref<DataTableColumns<UserManagement.UserKey>> = ref([
       if (row.show === false) {
         return (
           <NSpace justify="space-between">
-            <span>xxxxxx</span>
-            <div>
+            <NSpace>
+              <span>********</span>
               <svg-icon local-icon="eye" class="text-20px" onClick={() => handleOpenEye(row.id)} />
-            </div>
+            </NSpace>
           </NSpace>
         );
       } else if (row.show === true) {
         return (
           <NSpace justify="space-between">
-            <span>{row.api_key}</span>
+
             <NSpace>
+              <span>{row.api_key}</span>
               <svg-icon local-icon="eye-close" class="text-20px" onClick={() => handleCloseEye(row.id)} />
               <svg-icon local-icon="copy" class="text-20px" onClick={() => handleCopyKey(row.api_key)} />
             </NSpace>
@@ -159,8 +160,62 @@ function handleCloseEye(rowId: string) {
   findItem!.show = false;
 }
 async function handleCopyKey(key: string) {
-  await navigator.clipboard.writeText(key);
-  window.$message?.success($t('theme.configOperation.copySuccess'));
+  let success = false;
+  let errorMessage = $t('theme.configOperation.copyFail') || 'Copy failed';
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      await navigator.clipboard.writeText(key);
+      success = true;
+      window.$message?.success($t('theme.configOperation.copySuccess') || 'Copy success');
+      return;
+    } catch (err) {
+      console.error('navigator.clipboard.writeText failed:', err);
+      if (window.isSecureContext === false) {
+        errorMessage = $t('theme.configOperation.copyFailSecure') || 'Copy functionality requires HTTPS or localhost environment';
+      }
+    }
+  } else {
+     if (window.isSecureContext === false) {
+       errorMessage = $t('theme.configOperation.copyFailSecure') || 'Copy functionality requires HTTPS or localhost environment';
+       console.warn('Clipboard API not available, likely due to non-secure context.');
+     } else {
+       console.warn('Clipboard API not available.');
+     }
+  }
+
+  console.log("Trying fallback: document.execCommand('copy')");
+  const textArea = document.createElement('textarea');
+  textArea.value = key;
+  textArea.style.position = 'fixed';
+  textArea.style.top = '-9999px';
+  textArea.style.left = '-9999px';
+  textArea.style.opacity = '0';
+
+  document.body.appendChild(textArea);
+  textArea.select();
+  textArea.setSelectionRange(0, textArea.value.length);
+
+  try {
+    success = document.execCommand('copy');
+    if (success) {
+      window.$message?.success($t('theme.configOperation.copySuccess') || 'Copy success');
+    } else {
+       console.error("document.execCommand('copy') returned false.");
+       if (window.isSecureContext === false) {
+           errorMessage = $t('theme.configOperation.copyFailSecureFallback') || 'Copy failed. Please try again in an HTTPS environment or copy manually.';
+       }
+       window.$message?.error(errorMessage);
+    }
+  } catch (err) {
+    console.error("Error during document.execCommand('copy'):", err);
+    if (window.isSecureContext === false) {
+        errorMessage = $t('theme.configOperation.copyFailSecureFallback') || 'Copy failed. Please try again in an HTTPS environment or copy manually.';
+    }
+    window.$message?.error(errorMessage);
+  } finally {
+    document.body.removeChild(textArea);
+  }
 }
 function handleEditTable(rowId: string) {
   const findItem = tableData.value.find(item => item.id === rowId);
@@ -214,7 +269,6 @@ const getPlatform = computed(() => {
   const { proxy }: any = getCurrentInstance();
   return proxy.getPlatform();
 });
-
 init();
 </script>
 
