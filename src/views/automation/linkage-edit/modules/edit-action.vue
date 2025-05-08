@@ -807,7 +807,7 @@ onMounted(() => {
               <template v-if="actionGroupItem.actionType === '30'">
                 <NFlex class="ml-6">
                   <NFormItem
-                    label-width="60"
+                    label-width="100"
                     :label="$t('generate.trigger')"
                     :path="`actionGroups[${actionGroupIndex}].action_target`"
                     :rule="configFormRules.action_target"
@@ -826,7 +826,7 @@ onMounted(() => {
                     />
                   </NFormItem>
                   <NButton
-                    class="w-20"
+                    class="w-40"
                     dashed
                     type="info"
                     @click="popUpVisible = true"
@@ -845,7 +845,7 @@ onMounted(() => {
             </NFlex>
           </NFormItem>
         </NFlex>
-        <NButton type="primary" class="w-30" @click="addActionGroupItem()">
+        <NButton type="primary" class="w-40" @click="addActionGroupItem()">
           {{ $t('generate.add-execution-action') }}
         </NButton>
       </NFlex>

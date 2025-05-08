@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createLogger } from '@/utils/logger';
+// import { createLogger } from '@/utils/logger';
 import { $t } from '@/locales';
 import { tenant } from '@/service/api/system-data';
 import { GradientBg } from './components';
 
+interface TenantData {
+  user_total: number;
+}
 
-const logger = createLogger('TenantCountCard');
+// const logger = createLogger('TenantCountCard');
 
 defineOptions({ name: 'TenantCountCard' });
 
@@ -23,10 +26,10 @@ const getData = async () => {
   try {
     const {data} = await tenant();
     console.log('Tenant board data response:', data);
-  
 
-    if (data &&  typeof data.user_total === 'number') {
-      cardData.value.value = data.user_total||0
+    const tenantData = data as unknown as TenantData;
+    if (tenantData && typeof tenantData.user_total === 'number') {
+      cardData.value.value = tenantData.user_total || 0;
     }
   } catch (error) {
     cardData.value.value = 0;

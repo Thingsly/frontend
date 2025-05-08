@@ -144,20 +144,18 @@ const handleSubmit = async () => {
 
   const postData: ConfigFormData = {
     ...configForm.value,
-    id: null,
-    additional_info: null,
-    description: null,
-    device_conn_type: null,
-    device_template_id: null,
-    device_type: null,
-    name: null,
-    protocol_config: null,
-    protocol_type: null,
-    remark: null,
-    voucher_type: null
+    protocol_config: JSON.stringify(protocol_config.value || {}),
+    id: configForm.value.id,
+    additional_info: configForm.value.additional_info,
+    description: configForm.value.description,
+    device_conn_type: configForm.value.device_conn_type,
+    device_template_id: configForm.value.device_template_id,
+    device_type: configForm.value.device_type,
+    name: configForm.value.name,
+    protocol_type: configForm.value.protocol_type,
+    remark: configForm.value.remark,
+    voucher_type: configForm.value.voucher_type
   };
-
-  postData.protocol_config = JSON.stringify(protocol_config.value || {});
 
   if (!configId.value) {
     const res = await deviceConfigAdd(postData);

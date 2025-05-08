@@ -720,7 +720,7 @@ watch(
                 :show-label="false"
                 :path="`ifGroups[${ifGroupIndex}][${ifIndex}].ifType`"
                 :rule="premiseFormRules.ifType"
-                class="ml-10 max-w-25 w-full"
+                class="ml-10 max-w-50 w-full"
               >
                 <NSelect
                   v-model:value="ifItem.ifType"
@@ -734,7 +734,7 @@ watch(
                   :show-label="false"
                   :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_conditions_type`"
                   :rule="premiseFormRules.trigger_conditions_type"
-                  class="max-w-25 w-full"
+                  class="max-w-50 w-full"
                 >
                   <NSelect
                     v-model:value="ifItem.trigger_conditions_type"
@@ -751,7 +751,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_source`"
                     :rule="premiseFormRules.trigger_source"
-                    class="max-w-40 w-full"
+                    class="max-w-50 w-full"
                   >
                     <NSelect
                       v-model:value="ifItem.trigger_source"
@@ -819,7 +819,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_source`"
                     :rule="premiseFormRules.trigger_source"
-                    class="max-w-40 w-full"
+                    class="max-w-30 w-full"
                   >
                     <NSelect
                       v-model:value="ifItem.trigger_source"
@@ -839,7 +839,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_param`"
                     :rule="premiseFormRules.trigger_param"
-                    class="max-w-40 w-full"
+                    class="max-w-35 w-full"
                   >
                     <NCascader
                       v-model:value="ifItem.trigger_param_key"
@@ -865,7 +865,7 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_operator`"
                       :rule="premiseFormRules.trigger_operator"
-                      class="max-w-35 w-full"
+                      class="max-w-30 w-full"
                     >
                       <NSelect
                         v-model:value="ifItem.trigger_operator"
@@ -877,7 +877,7 @@ watch(
                         :show-label="false"
                         :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_value`"
                         :rule="premiseFormRules.trigger_value"
-                        class="max-w-50 w-full"
+                        class="max-w-30 w-full"
                       >
                         <NInput
                           v-model:value="ifItem.trigger_value"
@@ -890,7 +890,7 @@ watch(
                         :show-label="false"
                         :path="`ifGroups[${ifGroupIndex}][${ifIndex}].minValue`"
                         :rule="premiseFormRules.minValue"
-                        class="max-w-35 w-full"
+                        class="max-w-50 w-full"
                       >
                         <NInput
                           v-model:value="ifItem.minValue"
@@ -962,7 +962,7 @@ watch(
                   :show-label="false"
                   :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_conditions_type`"
                   :rule="premiseFormRules.trigger_conditions_type"
-                  class="max-w-25 w-full"
+                  class="max-w-35 w-full"
                 >
                   <NSelect
                     v-model:value="ifItem.trigger_conditions_type"

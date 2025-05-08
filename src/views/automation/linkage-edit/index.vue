@@ -380,7 +380,7 @@ if (configId.value) {
       :bordered="false"
       :title="
         (configId ? $t('common.edit') : $t('common.add')) +
-        $t('route.automation_scene-linkage')
+        ' ' + $t('route.automation_scene-linkage')
       "
     >
       <NForm
@@ -388,7 +388,7 @@ if (configId.value) {
         :model="configForm"
         :rules="configFormRules"
         label-placement="left"
-        label-width="80"
+        label-width="100"
         size="small"
       >
         <NFlex>

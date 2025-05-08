@@ -3,27 +3,27 @@
     <h3 class="text-base font-semibold mb-3 text-gray-800 dark:text-gray-100 flex-shrink-0">
       {{ $t('card.tenantChart.title') }}
     </h3>
-    <div class="flex-grow flex gap-4 min-h-[200px]"> 
-      
+    <div class="flex-grow flex gap-4 min-h-[200px]">
+
       <!-- Left: Stats using wrapper div for color -->
       <div class="w-1/3 flex flex-col justify-around py-2 flex-shrink-0 border-r border-gray-200 dark:border-gray-700 pr-4">
-        <div class="text-center"> 
+        <div class="text-center">
           <n-statistic :label="$t('card.tenantChart.totalUsers', 'Total Users')">
-             <div :class="[themeStore.isDark ? 'text-blue-400' : 'text-blue-600']">
+             <div :class="[themeStore.darkMode ? 'text-blue-400' : 'text-blue-600']">
                 <NNumberAnimation :from="0" :to="stats.user_total" />
              </div>
           </n-statistic>
         </div>
         <div class="text-center">
            <n-statistic :label="$t('card.tenantChart.addedMonth', 'New This Month')" >
-             <div :class="[themeStore.isDark ? 'text-green-400' : 'text-green-600']">
+             <div :class="[themeStore.darkMode ? 'text-green-400' : 'text-green-600']">
                <NNumberAnimation :from="0" :to="stats.user_added_month"  />
             </div>
            </n-statistic>
         </div>
         <div class="text-center">
             <n-statistic :label="$t('card.tenantChart.addedYesterday', 'New Yesterday')">
-             <div :class="[themeStore.isDark ? 'text-amber-400' : 'text-amber-600']"> 
+             <div :class="[themeStore.darkMode ? 'text-amber-400' : 'text-amber-600']">
                <NNumberAnimation :from="0" :to="stats.user_added_yesterday" />
              </div>
             </n-statistic>
@@ -31,8 +31,8 @@
       </div>
 
       <!-- Right: Chart -->
-      <div class="flex-grow relative"> 
-  
+      <div class="flex-grow relative">
+
         <v-chart
           v-if="!loading && !isEmpty"
           ref="chartRef"
@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, provide } from 'vue';
+import { ref, onMounted, provide } from 'vue';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
@@ -61,18 +61,25 @@ import {
   TooltipComponent,
   GridComponent,
   // LegendComponent, // Hide legend for single series bar chart
-  ToolboxComponent 
+  ToolboxComponent
 } from 'echarts/components';
 import VChart, { THEME_KEY } from 'vue-echarts';
-import { NSpin, NEmpty, NNumberAnimation, NStatistic } from 'naive-ui'; // Added NNumberAnimation and NStatistic
+// import { NSpin, NEmpty, NNumberAnimation, NStatistic } from 'naive-ui'; // Added NNumberAnimation and NStatistic
 import { useThemeStore } from '@/store/modules/theme';
 import { tenant } from '@/service/api/system-data';
 import { $t } from '@/locales';
 
+interface Data {
+  user_total: number;
+  user_added_yesterday: number;
+  user_added_month: number;
+  user_list_month: { mon: number; num: number }[];
+}
+
 // ECharts components registration
 use([
   CanvasRenderer,
-  BarChart, 
+  BarChart,
   TitleComponent,
   TooltipComponent,
   GridComponent,
@@ -87,14 +94,14 @@ const isEmpty = ref(false);
 const chartOption = ref({});
 const chartRef = ref<any>(null);
 
-// --- Store Stats --- 
+// --- Store Stats ---
 const stats = ref({
   user_total: 0,
   user_added_yesterday: 0,
   user_added_month: 0
 });
 
-provide(THEME_KEY, computed(() => themeStore.naiveThemeName));
+provide(THEME_KEY, themeStore.naiveTheme);
 
 const getMonthLabel = (monthNumber: number): string => {
   return String(monthNumber);
@@ -111,7 +118,7 @@ const processData = (userListMonth: { mon: number, num: number }[]): { monthLabe
       userCounts.push(item.num || 0);
     });
   }
-  
+
   isEmpty.value = monthLabels.length === 0;
   return { monthLabels, userCounts };
 };
@@ -121,19 +128,19 @@ const updateChartOption = (processedData: { monthLabels: string[], userCounts: n
   const seriesName = $t('card.tenantChart.seriesName', 'New Users');
 
   // --- More Vibrant Bar Color ---
-  const barColor = themeStore.isDark ? '#36a2eb' : '#4bc0c0'; // Example: Bright Blue / Teal
-  const hoverColor = themeStore.isDark ? '#4cb1ef' : '#5cd1d1'; // Slightly lighter/brighter hover
+  const barColor = themeStore.darkMode ? '#36a2eb' : '#4bc0c0'; // Example: Bright Blue / Teal
+  const hoverColor = themeStore.darkMode ? '#4cb1ef' : '#5cd1d1'; // Slightly lighter/brighter hover
 
   chartOption.value = {
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'shadow' },
-      // --- Simplified Tooltip Style --- 
-      backgroundColor: themeStore.isDark ? 'rgba(40, 40, 40, 0.8)' : 'rgba(255, 255, 255, 0.9)',
+      // --- Simplified Tooltip Style ---
+      backgroundColor: themeStore.darkMode ? 'rgba(40, 40, 40, 0.8)' : 'rgba(255, 255, 255, 0.9)',
       borderColor: 'transparent',
       borderWidth: 0,
       padding: [5, 10],
-      textStyle: { color: themeStore.isDark ? '#ccc' : '#333', fontSize: 12 },
+      textStyle: { color: themeStore.darkMode ? '#ccc' : '#333', fontSize: 12 },
       formatter: (params: any) => { // Keep formatter, maybe simplify
           if (!params || params.length === 0) return '';
           const p = params[0];
@@ -150,11 +157,11 @@ const updateChartOption = (processedData: { monthLabels: string[], userCounts: n
     toolbox: {
       show: true,
       feature: {
-        saveAsImage: { 
-           show: true, 
-           title: $t('common.saveAsImage', 'Save'), 
-           iconStyle: { 
-               borderColor: themeStore.isDark ? '#777' : '#aaa' // Subtle icon border
+        saveAsImage: {
+           show: true,
+           title: $t('common.saveAsImage', 'Save'),
+           iconStyle: {
+               borderColor: themeStore.darkMode ? '#777' : '#aaa' // Subtle icon border
            }
          }
       },
@@ -166,12 +173,12 @@ const updateChartOption = (processedData: { monthLabels: string[], userCounts: n
       data: monthLabels,
       axisTick: { show: false, alignWithLabel: true }, // Hide ticks
       axisLine: { show: false }, // Hide axis line
-      axisLabel: { color: themeStore.isDark ? '#aaa' : '#888', fontSize: 11 }
+      axisLabel: { color: themeStore.darkMode ? '#aaa' : '#888', fontSize: 11 }
     },
     yAxis: {
       type: 'value',
-      axisLabel: { show: true, color: themeStore.isDark ? '#aaa' : '#888', fontSize: 11, margin: 15 }, // Keep labels, add margin
-      splitLine: { lineStyle: { color: themeStore.isDark ? '#333' : '#eee', type: 'dashed' } },
+      axisLabel: { show: true, color: themeStore.darkMode ? '#aaa' : '#888', fontSize: 11, margin: 15 }, // Keep labels, add margin
+      splitLine: { lineStyle: { color: themeStore.darkMode ? '#333' : '#eee', type: 'dashed' } },
       axisLine: { show: false }, // Hide Y axis line too
       nameTextStyle: { color: 'transparent' } // Hide Y axis name if any
     },
@@ -179,10 +186,10 @@ const updateChartOption = (processedData: { monthLabels: string[], userCounts: n
       {
         name: seriesName,
         type: 'bar',
-        barWidth: '30%', // --- Reduce bar width --- 
+        barWidth: '30%', // --- Reduce bar width ---
         data: userCounts,
         itemStyle: {
-          // --- Rounded corners and color --- 
+          // --- Rounded corners and color ---
           color: barColor, // Apply new color
           borderRadius: [4, 4, 0, 0] // Top rounded corners
         },
@@ -201,13 +208,13 @@ const fetchData = async () => {
   errorMsg.value = null;
   isEmpty.value = false;
   try {
-    const response = await tenant(); 
+    const response = await tenant();
     console.log('Tenant data response:', response);
 
-    const responseData = response?.data;
+    const responseData = response?.data as Data | null;
 
     if (responseData) {
-      // --- Store stats --- 
+      // --- Store stats ---
       stats.value = {
         user_total: responseData.user_total || 0,
         user_added_yesterday: responseData.user_added_yesterday || 0,
@@ -245,13 +252,13 @@ onMounted(() => {
 <style scoped>
 /* Style n-statistic */
 :deep(.n-statistic .n-statistic__label) {
-  font-size: 12px; 
+  font-size: 12px;
   color: #6b7280; /* gray-500 */
 }
 
 :deep(.n-statistic .n-statistic-value__content) {
   font-size: 1.75rem; /* text-2xl or adjust */
-  font-weight: 600; 
+  font-weight: 600;
   /* Color is now applied via the wrapper div's text color */
 }
 /* Dark mode adjustments */

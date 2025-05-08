@@ -2,8 +2,7 @@ export const REG_DEFAULT = /^.*$/;
 export const REG_USER_NAME = /^[\u4E00-\u9FA5a-zA-Z0-9_-]{4,16}$/;
 
 /** Phone reg */
-export const REG_PHONE =
-  /^1((3[0-9])|(4[01456789])|(5[012356789])|(6[2567])|(7[0-8])|(8[0-9])|(9[012356789]))[0-9]{8}$/;
+export const REG_PHONE = /^(0|\+84)([35789]|[12][0-9]|[3][2-9]|[5][2689]|[7][06-9]|[8][1-9]|[9][0-9])[0-9]{8}$/;
 
 /**
  * Password reg

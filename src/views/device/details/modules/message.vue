@@ -241,14 +241,14 @@ onMounted(getConfigInfo);
 
 <template>
   <div>
-    <NCard :title="$t('generate.device-location')" class="mb-4">
+    <!-- <NCard :title="$t('generate.device-location')" class="mb-4">
       <NSpace>
         <NInput v-model:value="longitude" :placeholder="$t('generate.longitude')" class="w-140px" />
         <NInput v-model:value="latitude" :placeholder="$t('generate.latitude')" class="w-140px" />
 
         <NButton type="primary" @click="openMapAndGetPosition">{{ $t('generate.location') }}</NButton>
       </NSpace>
-    </NCard>
+    </NCard> -->
 
     <NCard :title="$t('generate.extension-info')" class="mb-4">
       <NDataTable :columns="columns" :data="additionInfo" size="small" class="m-tb-10" />

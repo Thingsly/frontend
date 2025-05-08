@@ -75,7 +75,7 @@ const handleRemove = async (id: string) => {
       <div class="m-b-20px flex flex-wrap items-center gap-15px">
         <div class="flex-1">
           <NButton type="primary" @click="handleAddTemplate">
-            +{{ $t('generate.add-device-function-template') }}
+            + {{ $t('generate.add-device-function-template') }}
           </NButton>
         </div>
 

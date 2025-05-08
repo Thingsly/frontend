@@ -3,9 +3,9 @@
     <div class="text-lg font-semibold mb-4">{{ $t('card.appDownload.title') }}</div>
     <div class="flex items-center justify-center space-x-4 mb-4">
       <img :src="download_app" alt="QR Code" class="w-24 h-24">
-      <div class="flex flex-col space-y-2">
-        <img :src="app_store" alt="App Store" class="h-10 cursor-pointer">
-        <img :src="google_pla" alt="Google Play" class="h-10 cursor-pointer">
+      <div class="flex flex-col">
+        <img :src="app_store" alt="App Store" class="h-24 cursor-pointer">
+        <img :src="google_pla" alt="Google Play" class="h-24 cursor-pointer">
       </div>
     </div>
     <div>{{ $t('card.appDownload.scanOrClick') }}</div>

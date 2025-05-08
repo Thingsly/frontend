@@ -108,7 +108,7 @@ onMounted(fetchBoards);
       <div class="m-b-20px flex flex-wrap items-center gap-15px">
         <div class="flex-1">
           <NButton type="primary" @click="showModal = true"
-            >+{{ $t('dashboard_panel.addKanBan') }}</NButton
+            >+ {{ $t('dashboard_panel.addKanBan') }}</NButton
           >
         </div>
         <div class="flex items-center gap-20px">

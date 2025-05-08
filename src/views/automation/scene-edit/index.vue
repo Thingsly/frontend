@@ -627,11 +627,12 @@ onMounted(() => {
                 :show-feedback="false"
                 :path="`actions[${actionGroupIndex}].actionType`"
                 :rule="configFormRules.actionType"
-                class="max-w-30 w-full"
+                class="max-w-40 w-full"
               >
                 <NSelect
                   v-model:value="actionGroupItem.actionType"
                   :options="actionOptions"
+                  class="max-w-50"
                   @update:value="
                     (data) =>
                       actionChange(actionGroupItem, actionGroupIndex, data)
@@ -652,7 +653,7 @@ onMounted(() => {
                       :show-feedback="false"
                       :path="`actions[${actionGroupIndex}].actionInstructList[${instructIndex}].action_type`"
                       :rule="configFormRules.action_type"
-                      class="max-w-30 w-full"
+                      class="max-w-50 w-full"
                     >
                       <NSelect
                         v-model:value="instructItem.action_type"
@@ -668,7 +669,7 @@ onMounted(() => {
                         :show-feedback="false"
                         :path="`actions[${actionGroupIndex}].actionInstructList[${instructIndex}].action_target`"
                         :rule="configFormRules.action_target"
-                        class="max-w-40 w-full"
+                        class="max-w-50 w-full"
                       >
                         <NSelect
                           v-model:value="instructItem.action_target"
@@ -687,7 +688,7 @@ onMounted(() => {
                                 :options="deviceGroupOptions"
                                 label-field="name"
                                 value-field="id"
-                                class="max-w-40"
+                                class="max-w-50"
                                 clearable
                                 @update:value="
                                   (data) =>
@@ -724,7 +725,7 @@ onMounted(() => {
                         :show-feedback="false"
                         :path="`actions[${actionGroupIndex}].actionInstructList[${instructIndex}].action_target`"
                         :rule="configFormRules.action_target"
-                        class="max-w-40 w-full"
+                        class="max-w-50 w-full"
                       >
                         <NSelect
                           v-model:value="instructItem.action_target"
@@ -745,12 +746,12 @@ onMounted(() => {
                         :show-feedback="false"
                         :path="`actions[${actionGroupIndex}].actionInstructList[${instructIndex}].action_param_type`"
                         :rule="configFormRules.action_param_type"
-                        class="max-w-30 w-full"
+                        class="max-w-70 w-full"
                       >
                         <NSelect
                           v-model:value="instructItem.action_param_type"
                           :options="instructItem.actionParamTypeOptions"
-                          class="max-w-40"
+                          class="max-w-70"
                           @update:value="
                             (data) => actionParamTypeChange(instructItem, data)
                           "
@@ -773,7 +774,7 @@ onMounted(() => {
                         :show-feedback="false"
                         :path="`actions[${actionGroupIndex}].actionInstructList[${instructIndex}].action_param`"
                         :rule="configFormRules.action_param"
-                        class="max-w-40 w-full"
+                        class="max-w-70 w-full"
                       >
                         <NSelect
                           v-model:value="instructItem.action_param"
@@ -794,7 +795,7 @@ onMounted(() => {
                         :rule="configFormRules.actionValue"
                         :validation-status="instructItem.inputValidationStatus"
                         :feedback="instructItem.inputFeedback"
-                        class="max-w-60 w-full"
+                        class="max-w-70 w-full"
                       >
                         <NInput
                           v-if="
@@ -839,7 +840,7 @@ onMounted(() => {
                         :rule="configFormRules.actionValue"
                         :validation-status="instructItem.inputValidationStatus"
                         :feedback="instructItem.inputFeedback"
-                        class="w-60"
+                        class="max-w-80 w-full"
                       >
                         <NInput
                           v-model:value="instructItem.actionValue"
@@ -937,7 +938,7 @@ onMounted(() => {
                 {{ $t('generate.delete-execution-action') }}
               </NButton>
             </NFlex>
-            <NButton type="primary" class="w-30" @click="addActionGroupItem()">
+            <NButton type="primary" class="w-40" @click="addActionGroupItem()">
               {{ $t('generate.add-execution-action') }}
             </NButton>
           </NFlex>

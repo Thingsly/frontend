@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { inject, ref, watch, onMounted, computed } from 'vue';
-import { NDynamicInput, NInput, NColorPicker, NFormItem, NGrid, NFormItemGi } from 'naive-ui';
+// import { NDynamicInput, NInput, NColorPicker, NFormItem, NGrid, NFormItemGi } from 'naive-ui';
 import type { IConfigCtx } from '@/components/panel/card';
 import { $t } from '@/locales';
 import { cloneDeep } from 'lodash';
@@ -100,8 +100,8 @@ const createDefaultGuideItem = (): GuideItem => {
 
 .config-item :deep(.n-form-item-label) {
   padding: 0;
-  line-height: normal; 
-  margin-bottom: 4px; 
+  line-height: normal;
+  margin-bottom: 4px;
   text-align: left;
   width: 80px;
   overflow: hidden;
@@ -113,4 +113,4 @@ const createDefaultGuideItem = (): GuideItem => {
    width: 100%;
 }
 
-</style> 
+</style>

@@ -74,7 +74,7 @@ const columns: any = ref([
   {
     title: $t('card.type'),
     key: 'service_type',
-    minWidth: '140px',
+    minWidth: '250px',
     align: 'center',
     render: row => {
       if (row.service_type) {
@@ -195,7 +195,7 @@ getList();
   justify-content: space-between;
   margin-bottom: 10px;
   .selectType {
-    width: 100px;
+    width: 200px;
   }
 }
 :deep(.n-data-table__pagination) {

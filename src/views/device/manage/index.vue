@@ -78,7 +78,7 @@ const getDeviceGroupOptions = async () => {
     return targetNode;
   }
 
-  
+
   function convertTreeNodesToTarget(treeNodes: DeviceManagement.TreeNode[]): TreeSelectOption[] {
     return treeNodes.map(convertTreeNodeToTarget);
   }
@@ -437,7 +437,7 @@ const topActions = [
   {
     element: () => (
       <n-dropdown options={dropOption} trigger="hover" onSelect={handleSelect}>
-        <n-button type="primary">+{$t('custom.devicePage.addDevice')}</n-button>
+        <n-button type="primary">+ {$t('custom.devicePage.addDevice')}</n-button>
       </n-dropdown>
     )
   }
@@ -475,7 +475,10 @@ const completeAdd = async () => {
 };
 
 const completeHandAdd = () => {
-  tablePageRef.value?.handleReset();
+  tablePageRef.value?.forceChangeParamsByKey({
+    page: 1,
+    page_size: 10
+  });
 };
 
 function handleSelect(key: string | number) {
