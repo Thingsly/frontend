@@ -70,7 +70,7 @@ function createDataSource(): DataSource[] {
       return {
         name: `Name${index}`,
         age: getRandomInteger(30, 20),
-        address: $t('card.china')
+        address: $t('card.vietnam')
       };
     });
 }

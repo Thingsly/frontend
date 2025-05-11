@@ -150,7 +150,7 @@ export default {
   cardHas: 'Card has',
   contentFooter:
     'Content and footer can be segmented by hard or soft separators. Actions can also be segmented. Segment dividers will appear above the area.',
-  china: 'China', // Placeholder
+  vietnam: 'Vietnam', // Placeholder
   ah: 'Ah', // Placeholder
   error: 'Error',
   whereSuccess: 'Where Success', // Placeholder

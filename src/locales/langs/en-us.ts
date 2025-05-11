@@ -97,7 +97,7 @@ const local: App.I18n.Schema = {
     days7: '7 days',
     hours6: '6 hours',
     hours3: '3 hours',
-    minute2: ' minute',
+    minute2: '2 minutes',
     minute1: '1 minute',
     seconds30: '30 seconds',
     notAggre: 'Not Aggregated',

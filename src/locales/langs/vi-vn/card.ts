@@ -150,7 +150,7 @@ export default {
   customColor: 'Màu sắc tuỳ chỉnh',
   cardHas: 'Thẻ có',
   contentFooter: 'content và footer có thể chia đoạn theo chế độ hard hoặc soft, phần action cũng vậy. Đường phân cách sẽ hiển thị phía trên khu vực tương ứng.',
-  china: 'Trung Quốc',
+  vietnam: 'Việt Nam',
   ah: 'A',
   error: 'Lỗi',
   whereSuccess: 'Thành công ở đâu',
