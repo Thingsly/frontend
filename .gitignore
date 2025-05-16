@@ -29,13 +29,13 @@ coverage
 package-lock.json
 yarn.lock
 .VSCodeCounter
-env.config.ts
+# env.config.ts
 settings.json
 vite.config.ts.timestamp-*-*.mjs
-.env
-.env.production
+# .env
+# .env.production
 .tsbuildinfo
 .eslintcache
-.env.development
+# .env.development
 pnpm-lock.yaml
 src/typings/components.d.ts
