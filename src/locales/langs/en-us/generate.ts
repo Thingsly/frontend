@@ -360,7 +360,7 @@ export default {
   'privacy-policy': 'Privacy Policy',
   'delete-device-configuration': 'Delete Device Configuration?',
   'custom-icon-example': 'Custom Icon Example',
-  'user-agreement': 'User Agreement',
+  'user-agreement': 'User Agreement &',
   'card-segment-example': 'Card Segment Example',
   'print-picture': 'Print Picture',
   'markdown-plugin': 'Markdown Plugin',

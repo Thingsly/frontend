@@ -31,18 +31,21 @@ export default {
     user: 'User'
   },
   codeLogin: {
-    title: 'Code Login',
+    title: 'Phone Code Login',
     imageCodePlaceholder: 'Enter image verification code'
   },
   register: {
-    title: 'Register Account',
+    title: 'Register',
     agreement: 'I have read and accept the',
     emailPlaceholder: 'Enter email address',
     registerSuccess: 'Registration Successful',
     registerError: 'Registration Failed',
-    protocol: 'User Agreement',
+    protocol: 'User Agreement ',
     policy: 'Privacy Policy',
     agreementRequired: 'Please agree to the terms first.'
+  },
+  registerEmail: {
+    title: 'Register with Email'
   },
   resetPwd: {
     title: 'Reset Password'

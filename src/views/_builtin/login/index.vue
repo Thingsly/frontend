@@ -38,7 +38,7 @@ const modules: LoginModule[] = [
   { key: 'pwd-login', label: loginModuleRecord['pwd-login'], component: PwdLogin },
   { key: 'code-login', label: loginModuleRecord['code-login'], component: CodeLogin },
   { key: 'register', label: loginModuleRecord.register, component: Register },
-  { key: 'register-email', label: loginModuleRecord.register, component: RegisterByEmail },
+  { key: 'register-email', label: loginModuleRecord['register-email'], component: RegisterByEmail },
   { key: 'reset-pwd', label: loginModuleRecord['reset-pwd'], component: ResetPwd }
 ];
 

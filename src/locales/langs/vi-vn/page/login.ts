@@ -40,9 +40,12 @@ export default {
     emailPlaceholder: 'Vui lòng nhập địa chỉ email',
     registerSuccess: 'Đăng ký thành công',
     registerError: 'Đăng ký thất bại',
-    protocol: 'Thỏa thuận người dùng',
+    protocol: 'Thỏa thuận người dùng ',
     policy: 'Chính sách bảo mật',
     agreementRequired: 'Vui lòng đồng ý với thỏa thuận trước.'
+  },
+  registerEmail: {
+    title: 'Đăng ký bằng Email'
   },
   resetPwd: {
     title: 'Đặt lại mật khẩu'

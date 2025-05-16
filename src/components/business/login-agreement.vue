@@ -47,7 +47,7 @@ function handleClickPolicy() {
     }}</NCheckbox>
 
     <NButton :text="true" type="primary" @click="handleClickProtocol">{{
-      $t('generate.user-agreement')
+      $t('generate.user-agreement' )
     }}</NButton>
     <NButton :text="true" type="primary" @click="handleClickPolicy">{{
       $t('generate.privacy-policy')

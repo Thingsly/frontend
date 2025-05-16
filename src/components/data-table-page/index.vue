@@ -22,7 +22,6 @@ import { useLoading } from '@sa/hooks';
 import { $t } from '@/locales';
 import { formatDateTime } from '@/utils/common/datetime';
 import { createLogger } from '@/utils/logger';
-import TencentMap from './modules/tencent-map.vue';
 const logger = createLogger('TablePage');
 export type theLabel = string | (() => string) | undefined;
 export type SearchConfig =

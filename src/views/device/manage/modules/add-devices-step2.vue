@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, onMounted, reactive, ref, watchEffect } from 'vue';
 import type { FormInst, FormRules } from 'naive-ui';
-import { NButton, NForm, NFormItem, NInput, NSelect } from 'naive-ui';
+// import { NButton, NForm, NFormItem, NInput, NSelect } from 'naive-ui';
 import type { SelectMixedOption } from 'naive-ui/es/select/src/interface';
 import { getDeviceConnectInfo, updateDeviceVoucher } from '@/service/api/device';
 import { $t } from '@/locales';
@@ -20,21 +20,21 @@ interface Option {
 
 
 interface Validate {
-  message?: string; 
-  required?: boolean; 
-  rules?: string; 
-  type?: 'number' | 'string' | 'array' | 'boolean' | 'object'; 
+  message?: string;
+  required?: boolean;
+  rules?: string;
+  type?: 'number' | 'string' | 'array' | 'boolean' | 'object';
 }
 
 
 interface FormElement {
-  type: FormElementType; 
-  dataKey: string; 
-  label: string; 
-  options?: Option[]; 
-  placeholder?: string; 
-  validate?: Validate; 
-  array?: FormElement[]; 
+  type: FormElementType;
+  dataKey: string;
+  label: string;
+  options?: Option[];
+  placeholder?: string;
+  validate?: Validate;
+  array?: FormElement[];
 }
 
 const props = defineProps<{
