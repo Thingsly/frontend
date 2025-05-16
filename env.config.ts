@@ -5,8 +5,8 @@
  */
 export function createServiceConfig(env: Env.ImportMeta) {
   const mockURL = 'http://127.0.0.1:9999/api/v1';
-  const devURL = 'http://127.0.0.1:9999/api/v1';
-  // const devURL = '  http://127.0.0.1:8080/api/v1';
+  const devURL = 'http://103.124.93.210:9999/api/v1';
+  // const devURL = '  http://127.0.0.1:9999/api/v1';
   // const devURL = 'http://mitras.cloud/api/v1';
   // const devURL = 'http://demo.mitras.cloud/api/v1';
 
