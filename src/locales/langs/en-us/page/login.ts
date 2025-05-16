@@ -46,8 +46,5 @@ export default {
   },
   resetPwd: {
     title: 'Reset Password'
-  },
-  bindWeChat: {
-    title: 'Bind WeChat'
   }
 };

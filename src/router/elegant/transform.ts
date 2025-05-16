@@ -213,7 +213,7 @@ const routeMap: RouteMap = {
   "function_multi-tab": "/function/multi-tab",
   "function_tab": "/function/tab",
   "home": "/home",
-  "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?",
+  "login": "/login/:module(pwd-login|code-login|register|reset-pwd)?",
   "manage": "/manage",
   "manage_menu": "/manage/menu",
   "manage_role": "/manage/role",

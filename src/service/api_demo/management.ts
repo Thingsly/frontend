@@ -7,9 +7,15 @@ export const fetchServiceManagementList = async () => {
   return data;
 };
 
-export const fetchRuleEngineList = async () => {
+export const fetchRuleEngineList = async (page = 1, pageSize = 10) => {
   const data = await mockRequest.get<Api.RuleEngine.Rule[] | null>(
-    '/getRuleEngineList'
+    '/rule-engine/list',
+    {
+      params: {
+        page,
+        pageSize
+      }
+    }
   );
   return data;
 };

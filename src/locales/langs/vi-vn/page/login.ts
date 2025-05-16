@@ -46,8 +46,5 @@ export default {
   },
   resetPwd: {
     title: 'Đặt lại mật khẩu'
-  },
-  bindWeChat: {
-    title: 'Liên kết WeChat'
   }
 };

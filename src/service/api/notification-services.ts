@@ -26,14 +26,14 @@ export const sendTestEmail = async (params: any) => {
 export const fetchPushNotificationServices = async () => {
   const data =
     await request.get<Api.NotificationServices.PushNotification>(
-      `/api/v1/push/config`
+      `/message_push/config`
     );
   return data;
 };
 
 export const editPushNotificationServices = async (params: any) => {
   const data = await request.post<Api.BaseApi.Data>(
-    `/api/v1/push/config`,
+    `/message_push/config`,
     params
   );
   return data;

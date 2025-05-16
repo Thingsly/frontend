@@ -10,6 +10,7 @@ import {
   dataServiceStatusOptions
 } from '@/constants/business';
 import { fetchDataServiceList } from '@/service/api_demo/management';
+import { fetchRuleEngineList } from '@/service/api_demo/management';
 import { $t } from '@/locales';
 import { formatDateTime } from '@/utils/common/datetime';
 import type { ModalType } from './components/table-action-modal.vue';
@@ -34,7 +35,7 @@ function setTableData(data: DataService.Data[]) {
 
 async function getTableData() {
   startLoading();
-  const { data } = (await fetchDataServiceList()) as any;
+  const { data } = (await fetchRuleEngineList()) as any;
   if (data) {
     setTimeout(() => {
       setTableData(data);

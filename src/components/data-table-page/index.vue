@@ -436,13 +436,6 @@ const filterSelectOption = (pattern: string, option: any) => {
               </n-icon>
             </template>
           </NButton>
-          <NButton quaternary @click="isTableView = false">
-            <template #icon>
-              <n-icon class="text-24px">
-                <icon-material-symbols:map-rounded />
-              </n-icon>
-            </template>
-          </NButton>
           <NButton quaternary @click="getData">
             <template #icon>
               <n-icon class="text-24px">
@@ -453,7 +446,7 @@ const filterSelectOption = (pattern: string, option: any) => {
         </div>
       </div>
 
-      <div v-if="isTableView" class="overflow-x-auto">
+      <div class="overflow-x-auto">
         <NDataTable
           :row-props="rowProps"
           :loading="loading"
@@ -461,9 +454,6 @@ const filterSelectOption = (pattern: string, option: any) => {
           :data="dataList"
           class="w-full"
         />
-      </div>
-      <div v-else class="h-525px">
-        <TencentMap :devices="dataList" />
       </div>
 
       <n-pagination

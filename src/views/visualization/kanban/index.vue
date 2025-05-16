@@ -146,7 +146,7 @@ onMounted(fetchBoards);
               </div>
               <div
                 v-if="board.home_flag === 'Y'"
-                class="mr--4 mt--2 h-24px w-24px border border-red-4 rounded-50 text-center text-12px text-red font-600"
+                class="mr--4 mt--2 h-24px min-w-60px border border-red-4 rounded-50 text-center text-12px text-red font-600 flex items-center justify-center"
               >
                 {{ $t('generate.first') }}
               </div>

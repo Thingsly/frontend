@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import { NButton } from 'naive-ui';
 import { deviceConfigInfo, deviceTemplateDetail } from '@/service/api/device';
 import SettingInfo from '@/views/device/config-detail/modules/setting-info.vue';
-import DataHandle from '@/views/device/config-detail/modules/data-handle.vue';
+// import DataHandle from '@/views/device/config-detail/modules/data-handle.vue';
 import { useRouterPush } from '@/hooks/common/router';
 import { $t } from '@/locales';
 import AssociatedDevices from './modules/associated-devices.vue';
@@ -76,7 +76,7 @@ const clickConfig: () => void = () => {
         <template v-if="configForm.device_type === '2'">{{ $t('generate.gateway') }}</template>
         <template v-if="configForm.device_type === '3'">{{ $t('generate.gateway-sub-device') }}</template>
         <div class="ml-20">
-          {{ $t('route.device_template') }}: 
+          {{ $t('route.device_template') }}:
           <span style="color: blue; cursor: pointer" @click="clickConfig">
             {{
               configForm.device_template_name || configForm.device_template_name === ''
@@ -97,9 +97,9 @@ const clickConfig: () => void = () => {
         <n-tab-pane :name="$t('common.protocolConfig')" :tab="$t('common.protocolConfig')">
           <ConnectionInfo :config-info="configForm" @up-date-config="getConfig" />
         </n-tab-pane>
-        <n-tab-pane :name="$t('common.dataProces')" :tab="$t('common.dataProces')">
+        <!-- <n-tab-pane :name="$t('common.dataProces')" :tab="$t('common.dataProces')">
           <DataHandle :config-info="configForm" />
-        </n-tab-pane>
+        </n-tab-pane> -->
         <n-tab-pane :name="$t('custom.device_details.automate')" :tab="$t('custom.device_details.automate')">
           <Automate :config_id="configId" />
         </n-tab-pane>

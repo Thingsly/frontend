@@ -643,9 +643,6 @@ declare namespace App {
           resetPwd: {
             title: string;
           };
-          bindWeChat: {
-            title: string;
-          };
         };
         about: {
           title: string;

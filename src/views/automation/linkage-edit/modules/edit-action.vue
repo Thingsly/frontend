@@ -784,7 +784,7 @@ onMounted(() => {
               <template v-if="actionGroupItem.actionType === '20'">
                 <NFlex class="ml-6" align="center">
                   <NFormItem
-                    label-width="60"
+                    label-width="100"
                     :label="$t('generate.activate')"
                     :path="`actionGroups[${actionGroupIndex}].action_target`"
                     :rule="configFormRules.action_target"
@@ -817,7 +817,7 @@ onMounted(() => {
                       :options="alarmList"
                       label-field="name"
                       value-field="id"
-                      class="max-w-60"
+                      style="width: 300px"
                       :placeholder="$t('common.select')"
                       filterable
                       remote

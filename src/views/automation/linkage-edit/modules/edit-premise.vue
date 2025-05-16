@@ -3,7 +3,7 @@ import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { NButton, NFlex, useMessage } from 'naive-ui';
 import type { FormInst } from 'naive-ui';
-import { IosAlert, IosRefresh } from '@vicons/ionicons4';
+// import { IosAlert, IosRefresh } from '@vicons/ionicons4';
 import { repeat } from 'seemly';
 import { deviceGroupTree } from '@/service/api';
 import {
@@ -839,7 +839,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_param`"
                     :rule="premiseFormRules.trigger_param"
-                    class="max-w-35 w-full"
+                    class="max-w-50 w-full"
                   >
                     <NCascader
                       v-model:value="ifItem.trigger_param_key"
@@ -865,7 +865,7 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_operator`"
                       :rule="premiseFormRules.trigger_operator"
-                      class="max-w-30 w-full"
+                      class="max-w-50 w-full"
                     >
                       <NSelect
                         v-model:value="ifItem.trigger_operator"
@@ -877,7 +877,7 @@ watch(
                         :show-label="false"
                         :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_value`"
                         :rule="premiseFormRules.trigger_value"
-                        class="max-w-30 w-full"
+                        class="max-w-50 w-full"
                       >
                         <NInput
                           v-model:value="ifItem.trigger_value"
@@ -901,7 +901,7 @@ watch(
                         :show-label="false"
                         :path="`ifGroups[${ifGroupIndex}][${ifIndex}].maxValue`"
                         :rule="premiseFormRules.maxValue"
-                        class="max-w-30 w-full"
+                        class="max-w-40 w-full"
                       >
                         <NInput
                           v-model:value="ifItem.maxValue"
@@ -923,20 +923,20 @@ watch(
                       </NFormItem>
                     </template>
                   </template>
-                  <!--                  <template v-if="ifItem.trigger_param_type === 'attributes'">-->
-                  <!--                    &lt;!&ndash;          设备条件下->单个设备/单类设备>-设备ID/选择设备类ID>触发消息标识符是属性->输入参数 -&ndash;&gt;-->
-                  <!--                    <NFormItem-->
-                  <!--                      :show-label="false"-->
-                  <!--                      :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_value`"-->
-                  <!--                      :rule="premiseFormRules.trigger_value"-->
-                  <!--                      class="max-w-40 w-full"-->
-                  <!--                    >-->
-                  <!--                      <NInput-->
-                  <!--                        v-model:value="ifItem.trigger_value"-->
-                  <!--                        :placeholder="$t('common.param') + '，' + $t('common.as') + '：{param1:1}'"-->
-                  <!--                      />-->
-                  <!--                    </NFormItem>-->
-                  <!--                  </template>-->
+                  <!-- <template v-if="ifItem.trigger_param_type === 'attributes'">
+                    <NFormItem
+                      :show-label="false"
+                      :path="`ifGroups[${ifGroupIndex}][${ifIndex}].trigger_value`"
+                      :rule="premiseFormRules.trigger_value"
+                                       class="max-w-40 w-full"
+                                     >
+                                       <NInput
+                                         v-model:value="ifItem.trigger_value"
+                                         :placeholder="$t('common.param') + '，' + $t('common.as') + '：{param1:1}'"
+                                         @blur="actionValueChange(ifItem)"
+                                       />
+                                     </NFormItem>
+                                   </template> -->
                   <template v-if="ifItem.trigger_param_type === 'event'">
                     <NFormItem
                       :show-label="false"
@@ -976,11 +976,12 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].onceTimeValue`"
                     :rule="premiseFormRules.onceTimeValue"
-                    class="max-w-40 w-full"
+                    class="max-w-70 w-full"
                   >
                     <n-date-picker
                       v-model:value="ifItem.onceTimeValue"
                       type="datetime"
+                      class="w-full"
                       :time-picker-props="{ format: 'HH:mm' }"
                       format="yyyy-MM-dd HH:mm"
                       :placeholder="
@@ -999,7 +1000,7 @@ watch(
                   <!--                  <span class="ml-4"></span>-->
                   <NFormItem
                     :label="$t('generate.expiration-time')"
-                    label-width="80px"
+                    label-width="150px"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].expiration_time`"
                     :rule="premiseFormRules.expiration_time"
                   >
@@ -1007,7 +1008,7 @@ watch(
                       v-model:value="ifItem.expiration_time"
                       :options="expirationTimeOptions"
                       :placeholder="$t('generate.please-select')"
-                      class="w-25"
+                      class="w-50"
                     />
                     <n-tooltip placement="top-start" trigger="hover">
                       <template #trigger>
@@ -1369,11 +1370,11 @@ watch(
 <style scoped>
 .ifGroupItem-class {
   position: relative;
+}
 
-  .tag-class {
-    position: absolute;
-    top: 5px;
-  }
+.ifGroupItem-class .tag-class {
+  position: absolute;
+  top: 5px;
 }
 
 .refresh-class {
@@ -1384,10 +1385,8 @@ watch(
   padding: 10px 10px 4px 10px !important;
 }
 
-.weekChoseValue-box {
-  :deep(.n-form-item-feedback-wrapper) {
-    position: absolute;
-    top: 20px;
-  }
+.weekChoseValue-box :deep(.n-form-item-feedback-wrapper) {
+  position: absolute;
+  top: 20px;
 }
 </style>

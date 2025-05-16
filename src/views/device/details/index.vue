@@ -60,24 +60,24 @@ let components = [
     component: Message,
     refreshKey: 0
   },
-  {
-    key: 'stats',
-    name: () => $t('custom.device_details.attributes'),
-    component: Stats,
-    refreshKey: 0
-  },
-  {
-    key: 'event-report',
-    name: () => $t('custom.device_details.eventReport'),
-    component: EventReport,
-    refreshKey: 0
-  },
-  {
-    key: 'command-delivery',
-    name: () => $t('custom.device_details.commandDelivery'),
-    component: CommandDelivery,
-    refreshKey: 0
-  },
+  // {
+  //   key: 'stats',
+  //   name: () => $t('custom.device_details.attributes'),
+  //   component: Stats,
+  //   refreshKey: 0
+  // },
+  // {
+  //   key: 'event-report',
+  //   name: () => $t('custom.device_details.eventReport'),
+  //   component: EventReport,
+  //   refreshKey: 0
+  // },
+  // {
+  //   key: 'command-delivery',
+  //   name: () => $t('custom.device_details.commandDelivery'),
+  //   component: CommandDelivery,
+  //   refreshKey: 0
+  // },
   {
     key: 'expect-message',
     name: () => $t('custom.device_details.expectMessage'),
@@ -96,12 +96,12 @@ let components = [
     component: GiveAnAlarm,
     refreshKey: 0
   },
-  {
-    key: 'user',
-    name: () => $t('custom.device_details.user'),
-    component: User,
-    refreshKey: 0
-  },
+  // {
+  //   key: 'user',
+  //   name: () => $t('custom.device_details.user'),
+  //   component: User,
+  //   refreshKey: 0
+  // },
   {
     key: 'settings',
     name: () => $t('custom.device_details.settings'),

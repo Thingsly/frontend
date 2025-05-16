@@ -332,9 +332,9 @@ const updateTelemetryData = (data: any) => {
   columnsList[0].data = data?.list ?? [];
   columnsList[0].total = Math.ceil(data?.total / 5);
   columnsList[0].data.forEach((item: any) => {
-    if (item.read_write_flag === 'R' || item.read_write_flag === 'R-只读') {
+    if (item.read_write_flag === 'R' || item.read_write_flag === 'R-Read Only') {
       item.read_write_flag = $t('device_template.table_header.readOnly');
-    } else if (item.read_write_flag === 'RW' || item.read_write_flag === 'RW-读/写') {
+    } else if (item.read_write_flag === 'RW' || item.read_write_flag === 'RW-Read/Write') {
       item.read_write_flag = $t('device_template.table_header.readAndWrite');
     }
   });
