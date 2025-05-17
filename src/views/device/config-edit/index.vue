@@ -285,7 +285,7 @@ onMounted(async () => {
 
 <template>
   <div class="overflow-y-auto">
-    <NCard :title="`${$t(modalTitle)}${$t('custom.devicePage.deviceConfig')}`">
+    <NCard :title="`${$t(modalTitle)} ${$t('custom.devicePage.deviceConfig')}`">
       <NForm
         ref="configFormRef"
         :model="configForm"

@@ -62,8 +62,31 @@ export default defineConfig<Theme>({
   },
   shortcuts: {
     ...oldShortcuts,
-    'card-wrapper': 'rd-8px shadow-sm'
+    'card-wrapper': 'rd-8px shadow-sm',
+    'icon-select': 'flex items-center justify-center cursor-pointer',
+    'icon-items': 'flex items-center',
+    'icon-container': 'flex flex-col',
+    'icon-picker-dialog': 'mt-2.5',
+    'icon-grid': 'flex flex-wrap justify-start',
+    'icon-cell': 'w-[calc(10%-10px)] m-1.25 flex justify-center items-center cursor-pointer hover:bg-gray-100 rounded',
+    'icon-display': 'flex items-center mb-2.5',
+    'icon-picker-btn': 'ml-2.5',
+    'local-icon': 'inline-block align-middle'
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetUno({ dark: 'class' }), presetSoybeanAdmin()]
+  presets: [
+    presetUno({
+      dark: 'class',
+      icons: {
+        extraProperties: {
+          'display': 'inline-block',
+          'vertical-align': 'middle'
+        },
+        collections: {
+          'ionicons5': () => import('@vicons/ionicons5')
+        }
+      }
+    }),
+    presetSoybeanAdmin()
+  ]
 });

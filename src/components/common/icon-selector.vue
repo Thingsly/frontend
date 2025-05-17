@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="icon-container">
     <div class="icon-display">
       <span>{{ $t('card.selectedIcon') }}: </span>
       <NIcon v-if="selectedIcon" size="30" :component="selectedIcon" />
@@ -68,41 +68,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.icon-display {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.icon-display span {
-  margin-right: 10px;
-}
-
-.icon-picker-dialog {
-  margin-top: 10px;
-}
-
-.icon-picker-btn {
-  margin-left: 10px;
-}
-
-.icon-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.icon-cell {
-  width: calc(10% - 10px);
-  margin: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.icon-cell:hover {
-  background-color: #f0f0f0;
-  border-radius: 4px;
-}
+/* Remove all CSS styles as they are now handled by UnoCSS */
 </style>
