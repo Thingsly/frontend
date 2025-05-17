@@ -22,8 +22,8 @@ export default {
     config: {
       guideList: [
         { titleKey: 'card.operationGuideCard.guideItems.addDevice.title', descriptionKey: 'card.operationGuideCard.guideItems.addDevice.description', link:'/device/manage'},
-        { titleKey: 'card.operationGuideCard.guideItems.configureDevice.title', descriptionKey: 'card.operationGuideCard.guideItems.configureDevice.description' },
-        { titleKey: 'card.operationGuideCard.guideItems.createDashboard.title', descriptionKey: 'card.operationGuideCard.guideItems.createDashboard.description' },
+        { titleKey: 'card.operationGuideCard.guideItems.configureDevice.title', descriptionKey: 'card.operationGuideCard.guideItems.configureDevice.description', link:'/device/config' },
+        { titleKey: 'card.operationGuideCard.guideItems.createDashboard.title', descriptionKey: 'card.operationGuideCard.guideItems.createDashboard.description', link:'/visualization/kanban' },
       ],
       guideListAdmin: [
         {
@@ -34,7 +34,7 @@ export default {
         {
           titleKey: 'card.operationGuideAdmin.guideItems.configureNotification.title',
           descriptionKey: 'card.operationGuideAdmin.guideItems.configureNotification.description',
-
+          link: '/management/notification'
         },
         {
           titleKey: 'card.operationGuideAdmin.guideItems.configurePlugin.title',

@@ -12,7 +12,7 @@ export const editProduct = (data: any): Promise<any> =>
   request.put('/product', data);
 export const deleteProduct = (id: string): Promise<any> =>
   request.delete(`/product/${id}`);
-// /device/Reeegiprrst;
+// /device/preRegister;
 export const addDevice = (data: any): Promise<any> =>
   request.post('/device/preRegister', data);
 // /device/preRegister/export

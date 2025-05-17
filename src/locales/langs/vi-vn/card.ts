@@ -271,15 +271,18 @@ export default {
     guideItems: {
       addDevice: {
         title: 'Thêm thiết bị',
-        description: 'Thêm thiết bị IoT của bạn vào nền tảng để kết nối và quản lý'
+        description: 'Thêm thiết bị IoT của bạn vào nền tảng để kết nối và quản lý',
+        link: '/device/manage'
       },
       configureDevice: {
         title: 'Cấu hình thiết bị',
-        description: 'Thiết lập thông số và thuộc tính cho thiết bị, tùy chỉnh quy tắc thu thập dữ liệu'
+        description: 'Thiết lập thông số và thuộc tính cho thiết bị, tùy chỉnh quy tắc thu thập dữ liệu',
+        link: '/device/config'
       },
       createDashboard: {
         title: 'Tạo bảng điều khiển',
-        description: 'Trực quan hóa dữ liệu thiết bị, tạo bảng điều khiển giám sát theo thời gian thực'
+        description: 'Trực quan hóa dữ liệu thiết bị, tạo bảng điều khiển giám sát theo thời gian thực',
+        link: '/visualization/kanban'
       }
     }
   },
@@ -330,15 +333,18 @@ export default {
     guideItems: {
       createTenant: {
         title: 'Tạo người thuê',
-        description: 'Cấu hình người thuê và tạo người thuê, quản lý người dùng và quyền của nền tảng'
+        description: 'Cấu hình người thuê và tạo người thuê, quản lý người dùng và quyền của nền tảng',
+        link: '/management/tenant'
       },
       configureNotification: {
         title: 'Cấu hình thông báo',
-        description: 'Cài đặt thông báo qua email và SMS, thiết lập cách nhắc sự kiện hệ thống'
+        description: 'Cài đặt thông báo qua email và SMS, thiết lập cách nhắc sự kiện hệ thống',
+        link: '/management/notification'
       },
       configurePlugin: {
         title: 'Cấu hình plugin',
-        description: 'Kết nối giao thức và tích hợp bên thứ ba, quản lý phương thức kết nối thiết bị'
+        description: 'Kết nối giao thức và tích hợp bên thứ ba, quản lý phương thức kết nối thiết bị',
+        link: '/management/plugin'
       }
     }
   },

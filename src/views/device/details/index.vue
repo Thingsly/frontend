@@ -78,12 +78,12 @@ let components = [
   //   component: CommandDelivery,
   //   refreshKey: 0
   // },
-  {
-    key: 'expect-message',
-    name: () => $t('custom.device_details.expectMessage'),
-    component: ExpectMessage,
-    refreshKey: 0
-  },
+  // {
+  //   key: 'expect-message',
+  //   name: () => $t('custom.device_details.expectMessage'),
+  //   component: ExpectMessage,
+  //   refreshKey: 0
+  // },
   {
     key: 'automate',
     name: () => $t('custom.device_details.automate'),
