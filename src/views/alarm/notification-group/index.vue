@@ -149,7 +149,7 @@ getTableData();
   <div>
     <NCard :title="$t('generate.notification-group')">
       <template #header-extra>
-        <NButton type="primary" @click="handleAddTable">+{{ $t('device_template.add') }}</NButton>
+        <NButton type="primary" @click="handleAddTable">+ {{ $t('device_template.add') }}</NButton>
       </template>
       <div class="h-full flex-col">
         <NDataTable :columns="columns" :data="tableData" :loading="loading" />

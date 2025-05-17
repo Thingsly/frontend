@@ -204,7 +204,7 @@ export default {
   'select-type': 'Vui lòng chọn loại',
   'add-new': 'Thêm mới',
   'alarm-description': 'Mô tả cảnh báo',
-  add: 'Thêm',
+  add: 'Thêm ',
   crop: 'Cây trồng',
   type: 'Loại',
   'set-member-notification-method': 'Thiết lập phương thức thông báo cho thành viên',
