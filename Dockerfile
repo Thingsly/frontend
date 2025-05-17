@@ -1,10 +1,13 @@
-FROM nginx:alpine
-# RUN rm -rf /etc/nginx/nginx.conf
-# RUN rm -rf /usr/share/nginx/html/*
-# RUN mkdir -p /usr/share/nginx/html/discount-web
-COPY dist /usr/share/nginx/html/
-# COPY visual-editor/dist /usr/share/nginx/visual-editor
+FROM --platform=linux/amd64 nginx:alpine
+
+# Remove default nginx configuration
+RUN rm -rf /etc/nginx/conf.d/default.conf
+
+# Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 8080
+# Copy application files
+COPY dist /usr/share/nginx/html/
+
+EXPOSE 80 443
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
