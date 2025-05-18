@@ -132,7 +132,7 @@ async function handleSubmit() {
       email: model.email,
       verify_code: model.code,
       password: model.pwd,
-      phone_prefix: '+86',
+      phone_prefix: '+84',
       phone_number: model.phone
     })) as any;
 
