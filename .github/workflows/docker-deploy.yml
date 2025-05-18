@@ -19,7 +19,7 @@
 # - DOCKERHUB_TOKEN: DockerHub access token
 # - GITHUB_TOKEN: GitHub access token (automatically provided)
 
-name: Docker Image Build
+name: Docker Image Build & Deploy Frontend to server Teacher Tien
 
 on:
   push:
@@ -30,7 +30,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-docker-image:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -77,8 +77,15 @@ jobs:
       - name: Get Version Tag
         id: get_version
         run: |
-          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo 'latest')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+            echo "TAG_LATEST=true" >> $GITHUB_ENV
+          else
+            VERSION="latest"
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+            echo "TAG_LATEST=false" >> $GITHUB_ENV
+          fi
           # Convert repository owner to lowercase
           echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
 
@@ -98,3 +105,25 @@ jobs:
           tags: |
             hantdev1/thingsly-vue:${{ env.VERSION }}
             ghcr.io/${{ env.OWNER_LC }}/thingsly-vue:${{ env.VERSION }}
+            ${{ env.TAG_LATEST == 'true' && format('hantdev1/thingsly-vue:latest,ghcr.io/{0}/thingsly-vue:latest', env.OWNER_LC) || '' }}
+
+  deploy-to-server:
+    needs: build-docker-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Server Teacher Tien
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.C_HOST }}
+          username: ${{ secrets.C_USER }}
+          password: ${{ secrets.C_PASS }}
+          script: |
+            cd /home/hant/docker
+            # Remove old image first
+            docker image rm hantdev1/thingsly-vue:latest || true
+
+            # Pull latest image
+            docker pull hantdev1/thingsly-vue:latest
+
+            # Restart frontend service
+            docker compose up -d --no-deps frontend
