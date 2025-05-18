@@ -1,0 +1,100 @@
+# Thingsly Frontend Docker Image Auto-Build Workflow
+#
+# Functionality:
+# 1. Automatically build a Docker image and push it to three container registries:
+#    - DockerHub (hantdev1/thingsly-vue)
+#    - GitHub Container Registry (ghcr.io)
+#
+# Triggers:
+# - On Release: Automatically triggered when a Release is created or updated
+# - Manual Trigger: Can be manually triggered from the GitHub Actions interface
+#
+# Version Handling:
+# - On Release: Uses the Release tag as the version
+# - Manual Trigger: Uses the latest Git tag as the version
+# - No Tags: Defaults to 'latest' as the version
+#
+# Required Secrets:
+# - DOCKERHUB_USERNAME: DockerHub username
+# - DOCKERHUB_TOKEN: DockerHub access token
+# - GITHUB_TOKEN: GitHub access token (automatically provided)
+
+name: Docker Image Build
+
+on:
+  push:
+    tags:
+      - "v*"
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.14.0]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full Git history and tags are available
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache pnpm Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install pnpm
+        run: npm install -g pnpm@10.11.0
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Build with Increased Memory Limit
+        run: pnpm build:4096
+        env:
+          CI: true
+
+      - name: Create Dockerfile
+        run: |
+          echo 'FROM nginx:latest' > Dockerfile
+          echo 'RUN rm -rf /etc/nginx/conf.d/default.conf' >> Dockerfile
+          echo 'COPY nginx.conf /etc/nginx/nginx.conf' >> Dockerfile
+          echo 'COPY dist /usr/share/nginx/html/' >> Dockerfile
+          echo 'EXPOSE 80 443' >> Dockerfile
+          echo 'ENTRYPOINT ["nginx", "-g", "daemon off;"]' >> Dockerfile
+
+      - name: Get Version Tag
+        id: get_version
+        run: |
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo 'latest')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          # Convert repository owner to lowercase
+          echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
+      - name: Log In to Container Registries
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+
+      - name: Set Up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and Push to GitHub/DockerHub
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            hantdev1/thingsly-vue:${{ env.VERSION }}
+            ghcr.io/${{ env.OWNER_LC }}/thingsly-vue:${{ env.VERSION }}
