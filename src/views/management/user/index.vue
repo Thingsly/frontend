@@ -173,9 +173,9 @@ const columns: Ref<DataTableColumns<UserManagement.User>> = ref([
             {{
               default: () => $t('common.confirm'),
               trigger: () => (
-                <NButton type="warning" size={'small'}>
+                {/* <NButton type="warning" size={'small'}>
                   {$t('page.manage.user.enter')}
-                </NButton>
+                </NButton> */}
               )
             }}
           </NPopconfirm>

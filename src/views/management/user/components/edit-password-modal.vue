@@ -91,8 +91,8 @@ watch(
 </script>
 
 <template>
-  <NModal v-model:show="modalVisible" preset="card" :title="$t('page.login.resetPwd.title')" class="w-700px">
-    <NForm ref="formRef" label-placement="left" :label-width="80" :model="formModel" :rules="rules">
+  <NModal v-model:show="modalVisible" preset="card" :title="$t('page.login.resetPwd.title')" class="w-500px">
+    <NForm ref="formRef" label-placement="left" :label-width="100" :model="formModel" :rules="rules">
       <NGrid :cols="24" :x-gap="18">
         <NFormItemGridItem :span="24" :label="$t('page.manage.user.userName')" path="email">
           <NInput v-model:value="formModel.email" readonly />

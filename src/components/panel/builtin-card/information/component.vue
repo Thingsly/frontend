@@ -77,7 +77,6 @@ onMounted(() => {
     // window.onresize = function () {
     //   myecharts.setOption(option);
     //   console.log("The window size has changed.");
-    //   // echarts适配
     //   myecharts.resize();
     // };
     // myecharts.on('click', params => {

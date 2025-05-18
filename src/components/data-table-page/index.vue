@@ -158,7 +158,7 @@ const generatedColumns = computed(() => {
             {tableActions.map((action) => {
               if (
                 action.theKey === $t('custom.devicePage.delete') ||
-                action.theKey === '删除'
+                action.theKey === 'Delete'
               ) {
                 return (
                   <NPopconfirm
