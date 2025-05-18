@@ -9,7 +9,7 @@ import { useRouterPush } from '@/hooks/common/router';
 import { $t } from '@/locales';
 import AssociatedDevices from './modules/associated-devices.vue';
 import ExtendInfo from './modules/extend-info.vue';
-import AttributeInfo from './modules/attribute-info.vue';
+// import AttributeInfo from './modules/attribute-info.vue';
 import ConnectionInfo from './modules/connection-info.vue';
 import AlarmInfo from './modules/alarm-info.vue';
 import Automate from './modules/automate.vue';
@@ -91,15 +91,9 @@ const clickConfig: () => void = () => {
         <n-tab-pane :name="$t('common.associatedDevices')" :tab="$t('common.associatedDevices')">
           <AssociatedDevices :device-config-id="configId" />
         </n-tab-pane>
-        <n-tab-pane :name="$t('common.propertiesAndFunctions')" :tab="$t('common.propertiesAndFunctions')">
-          <AttributeInfo :config-info="configForm" @up-date-config="getConfig" />
-        </n-tab-pane>
         <n-tab-pane :name="$t('common.protocolConfig')" :tab="$t('common.protocolConfig')">
           <ConnectionInfo :config-info="configForm" @up-date-config="getConfig" />
         </n-tab-pane>
-        <!-- <n-tab-pane :name="$t('common.dataProces')" :tab="$t('common.dataProces')">
-          <DataHandle :config-info="configForm" />
-        </n-tab-pane> -->
         <n-tab-pane :name="$t('custom.device_details.automate')" :tab="$t('custom.device_details.automate')">
           <Automate :config_id="configId" />
         </n-tab-pane>

@@ -22,7 +22,6 @@ import type { SearchConfig } from '@/components/data-table-page/index.vue';
 import AddDevicesStep1 from '@/views/device/manage/modules/add-devices-step1.vue';
 import AddDevicesStep2 from '@/views/device/manage/modules/add-devices-step2.vue';
 import AddDevicesStep3 from '@/views/device/manage/modules/add-devices-step3.vue';
-import AddDevicesServer1 from '@/views/device/manage/modules/add-devices-server1.vue';
 import { useRouterPush } from '@/hooks/common/router';
 import { $t } from '@/locales';
 import { usePageCache } from '../../../utils/usePageCache';
@@ -284,22 +283,6 @@ const searchConfigs = ref<SearchConfig[]>([
     type: 'input'
   }
 ]);
-const dropOption = [
-  {
-    label: () => $t('custom.devicePage.manualAdd'),
-    key: 'hands'
-  },
-  {
-    label: () => $t('custom.devicePage.addByNumber'),
-    key: 'number',
-    disabled: true
-  },
-  {
-    label: () => $t('custom.devicePage.addByServer'),
-    key: 'server',
-    disabled: false
-  }
-];
 
 const fetchFirstLevelOptions = async () => {
   const { data } = await deviceDictProtocolServiceFirstLevel({
@@ -436,9 +419,19 @@ onBeforeMount(async () => {
 const topActions = [
   {
     element: () => (
-      <n-dropdown options={dropOption} trigger="hover" onSelect={handleSelect}>
-        <n-button type="primary">+ {$t('custom.devicePage.addDevice')}</n-button>
-      </n-dropdown>
+      <n-button
+        type="primary"
+        onClick={() => {
+          addKey.value = 'hands';
+          current.value = 1;
+          currentServer.value = 1;
+          active.value = true;
+          placement.value = 'bottom';
+          getDeviceConfigOptions();
+        }}
+      >
+        + {$t('custom.devicePage.addDevice')}
+      </n-button>
     )
   }
 ];
@@ -452,26 +445,12 @@ const placement = ref<DrawerPlacement>('right');
 const current = ref<number>(1);
 const currentStatus = ref<StepsProps['status']>('process');
 const currentServer = ref<number>(1);
-const currentServerStatus = ref<StepsProps['status']>('process');
-const activate = (place: DrawerPlacement, key: string | number) => {
-  if (key === 'server') {
-    router.push('/device/service-access');
-  } else {
-    current.value = 1;
-    currentServer.value = 1;
-    active.value = true;
-    addKey.value = key;
-    placement.value = place;
-  }
-};
 
-const completeAdd = async () => {
-  const { error } = await putDeviceActive({
-    device_number: deviceNumber.value
-  });
-  if (!error) {
-    active.value = true;
-  }
+const activate = (place: DrawerPlacement, key: string | number) => {
+  current.value = 1;
+  active.value = true;
+  addKey.value = key;
+  placement.value = place;
 };
 
 const completeHandAdd = () => {
@@ -484,12 +463,6 @@ const completeHandAdd = () => {
 function handleSelect(key: string | number) {
   activate('bottom', key);
 }
-
-const messageStyle = ref({
-  color: messageColor,
-  marginLeft: '10px',
-  marginTop: '5px'
-});
 
 watch(
   deviceNumber,
@@ -584,61 +557,6 @@ const fetchData = (params: Record<string, any>) => {
               "
             />
           </div>
-        </n-card>
-      </n-drawer-content>
-      <n-drawer-content
-        v-if="addKey === 'number'"
-        class="flex-left pt-24px"
-        style="margin-left: 500px"
-        :title="$t('custom.devicePage.addByNumber')"
-      >
-        <n-h4 align-text>
-          <n-li>
-            <NText strong>{{ $t('custom.devicePage.tips') }}</NText>
-          </n-li>
-        </n-h4>
-        <div style="display: flex; margin-bottom: 20px">
-          <n-input
-            v-model:value="deviceNumber"
-            :placeholder="$t('custom.devicePage.enterDeviceNumber')"
-            class="max-w-240px"
-          ></n-input>
-          <NText v-if="showMessage" :style="messageStyle">
-            {{
-              buttonDisabled
-                ? $t('custom.devicePage.deviceNumberNotAvailable')
-                : $t('custom.devicePage.enterDeviceNumber')
-            }}
-          </NText>
-        </div>
-        <n-button type="primary" :disabled="buttonDisabled" @click="completeAdd">
-          {{ $t('custom.devicePage.finish') }}
-        </n-button>
-      </n-drawer-content>
-      <n-drawer-content
-        v-if="addKey === 'server'"
-        class="flex-center pt-24px"
-        :title="$t('custom.devicePage.addByServer')"
-      >
-        <n-steps :current="currentServer" :status="currentServerStatus">
-          <n-step
-            :title="$t('custom.devicePage.serverStep1Title')"
-            :description="$t('custom.devicePage.serverStep1Desc')"
-          />
-          <n-step
-            :title="$t('custom.devicePage.serverStep2Title')"
-            :description="$t('custom.devicePage.serverStep2Desc')"
-          />
-          <n-step :title="$t('custom.devicePage.step3Title')" :description="$t('custom.devicePage.step3Desc')" />
-        </n-steps>
-        <n-card class="mt-6" bordered border>
-          <AddDevicesServer1
-            :next-callback="
-              () => {
-                currentServer += 1;
-              }
-            "
-          />
         </n-card>
       </n-drawer-content>
     </n-drawer>
