@@ -32,7 +32,7 @@ const model: FormModel = reactive({
 
 const commonDomains = [
   'gmail.com',
-  'thingsly.vn',
+  'soict.hust.edu.vn',
   'hust.edu.vn',
   'sis.hust.edu.vn'
 ];

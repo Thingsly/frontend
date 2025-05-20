@@ -69,9 +69,9 @@ const rules = computed<Record<keyof FormModel, App.Global.FormRule[]>>(() => {
 
 const commonDomains = [
   'gmail.com',
-  'thingsly.vn',
   'hust.edu.vn',
-  'sis.hust.edu.vn'
+  'sis.hust.edu.vn',
+  'soict.hust.edu.vn'
 ];
 
 const emailOptions = computed(() => {

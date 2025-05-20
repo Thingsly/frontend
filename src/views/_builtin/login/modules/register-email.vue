@@ -44,7 +44,7 @@ const canSubmit = computed(() => {
 
 const commonDomains = [
   'gmail.com',
-  'thingsly.vn',
+  'soict.hust.edu.vn',
   'hust.edu.vn',
   'sis.hust.edu.vn'
 ];
