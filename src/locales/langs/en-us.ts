@@ -11,9 +11,9 @@ import theme from './en-us/theme';
 
 const local: App.I18n.Schema = {
   default: '',
-  title: 'Thingsly',
+  title: 'Thingsly IoT Platform',
   system: {
-    title: 'Thingsly'
+    title: 'Thingsly IoT Platform'
   },
   common: {
     serviceConfi: 'Service Configuration',
@@ -40,7 +40,7 @@ const local: App.I18n.Schema = {
     lowAlarm: 'Low Alert',
     intermediateAlarm: 'Intermediate Alert',
     highAlarm: 'High Alert',
-    allStatus: 'All Statuses',
+    allStatus: 'All Status',
     enterAlarmDesc: 'Enter the alert description',
     alarmRules: 'Alert Rules',
     alarmHistory: 'Alert History',

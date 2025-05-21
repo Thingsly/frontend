@@ -7,7 +7,7 @@ const { bool: visible, setTrue: openModal } = useBoolean();
 
 const data = [
   {
-    title: 'OpenWeather气象服务'
+    title: 'OpenWeather API'
   },
   {
     title: 'xxx'

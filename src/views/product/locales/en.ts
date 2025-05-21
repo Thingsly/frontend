@@ -101,7 +101,7 @@ export const productLocaleEn: ProductLocal = {
     completeTask: 'Upgrade Succeeded',
     retryTask: 'Retry Upgrade',
     cancelMakeTask: 'Cancel Upgrade',
-    allStatus: 'All Statuses',
+    allStatus: 'All Status',
     selectedNumber: 'Entries',
     batchSelectDevice: 'Batch Select Devices',
     selectDevice: 'Select Device'

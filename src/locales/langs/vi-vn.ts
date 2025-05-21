@@ -11,9 +11,9 @@ import theme from './vi-vn/theme';
 
 const local: App.I18n.Schema = {
   default: '',
-  title: 'Thingsly',
+  title: 'Thingsly IoT Platform',
   system: {
-    title: 'System Name: {name}'
+    title: 'Thingsly IoT Platform'
   },
   common: {
     serviceConfi: 'Cấu hình dịch vụ',
