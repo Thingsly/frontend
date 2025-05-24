@@ -7,7 +7,7 @@ export default {
   operationUsers: 'Người thao tác',
   operationType: 'Loại thao tác',
   telemetry: 'Dữ liệu giám sát (telemetry)',
-  join: 'Kết nối',
+  join: 'Thông tin kết nối',
   deviceAnalysis: 'Thiết bị con',
   chart: 'Biểu đồ',
   AdditionalDetails: 'Thông tin bổ sung',

@@ -446,8 +446,8 @@ const instructListItem = ref({
 //   action_target: string;
 //   action_type: string;
 //   action_param_type: string;
-//   action_param: string; // 动作标识符类型
-//   actionValue: string; // 参数值
+//   action_param: string;
+//   actionValue: string;
 //   deviceGroupId: string;
 //   actionParamOptions: object | any;
 // }

@@ -61,16 +61,16 @@ const operationOptions = [
   { label: $t('custom.device_details.whole'), value: '' },
   { label: $t('custom.device_details.manualOperation'), value: '1' },
   { label: $t('custom.device_details.triggerOperation'), value: '2' }
-  
+
 ];
 const resultOptions = [
   { label: $t('custom.device_details.whole'), value: '' },
   { label: $t('custom.devicePage.success'), value: '1' },
   { label: $t('custom.devicePage.fail'), value: '2' }
-  
+
 ];
-const cardHeight = ref(160); 
-const cardMargin = ref(15); 
+const cardHeight = ref(160);
+const cardMargin = ref(15);
 const log_page = ref(1);
 const showError = ref(false);
 const erroMessage = ref('');
@@ -537,7 +537,7 @@ const inputFeedback = computed(() => {
         </n-form>
       </n-card>
     </n-modal>
-    <n-modal v-model:show="showDialog" :class="getPlatform ? 'w-90%' : 'w-400px'">
+    <n-modal v-model:show="showDialog" :class="getPlatform ? 'w-100%' : 'w-550px'">
       <n-card :title="$t('generate.distributeControlToDevice')">
         <n-form label-placement="left">
           <div class="flex">
@@ -570,7 +570,7 @@ const inputFeedback = computed(() => {
             </n-form-item>
             <n-form-item v-if="form.expected" :label="$t('generate.expirationTime')" class="ml-20px">
               <div class="flex-ai-c flex">
-                <n-input-number v-model:value="form.time" :show-button="false" class="w-80px" />
+                <n-input-number v-model:value="form.time" :show-button="false" class="w-100px" />
                 <div class="fs-0">{{ $t('generate.hour') }}</div>
               </div>
             </n-form-item>

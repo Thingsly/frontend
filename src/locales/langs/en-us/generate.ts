@@ -172,7 +172,7 @@ export default {
   'issue-attribute': 'Issue Attribute',
   'simulate-report-data': 'Simulate Report Data',
   'device-type': 'Device Type',
-  'issue-control': 'Issue Control',
+  'issue-control': 'Send Control Command',
   'parse-script': 'Parse Script',
   'device-description': 'Device Description',
   'device-code': 'Device Code',

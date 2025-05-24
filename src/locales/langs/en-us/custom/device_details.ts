@@ -7,7 +7,7 @@ export default {
   operationUsers: 'Operation User',
   operationType: 'Operation Type',
   telemetry: 'Telemetry',
-  join: 'Join',
+  join: 'Connection Information',
   deviceAnalysis: 'Sub-devices',
   chart: 'Chart',
   AdditionalDetails: 'Information',

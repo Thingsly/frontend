@@ -172,7 +172,7 @@ export default {
   'issue-attribute': 'Gửi thuộc tính',
   'simulate-report-data': 'Mô phỏng báo cáo dữ liệu',
   'device-type': 'Loại thiết bị',
-  'issue-control': 'Gửi điều khiển',
+  'issue-control': 'Gửi lệnh điều khiển',
   'parse-script': 'Phân tích script',
   'device-description': 'Mô tả thiết bị',
   'device-code': 'Mã thiết bị',
