@@ -11,7 +11,7 @@
       </div>
       <div class="flex flex-col items-center mt-4">
         <span class="text-gray-700 dark:text-gray-300 mb-1">{{ $t('card.versionInfo.currentVersion') }}</span>
-        <span class="text-3xl font-bold text-gray-900 dark:text-white mb-3 tracking-wider">1.0.0</span>
+        <span class="text-3xl font-bold text-gray-900 dark:text-white mb-3 tracking-wider">1.1.1</span>
         <n-tag type="success" size="medium" round class="animate-pulse">
           <template #icon>
             <Icon icon="carbon:checkmark-outline" class="text-lg"/>

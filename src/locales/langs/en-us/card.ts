@@ -348,7 +348,7 @@ export default {
     title: 'Download Mobile App',
     scanOrClick: 'Scan or Click to Download'
   },
-  version: {
+  versionInfo: {
     title: 'Version Information',
     currentVersion: 'Current Version',
     latest: 'Latest'
