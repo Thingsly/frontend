@@ -345,7 +345,7 @@ export default {
   open: 'Mở:',
   copy: 'Sao chép',
   'basic-info': 'Thông tin cơ bản',
-  'set-default-device-open-status': 'Thiết lập trạng thái mở/mở của thiết bị khi điều khiển',
+  'set-default-device-open-status': 'Thiết lập trạng thái mặc định của thiết bị',
   'copy-one-type-one-secret-device-password': 'Sao chép mật khẩu thiết bị loại một-mật khẩu một',
   'search-icon': 'Tìm kiếm biểu tượng',
   'allow-device-auto-create': 'Cho phép tự động tạo thiết bị',
