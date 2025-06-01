@@ -1,7 +1,7 @@
 <template>
-  <div 
+  <div
     class="reported-data-card p-4 bg-white rounded-lg shadow-sm border border-gray-100 transition duration-700 ease-in-out"
-    :class="{}" 
+    :class="{}"
   >
     <!-- Header -->
     <div class="flex justify-between items-center mb-4">
@@ -13,7 +13,7 @@
         {{ $t('card.reportedData.title') }}
       </h2>
       <!-- Refresh Toggle Button -->
-      <button 
+      <button
         @click="toggleRefresh"
         class="text-xs flex items-center hover:text-blue-700"
         :class="isRefreshing ? 'text-blue-500' : 'text-gray-500'"
@@ -39,7 +39,7 @@
         <div v-for="(device, index) in devices" :key="device.device_id" class="p-3 rounded-md " :class="getDeviceBgColor(index)">
           <!-- Device Header -->
           <div class="flex justify-between items-center mb-2 text-xs mt--1">
-            <div class="flex items-center font-medium text-gray-800"> 
+            <div class="flex items-center font-medium text-gray-800">
               <span class="mr-1.5 text-gray-600">
                 <!-- Generic Device Icon Placeholder -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -59,12 +59,12 @@
           <div class="telemetry-scroller-container ">
             <BottomUpInfiniteScroller
                v-if="device.telemetry_data && device.telemetry_data.length > 0"
-               :list="getPairedTelemetry(device.telemetry_data)" 
-               height="76px" 
-               :scrollSpeed="20" 
+               :list="getPairedTelemetry(device.telemetry_data)"
+               height="76px"
+               :scrollSpeed="20"
                :startDelay="1500"
              >
-               <template #default="{ item: pair }"> 
+               <template #default="{ item: pair }">
                  <!-- Render a row with two columns -->
                  <div class="flex text-xs py-1.5 border-b border-gray-200/30 last:border-b-0 mt--2">
                    <!-- Left Column -->
@@ -110,12 +110,11 @@ import { $t } from '@/locales';
 import { getLatestTelemetryData } from '@/service/api';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import 'dayjs/locale/zh-cn';
 import BottomUpInfiniteScroller from '@/components/BottomUpInfiniteScroller.vue';
 import { NSpin } from 'naive-ui';
 
 dayjs.extend(relativeTime);
-dayjs.locale('zh-cn');
+dayjs.locale('en');
 
 defineOptions({
   name: 'ReportedDataCard'
@@ -202,7 +201,7 @@ const fetchData = async (initialLoad = false) => {
     }
   } finally {
     if (initialLoad) {
-      
+
         loading.value = false;
     }
     isFetchingUpdate.value = false;
@@ -274,13 +273,13 @@ const formatValue = (item: TelemetryItem | any): string => {
      if (typeof item === 'boolean') return item ? $t('card.yes') : $t('card.no');
      return String(item);
    }
-   
+
    if (!item || item.value === null || item.value === undefined) return '-';
    const value = item.value;
    const key = item.key;
    const unit = item.unit;
    let displayValue = '';
- 
+
    if (typeof value === 'boolean') {
      displayValue = value ? $t('card.yes') : $t('card.no');
      if (key?.includes('switch')) {
@@ -295,7 +294,7 @@ const formatValue = (item: TelemetryItem | any): string => {
    } else {
      displayValue = String(value);
    }
- 
+
    if (unit) {
      if (unit === '%' || unit === '°C') {
        displayValue += unit;
@@ -303,7 +302,7 @@ const formatValue = (item: TelemetryItem | any): string => {
        displayValue += ` ${unit}`;
      }
    }
- 
+
    return displayValue;
  };
 
