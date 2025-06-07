@@ -44,8 +44,8 @@ const initNotificationConfig = {
   MEMBER: '',
   EMAIL: '',
   SME: '',
-  VOICE: '',
-  WEBHOOK: '',
+  // VOICE: '',
+  // WEBHOOK: '',
   PayloadURL: '',
   Secret: ''
 };
@@ -106,12 +106,13 @@ function handleUpdateFormModelByModalType() {
         const notification_type = props.editData.notification_type;
         if (notification_type === 'MEMBER') {
           notificationConfig.value.MEMBER = memberTypeData;
-        } else if (['EMAIL', 'SME', 'VOICE'].includes(notification_type)) {
+        } else if (['EMAIL', 'SME'].includes(notification_type)) {
           formModel.value.info = notification_config[notification_type];
-        } else if (notification_type === 'WEBHOOK') {
-          notificationConfig.value.PayloadURL = notification_config.PayloadURL;
-          notificationConfig.value.Secret = notification_config.Secret;
         }
+        // else if (notification_type === 'WEBHOOK') {
+        //   notificationConfig.value.PayloadURL = notification_config.PayloadURL;
+        //   notificationConfig.value.Secret = notification_config.Secret;
+        // }
         notificationConfig.value[notification_type] = notification_config[notification_type];
       }
     }
@@ -124,7 +125,7 @@ async function handleSubmit() {
   await formRef.value?.validate();
   if (formModel.value.notification_type === 'MEMBER') {
     notificationConfig.value.MEMBER = memberTypeData;
-  } else if (['EMAIL', 'SME', 'VOICE'].includes(formModel.value.notification_type)) {
+  } else if (['EMAIL', 'SME'].includes(formModel.value.notification_type)) {
     notificationConfig.value[formModel.value.notification_type] = formModel.value.info;
   }
 
@@ -195,7 +196,7 @@ const handleAddMember = () => {
           </template>
         </template>
 
-        <template v-if="['EMAIL', 'SME', 'VOICE'].includes(formModel.notification_type)">
+        <template v-if="['EMAIL', 'SME'].includes(formModel.notification_type)">
           <div>{{ $t('generate.set-email-phone') }}</div>
           <NFormItem path="age" label="">
             <NInput
@@ -206,7 +207,7 @@ const handleAddMember = () => {
           </NFormItem>
         </template>
 
-        <template v-if="formModel.notification_type === 'WEBHOOK'">
+        <!-- <template v-if="formModel.notification_type === 'WEBHOOK'">
           <div>{{ $t('generate.payload-url') }}</div>
           <NFormItem path="age" label="">
             <NInput v-model:value="notificationConfig.PayloadURL" />
@@ -224,7 +225,7 @@ const handleAddMember = () => {
               ："sha256="+signature
             </div>
           </div>
-        </template>
+        </template> -->
       </div>
 
       <NSpace class="w-full pt-16px" :size="24" justify="end">

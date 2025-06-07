@@ -132,8 +132,8 @@ export const packageOptions = [
 
 export const memberNotificationLabels: Record<CustomRoute.routerSysFlagKey, string> = {
   EMAIL: $t('card.emailNotice'),
-  SME: $t('card.smsNotice'),
-  VOICE: $t('card.voicemailNotice')
+  // SME: $t('card.smsNotice'),
+  // VOICE: $t('card.voicemailNotice')
 };
 
 export const MemberNotificationOptions = transformObjectToOption(memberNotificationLabels);
@@ -147,18 +147,18 @@ export const notificationOptions = [
     label: $t('card.emailNotice'),
     value: 'EMAIL'
   },
-  {
-    label: $t('card.smsNotice'),
-    value: 'SME'
-  },
-  {
-    label: $t('card.voicemailNotice'),
-    value: 'VOICE'
-  },
-  {
-    label: 'webhook',
-    value: 'WEBHOOK'
-  }
+  // {
+  //   label: $t('card.smsNotice'),
+  //   value: 'SME'
+  // },
+  // {
+  //   label: $t('card.voicemailNotice'),
+  //   value: 'VOICE'
+  // },
+  // {
+  //   label: 'webhook',
+  //   value: 'WEBHOOK'
+  // }
 ];
 
 export const irrigationPlanStatus: Record<DataService.FlagKey, string> = {
