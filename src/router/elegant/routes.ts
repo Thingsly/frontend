@@ -783,15 +783,6 @@ export const generatedRoutes: GeneratedRoute[] = [
         }
       },
       {
-        name: 'plugin_map',
-        path: '/plugin/map',
-        component: 'view.plugin_map',
-        meta: {
-          title: 'plugin_map',
-          i18nKey: 'route.plugin_map'
-        }
-      },
-      {
         name: 'plugin_print',
         path: '/plugin/print',
         component: 'view.plugin_print',

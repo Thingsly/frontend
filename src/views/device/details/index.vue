@@ -60,18 +60,18 @@ let components = [
     component: Message,
     refreshKey: 0
   },
-  // {
-  //   key: 'stats',
-  //   name: () => $t('custom.device_details.attributes'),
-  //   component: Stats,
-  //   refreshKey: 0
-  // },
-  // {
-  //   key: 'event-report',
-  //   name: () => $t('custom.device_details.eventReport'),
-  //   component: EventReport,
-  //   refreshKey: 0
-  // },
+  {
+    key: 'stats',
+    name: () => $t('custom.device_details.attributes'),
+    component: Stats,
+    refreshKey: 0
+  },
+  {
+    key: 'event-report',
+    name: () => $t('custom.device_details.eventReport'),
+    component: EventReport,
+    refreshKey: 0
+  },
   // {
   //   key: 'command-delivery',
   //   name: () => $t('custom.device_details.commandDelivery'),

@@ -5,7 +5,6 @@ import groupingDetails from './grouping_details';
 import deviceDetails from './device_details';
 import management from './management';
 import personalCenter from './personalCenter';
-import plugin from './plugin';
 import visualization from './visualization';
 
 // Placeholder for associated devices translations
@@ -27,7 +26,6 @@ export default {
   device_details: deviceDetails,
   management,
   personalCenter,
-  plugin,
   visualization,
   associatedDevices,
   configEdit

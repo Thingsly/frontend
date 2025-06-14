@@ -7,7 +7,6 @@ import { NButton, NPopconfirm, NSpace, NSwitch, useMessage } from 'naive-ui';
 import { deviceConfigInfo, deviceDetail, deviceLocation } from '@/service/api';
 import { deviceConfigEdit } from '@/service/api/device';
 import { $t } from '@/locales';
-import TencentMap from './public/tencent-map.vue';
 
 const props = defineProps<{
   id: string;
@@ -195,15 +194,6 @@ const columns: Ref<DataTableColumns<ServiceManagement.Service>> = ref([
   }
 ]);
 
-const onPositionSelected = position => {
-  latitude.value = position.lat.toString();
-  longitude.value = position.lng.toString();
-  isShow.value = false;
-};
-
-const openMapAndGetPosition = () => {
-  isShow.value = true;
-};
 const getConfigInfo = async () => {
   const result = await deviceDetail(query.d_id as string);
   const location = result?.data?.location || '';
@@ -256,15 +246,6 @@ onMounted(getConfigInfo);
 
     <NButton type="primary" @click="handleSave">{{ $t('common.save') }}</NButton>
     <NModal v-model:show="isShow" class="flex-center" :class="getPlatform ? 'max-w-90%' : 'max-w-640px'">
-      <NCard class="flex flex-1">
-        <TencentMap
-          v-show="isShow"
-          class="flex-1"
-          :longitude="longitude"
-          :latitude="latitude"
-          @position-selected="onPositionSelected"
-        />
-      </NCard>
     </NModal>
     <NModal
       v-model:show="visible"

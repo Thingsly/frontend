@@ -21,8 +21,8 @@ const formRef = ref<ICardFormIns>();
 const tabValue = ref('builtin');
 const tabList = [
   { tab: 'System', type: 'builtin' },
-  { tab: 'Device', type: 'device' },
-  { tab: 'Plugin', type: 'plugin' },
+  // { tab: 'Device', type: 'device' },
+  // { tab: 'Plugin', type: 'plugin' },
   { tab: 'Chart', type: 'chart' }
 ];
 const state = reactive({
@@ -276,23 +276,23 @@ onMounted(() => {
             :name="item1.type"
             :tab="item1.tab"
           >
-            <div v-if="item1.tab === 'device'">
-              <NSelect
-                v-model:value="deviceSelectId"
-                :placeholder="$t('generate.select-device')"
-                :options="deviceOptions"
-                value-field="device_id"
-                label-field="device_name"
-                @update:value="
-                  (value, option) => {
-                    if (state.curCardData) {
-                      state.curCardData.cardId = '';
-                    }
-                    collectData(value, option);
-                  }
-                "
-              ></NSelect>
-            </div>
+            // <div v-if="item1.tab === 'device'">
+            //   <NSelect
+            //     v-model:value="deviceSelectId"
+            //     :placeholder="$t('generate.select-device')"
+            //     :options="deviceOptions"
+            //     value-field="device_id"
+            //     label-field="device_name"
+            //     @update:value="
+            //       (value, option) => {
+            //         if (state.curCardData) {
+            //           state.curCardData.cardId = '';
+            //         }
+            //         collectData(value, option);
+            //       }
+            //     "
+            //   ></NSelect>
+            // </div>
             <n-scrollbar style="height: 100%; padding: 4px">
               <div v-if="item1.tab === 'device'">
                 <n-grid :x-gap="10" :y-gap="10" cols="1 240:1 480:2 720:3">
@@ -317,8 +317,8 @@ onMounted(() => {
                         {{ $t(item.data.title) }}
                       </div>
                       <div class="h-148px w-full">
-                        <!--
- <img
+                        <img
+                          v-if="item.data.cardId.indexOf('curve') != -1"
                           :src="
                             item.data.cardId.indexOf('chart-curve') != -1
                               ? '../../../../card/chart-card/curve/poster.png'
@@ -326,23 +326,22 @@ onMounted(() => {
                           "
                           alt=""
                           style="width: 100%; height: 100%; object-fit: contain"
--->
-                        <!-- /> -->
-                        <!--                        <img-->
-                        <!--                          v-if="item.data.cardId.indexOf('curve') != -1"-->
-                        <!--                          src="../../../card/chart-card/curve/poster.png"-->
-                        <!--                          style="width: 100%; height: 100%; object-fit: contain"-->
-                        <!--                        />-->
-                        <!--                        <img-->
-                        <!--                          v-if="item.data.cardId.indexOf('demo') != -1"-->
-                        <!--                          src="../../../card/chart-card/demo/poster.png"-->
-                        <!--                          style="width: 100%; height: 100%; object-fit: contain"-->
-                        <!--                        />-->
-                        <!--                        <img-->
-                        <!--                          v-if="item.data.cardId.indexOf('switch') != -1"-->
-                        <!--                          src="../../../card/chart-card/switch/poster.png"-->
-                        <!--                          style="width: 100%; height: 100%; object-fit: contain"-->
-                        <!--                        />-->
+                        />
+                        <img
+                          v-if="item.data.cardId.indexOf('curve') != -1"
+                          src="../../../card/chart-card/curve/poster.png"
+                          style="width: 100%; height: 100%; object-fit: contain"
+                        />
+                        <img
+                          v-if="item.data.cardId.indexOf('demo') != -1"
+                          src="../../../card/chart-card/demo/poster.png"
+                          style="width: 100%; height: 100%; object-fit: contain"
+                        />
+                        <img
+                          v-if="item.data.cardId.indexOf('switch') != -1"
+                          src="../../../card/chart-card/switch/poster.png"
+                          style="width: 100%; height: 100%; object-fit: contain"
+                                               />
                         <img
                           :src="getImagePath(item)"
                           style="width: 100%; height: 100%; object-fit: contain"

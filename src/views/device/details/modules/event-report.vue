@@ -9,7 +9,7 @@ defineProps<{
 
 const columns = [
   { title: $t('device_template.table_header.eventIdentifier'), minWidth: '140px', key: 'identify' },
-  { title: $t('device_template.table_header.eventName'), minWidth: '140px', key: 'data_name' },
+  // { title: $t('device_template.table_header.eventName'), minWidth: '140px', key: 'data_name' },
   {
     title: $t('device_template.table_header.eventReportingTime'),
     minWidth: '140px',
@@ -17,7 +17,7 @@ const columns = [
     render: row => dayjs(row.ts).format('YYYY-MM-DD HH:mm:ss')
   },
   { title: $t('device_template.table_header.eventContent'), minWidth: '140px', key: 'data' },
-  { title: $t('generate.errorMessage'), minWidth: '140px', key: 'error_message' }
+  // { title: $t('generate.errorMessage'), minWidth: '140px', key: 'error_message' }
 ];
 </script>
 

@@ -26,8 +26,8 @@ const props = defineProps<{
 const tabValue = ref('builtin');
 const tabList = [
   { tab: $t('card.systemTab'), type: 'builtin' },
-  { tab: $t('card.deviceTab'), type: 'device' },
-  { tab: $t('card.pluginTab'), type: 'plugin' },
+  // { tab: $t('card.deviceTab'), type: 'device' },
+  // { tab: $t('card.pluginTab'), type: 'plugin' },
   { tab: $t('card.chartTab'), type: 'chart' }
 ];
 
