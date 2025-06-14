@@ -144,7 +144,7 @@ const updateChartOption = (processedData: { monthLabels: string[], userCounts: n
       formatter: (params: any) => { // Keep formatter, maybe simplify
           if (!params || params.length === 0) return '';
           const p = params[0];
-          return `${p.name}月<br/>${p.marker}${p.seriesName}: <b>${p.value}</b>`; // Simpler tooltip
+          return `${p.name}month<br/>${p.marker}${p.seriesName}: <b>${p.value}</b>`; // Simpler tooltip
       }
     },
     grid: {
