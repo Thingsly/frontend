@@ -1030,7 +1030,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].task_type`"
                     :rule="premiseFormRules.task_type"
-                    class="max-w-25 w-full"
+                    class="max-w-35 w-full"
                   >
                     <NSelect
                       v-model:value="ifItem.task_type"
@@ -1055,18 +1055,19 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].hourTimeValue`"
                       :rule="premiseFormRules.hourTimeValue"
-                      class="max-w-25 w-full"
+                      class="max-w-35 w-full"
                     >
                       <NTimePicker
                         v-model:value="ifItem.hourTimeValue"
                         :placeholder="$t('common.select')"
+                        class="w-35"
                         format="mm"
                       />
                     </NFormItem>
                     <NFormItem
                       key="expiration_time0"
                       :label="$t('generate.expiration-time')"
-                      label-width="80px"
+                      label-width="150px"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].expiration_time`"
                       :rule="premiseFormRules.expiration_time"
                     >
@@ -1074,7 +1075,7 @@ watch(
                         v-model:value="ifItem.expiration_time"
                         :options="expirationTimeOptions"
                         :placeholder="$t('generate.please-select')"
-                        class="w-25"
+                        class="w-35"
                       />
                       <n-tooltip placement="top-start" trigger="hover">
                         <template #trigger>
@@ -1097,19 +1098,20 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].dayTimeValue`"
                       :rule="premiseFormRules.dayTimeValue"
-                      class="max-w-25 w-full"
+                      class="max-w-35 w-full"
                     >
                       <NTimePicker
                         v-model:value="ifItem.dayTimeValue"
                         :placeholder="$t('common.select')"
                         value-format="HH:mm"
+                        class="w-35"
                         format="HH:mm"
                       />
                     </NFormItem>
                     <NFormItem
                       key="expiration_time1"
                       :label="$t('generate.expiration-time')"
-                      label-width="80px"
+                      label-width="150px"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].expiration_time`"
                       :rule="premiseFormRules.expiration_time"
                     >
@@ -1117,7 +1119,7 @@ watch(
                         v-model:value="ifItem.expiration_time"
                         :options="expirationTimeOptions"
                         :placeholder="$t('generate.please-select')"
-                        class="w-25"
+                        class="w-35"
                       />
                       <n-tooltip placement="top-start" trigger="hover">
                         <template #trigger>
@@ -1161,19 +1163,20 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].weekTimeValue`"
                       :rule="premiseFormRules.weekTimeValue"
-                      class="max-w-25 w-full"
+                      class="max-w-35 w-full"
                     >
                       <NTimePicker
                         v-model:value="ifItem.weekTimeValue"
                         :placeholder="$t('common.select')"
                         value-format="HH:mm"
+                        class="w-35"
                         format="HH:mm"
                       />
                     </NFormItem>
                     <NFormItem
                       key="expiration_time2"
                       :label="$t('generate.expiration-time')"
-                      label-width="80px"
+                      label-width="150px"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].expiration_time`"
                       :rule="premiseFormRules.expiration_time"
                     >
@@ -1181,7 +1184,7 @@ watch(
                         v-model:value="ifItem.expiration_time"
                         :options="expirationTimeOptions"
                         :placeholder="$t('generate.please-select')"
-                        class="w-25"
+                        class="w-35"
                       />
                       <n-tooltip placement="top-start" trigger="hover">
                         <template #trigger>
@@ -1204,12 +1207,13 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].monthChoseValue`"
                       :rule="premiseFormRules.monthChoseValue"
-                      class="max-w-25 w-full"
+                      class="max-w-45 w-full"
                     >
                       <NSelect
                         v-model:value="ifItem.monthChoseValue"
                         :options="mouthRangeOptions"
                         :placeholder="$t('generate.please-select-date')"
+                        class="w-full"
                       />
                     </NFormItem>
                     <NFormItem
@@ -1217,19 +1221,20 @@ watch(
                       :show-label="false"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].monthTimeValue`"
                       :rule="premiseFormRules.monthTimeValue"
-                      class="max-w-25 w-full"
+                      class="max-w-35 w-full"
                     >
                       <NTimePicker
                         v-model:value="ifItem.monthTimeValue"
                         :placeholder="$t('common.select')"
                         value-format="HH:mm"
+                        class="w-35"
                         format="HH:mm"
                       />
                     </NFormItem>
                     <NFormItem
                       key="expiration_time3"
                       :label="$t('generate.expiration-time')"
-                      label-width="80px"
+                      label-width="150px"
                       :path="`ifGroups[${ifGroupIndex}][${ifIndex}].expiration_time`"
                       :rule="premiseFormRules.expiration_time"
                     >
@@ -1237,7 +1242,7 @@ watch(
                         v-model:value="ifItem.expiration_time"
                         :options="expirationTimeOptions"
                         :placeholder="$t('generate.please-select')"
-                        class="w-25"
+                        class="w-35"
                       />
                       <n-tooltip placement="top-start" trigger="hover">
                         <template #trigger>
@@ -1280,7 +1285,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].startTimeValue`"
                     :rule="premiseFormRules.startTimeValue"
-                    class="max-w-25 w-full"
+                    class="max-w-35 w-full"
                   >
                     <NTimePicker
                       v-model:value="ifItem.startTimeValue"
@@ -1294,7 +1299,7 @@ watch(
                     :show-label="false"
                     :path="`ifGroups[${ifGroupIndex}][${ifIndex}].endTimeValue`"
                     :rule="premiseFormRules.endTimeValue"
-                    class="max-w-25 w-full"
+                    class="max-w-35 w-full"
                   >
                     <NTimePicker
                       v-model:value="ifItem.endTimeValue"

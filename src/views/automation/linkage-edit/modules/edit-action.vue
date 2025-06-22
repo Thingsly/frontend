@@ -557,12 +557,12 @@ onMounted(() => {
                         :show-label="false"
                         :path="`actionGroups[${actionGroupIndex}].actionInstructList[${instructIndex}].action_type`"
                         :rule="configFormRules.action_type"
-                        class="w-40"
+                        class="w-50"
                       >
                         <NSelect
                           v-model:value="instructItem.action_type"
                           :options="actionTypeOptions"
-                          class="max-w-40"
+                          class="max-w-50"
                           @update:value="
                             (data) => actionTypeChange(instructItem, data)
                           "
@@ -650,12 +650,12 @@ onMounted(() => {
                         :show-label="false"
                         :path="`actionGroups[${actionGroupIndex}].actionInstructList[${instructIndex}].action_param_type`"
                         :rule="configFormRules.action_param_type"
-                        class="w-40"
+                        class="w-70"
                       >
                         <NSelect
                           v-model:value="instructItem.action_param_type"
                           :options="instructItem.actionParamTypeOptions"
-                          class="max-w-40"
+                          class="max-w-70"
                           @update:value="
                             (data) => actionParamTypeChange(instructItem, data)
                           "

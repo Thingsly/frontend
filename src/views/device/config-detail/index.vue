@@ -16,10 +16,10 @@ import Automate from './modules/automate.vue';
 
 const { routerPushByKey } = useRouterPush();
 const route = useRoute();
-const configId = ref(route.query.id || '');
+const configId = ref(String(route.query.id || ''));
 
 const configForm = ref({
-  id: route.query.id || '',
+  id: String(route.query.id || ''),
   additional_info: null,
   description: null,
   device_conn_type: null,
@@ -49,11 +49,11 @@ const getConfig = async () => {
     getTemplateDetail(configForm.value.device_template_id);
   }
 };
-const activeName = ref('Associated Device');
+const activeName = ref($t('common.associatedDevices'));
 // configId.value = <string>route.query.id || ''
 if (configId.value) {
   getConfig();
-  activeName.value = 'Associated Device';
+  activeName.value = $t('common.associatedDevices');
 }
 const clickConfig: () => void = () => {
   routerPushByKey('device_template', {

@@ -84,7 +84,7 @@ const submitData = async () => {
   const isAlarmError =
     configForm.value.trigger_condition_groups.some((item: any) => {
       return item.some((subItem) => {
-        return subItem.ifType === '2';
+        return subItem.trigger_conditions_type === '22';
       });
     }) &&
     configForm.value.actions.some((item: any) => {

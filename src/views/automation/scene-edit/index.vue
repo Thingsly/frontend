@@ -90,15 +90,15 @@ const actionOptions = ref([
     label: $t('common.operateDevice'),
     value: '1',
     disabled: false
-  }
-  // {
-  //   label: $t('common.activateScene'),
-  //   value: '20'
-  // },
-  // {
-  //   label: $t('common.triggerAlarm'),
-  //   value: '30'
-  // },
+  },
+  {
+    label: $t('common.activateScene'),
+    value: '20'
+  },
+  {
+    label: $t('common.triggerAlarm'),
+    value: '30'
+  },
   // {
   //   label: $t('common.triggerService'),
   //   value: '40'
@@ -389,8 +389,8 @@ const instructListItem = ref({
 //   action_target: string;
 //   action_type: string;
 //   action_param_type: string;
-//   action_param: string; // 动作标识符类型
-//   action_value: string; // 参数值
+//   action_param: string;
+//   action_value: string;
 //   deviceGroupId: string;
 //   actionParamType: object | any;
 // }
@@ -627,7 +627,7 @@ onMounted(() => {
                 :show-feedback="false"
                 :path="`actions[${actionGroupIndex}].actionType`"
                 :rule="configFormRules.actionType"
-                class="max-w-40 w-full"
+                class="max-w-60 w-full"
               >
                 <NSelect
                   v-model:value="actionGroupItem.actionType"
@@ -877,7 +877,7 @@ onMounted(() => {
                 <NFlex class="ml-6 w-auto" align="center">
                   <NFormItem
                     :label="$t('generate.activate')"
-                    label-width="60px"
+                    label-width="80px"
                     :show-feedback="false"
                     :path="`actions[${actionGroupIndex}].action_target`"
                     :rule="configFormRules.action_target"
@@ -902,7 +902,7 @@ onMounted(() => {
                 <NFlex class="ml-6 w-auto">
                   <NFormItem
                     :label="$t('generate.trigger')"
-                    label-width="60px"
+                    label-width="80px"
                     :show-feedback="false"
                     :path="`actions[${actionGroupIndex}].action_target`"
                     :rule="configFormRules.action_target"
@@ -913,7 +913,7 @@ onMounted(() => {
                       label-field="name"
                       value-field="id"
                       :placeholder="$t('common.select')"
-                      class="max-w-50"
+                      class="max-w-70"
                       filterable
                       remote
                       :loading="loadingSelect"
@@ -921,7 +921,7 @@ onMounted(() => {
                     />
                   </NFormItem>
                   <NButton
-                    class="w-20"
+                    class="w-40"
                     dashed
                     type="info"
                     @click="popUpVisible = true"
