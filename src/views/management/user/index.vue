@@ -300,11 +300,11 @@ init();
             <!--
  <n-button type="error">
               <icon-ic-round-delete class="mr-4px text-20px" />
-              abc
+              Delete
             </n-button>
             <n-button type="success">
               <icon-uil:export class="mr-4px text-20px" />
-              导出Excel
+              Export Excel
             </n-button>
 -->
           </NSpace>
@@ -312,7 +312,7 @@ init();
  <n-space align="center" :size="18">
             <n-button size="small" type="primary" @click="getTableData">
               <icon-mdi-refresh class="mr-4px text-16px" :class="{ 'animate-spin': loading }" />
-              def
+              Refresh
             </n-button>
             <column-setting v-model:columns="columns" />
           </n-space>

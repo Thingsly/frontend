@@ -221,6 +221,14 @@ export const getSystemMetricsCurrent = async (params?: any): Promise<any> => {
   return data;
 };
 
+export const getSysVersion = async (params?: any): Promise<any> => {
+  // Assuming the endpoint returns a generic structure or the exact structure is unknown
+  const data = await request.get<any>('/sys_version', {
+    params
+  })
+  return data
+}
+
 export const getSystemMetricsHistory = async (params?: any): Promise<any> => {
   console.log('Fetching system metrics history with params:', params);
   try {

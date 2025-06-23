@@ -345,6 +345,8 @@ export default {
   'bind-device-function-template': 'Bind Device Function Template',
   open: 'Open',
   copy: 'Copy',
+  step: 'Step',
+  decimals: 'Decimals',
   'basic-info': 'Basic Info',
   'set-default-device-open-status': 'Set Default Device Open Status',
   'copy-one-type-one-secret-device-password': 'Copy One-Type-One-Secret Device Password',

@@ -78,7 +78,7 @@ const columns = ref([
   {
     key: 'name',
     title: $t('generate.notification-group-name'),
-    minWidth: '180px',
+    minWidth: '140px',
     align: 'left'
   },
   {

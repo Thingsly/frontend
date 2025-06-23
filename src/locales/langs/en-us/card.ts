@@ -138,7 +138,6 @@ export default {
   dontClick: "Don't Click",
   buttonDisabled: 'Buttons can be disabled',
   iconButton: 'Icon Button',
-  rmbYuan: '+100 Yuan', // Currency specific
   useIconButton: 'Use icons on buttons.',
   differentShapeButton: 'Buttons of different shapes',
   roundCorner: 'Rounded Corners',

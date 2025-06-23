@@ -344,6 +344,8 @@ export default {
   'bind-device-function-template': 'Liên kết mẫu thiết bị',
   open: 'Mở:',
   copy: 'Sao chép',
+  step: 'Bước',
+  decimals: 'Số thập phân',
   'basic-info': 'Thông tin cơ bản',
   'set-default-device-open-status': 'Thiết lập trạng thái mặc định của thiết bị',
   'copy-one-type-one-secret-device-password': 'Sao chép mật khẩu thiết bị loại một-mật khẩu một',
