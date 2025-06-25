@@ -31,6 +31,7 @@ const total = ref(0);
 const boards = ref<Panel.Board[]>([]);
 const showModal = ref<boolean>(false);
 const isEditMode = ref(false);
+const isSubmitting = ref(false);
 
 const formData = reactive({
   id: '',
@@ -70,15 +71,33 @@ const submitForm = async () => {
     return;
   }
 
-  if (isEditMode.value) {
-    await PutBoard(formData);
-  } else {
-    await PostBoard(formData);
-  }
+  try {
+    isSubmitting.value = true;
+    if (isEditMode.value) {
+      await PutBoard(formData);
+      message.success($t('generate.saveSuccess') || 'Dashboard saved successfully');
+    } else {
+      await PostBoard(formData);
+      message.success($t('common.addSuccess') || 'Dashboard created successfully');
+    }
 
-  showModal.value = false;
-  clearFormData();
-  await fetchBoards();
+    showModal.value = false;
+    clearFormData();
+    await fetchBoards();
+
+    // Add a small delay to show the loading effect
+    setTimeout(() => {
+      isSubmitting.value = false;
+    }, 800);
+  } catch (error) {
+    console.error('Submit form error:', error);
+    if (isEditMode.value) {
+      message.error($t('generate.saveFail') || 'Failed to save dashboard');
+    } else {
+      message.error($t('common.addFail') || 'Failed to create dashboard');
+    }
+    isSubmitting.value = false;
+  }
 };
 
 const editBoard = (board) => {
@@ -247,16 +266,20 @@ onMounted(fetchBoards);
               @positive-click="submitForm"
             >
               <template #trigger>
-                <NButton type="primary">{{ $t('common.save') }}</NButton>
+                <NButton type="primary" :loading="isSubmitting" :disabled="isSubmitting">
+                  {{ isSubmitting ? $t('generate.saving') || 'Saving...' : $t('common.save') }}
+                </NButton>
               </template>
               {{ $t('custom.visualization.onlyOneHomepage') }}
             </n-popconfirm>
             <NButton
               v-if="formData.home_flag === 'N'"
               type="primary"
+              :loading="isSubmitting"
+              :disabled="isSubmitting"
               @click="submitForm"
             >
-              {{ $t('common.save') }}
+              {{ isSubmitting ? $t('generate.saving') || 'Saving...' : $t('common.save') }}
             </NButton>
           </div>
         </template>

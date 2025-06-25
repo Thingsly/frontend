@@ -279,8 +279,8 @@ const local: App.I18n.Schema = {
     fetchDataFailed: 'Failed to fetch data',
     noMoreData: 'No more data',
     operationFailed: 'Operation Failed',
-    // emailRequired: 'Email is required!',
-    // emailInvalid: 'Invalid email format!'
+    emailRequired: 'Email is required!',
+    emailInvalid: 'Invalid email format!'
   },
   theme,
   route: {
@@ -417,15 +417,7 @@ const local: App.I18n.Schema = {
   kanban: {
     'add-cards': 'Create Cards'
   },
-  card,
-  grouping_details: {
-    previousPage: 'Previous Page',
-    previousLevel: 'Previous Level',
-    backToGroupList: 'Back To Group List',
-    parentLevel: 'Parent Level',
-    allGroups: 'All Groups',
-    subGroup: 'SubGroup'
-  }
+  card
 };
 
 export default local;

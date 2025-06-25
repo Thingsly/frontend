@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { nextTick, reactive, ref } from 'vue';
-import { NButton } from 'naive-ui';
+import { NButton, useMessage } from 'naive-ui';
 import { useFullscreen } from '@vueuse/core';
 import { useAppStore } from '@/store/modules/app';
 import { useLayouts } from '@/components/tp-kan-ban/hooks/useLayouts';
@@ -16,6 +16,8 @@ const { isFullscreen, toggle } = useFullscreen(fullUI);
 const props = defineProps<{ panelId: string }>();
 const active = ref(false);
 const showModal = ref(false);
+const isSaving = ref(false);
+const message = useMessage();
 const state = reactive<{ curCardData: null | CardView }>({
   curCardData: null
 });
@@ -24,9 +26,13 @@ const responsive = useResponsiveStore();
 const { layouts, addItem, updateLayout, panelDate, removeItem, updateLayouts } = useLayouts(props.panelId);
 const saveKanBan = async () => {
   if (!props.panelId) {
-    window.NMessage.destroyAll();
-    window.NMessage.error('Invalid dashboard ID');
-  } else {
+    message.destroyAll();
+    message.error('Invalid dashboard ID');
+    return;
+  }
+
+  try {
+    isSaving.value = true;
     const layoutJson = JSON.stringify(layouts.value);
 
     await PutBoard({
@@ -35,6 +41,17 @@ const saveKanBan = async () => {
       name: panelDate.value?.name,
       home_flag: panelDate.value?.home_flag
     });
+
+    message.success($t('generate.saveSuccess') || 'Dashboard saved successfully');
+
+    // Add a small delay to show the loading effect
+    setTimeout(() => {
+      isSaving.value = false;
+    }, 800);
+  } catch (error) {
+    console.error('Save dashboard error:', error);
+    message.error($t('generate.saveFail') || 'Failed to save dashboard');
+    isSaving.value = false;
   }
 };
 
@@ -72,6 +89,7 @@ const changeCurCardData = (data: CardView) => {
         :is-fullscreen="isFullscreen"
         :save-kan-ban="saveKanBan"
         :tittle="panelDate?.name || $t('card.undefined')"
+        :is-saving="isSaving"
         class="w-full"
       />
     </div>

@@ -19,5 +19,6 @@ export default {
   additionSuccess: 'Addition Successful',
   deviceNumberMax: 'Device number cannot exceed 100 characters',
   deviceNumberNotAvailable: 'Device number is not available',
-  confirmDelete: 'Confirm delete?'
+  confirmDelete: 'Confirm delete?',
+  delete: 'Delete'
 };

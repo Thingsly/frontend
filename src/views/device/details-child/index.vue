@@ -31,10 +31,10 @@ let components = [
   { key: 'message', name: () => $t('custom.device_details.AdditionalDetails'), component: Message },
   { key: 'stats', name: () => $t('custom.device_details.attributes'), component: Stats },
   { key: 'event-report', name: () => $t('custom.device_details.eventReport'), component: EventReport },
-  { key: 'command-delivery', name: () => $t('custom.device_details.commandDelivery'), component: CommandDelivery },
+  // { key: 'command-delivery', name: () => $t('custom.device_details.commandDelivery'), component: CommandDelivery },
   { key: 'automate', name: () => $t('custom.device_details.automate'), component: Automate },
   { key: 'give-an-alarm', name: () => $t('custom.device_details.giveAnAlarm'), component: GiveAnAlarm },
-  { key: 'user', name: () => $t('custom.device_details.user'), component: User },
+  // { key: 'user', name: () => $t('custom.device_details.user'), component: User },
   { key: 'settings', name: () => $t('custom.device_details.settings'), component: Settings }
 ];
 

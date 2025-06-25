@@ -512,6 +512,10 @@ declare namespace App {
         getCode: string;
         countingLabel: string;
         phoneRequired: string;
+        networkError: string;
+        fetchDataFailed: string;
+        noMoreData: string;
+        operationFailed: string;
         phoneInvalid: string;
         emailRequired: string;
         emailInvalid: string;
@@ -591,8 +595,17 @@ declare namespace App {
         'data-services_forward-config': string;
         'device-details-app': string;
         'alarm_warning-message': string;
+        'walarm_arning-message': string;
         'personal-center': string;
         apply_plugin: string;
+        plugin_map: string;
+        device_access: string;
+        device_grouping: string;
+        'device_grouping-details': string;
+        device_manage: string;
+        device_details: string;
+        'device_details-child': string;
+        device_config: string;
         'device_service-access': string;
         'device_service-details': string;
       } & Record<I18nRouteKey, string>;
@@ -1009,6 +1022,8 @@ declare namespace App {
           secretLength: string;
           secretFormat: string;
           saveSuccess: string;
+          saveFail: string;
+          saving: string;
         };
         expect: {
           createTime: string;
@@ -1603,6 +1618,9 @@ declare namespace App {
         group: string;
         and: string;
         save: string;
+        saveSuccess: string;
+        saveFail: string;
+        saving: string;
         cancel: string;
         'condition-trigger': string;
         'location-details': string;

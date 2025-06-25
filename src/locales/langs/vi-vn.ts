@@ -278,7 +278,8 @@ const local: App.I18n.Schema = {
     emailInvalid: 'Định dạng email không hợp lệ!',
     networkError: 'Lỗi mạng',
     fetchDataFailed: 'Lấy dữ liệu thất bại',
-    noMoreData: 'Không còn dữ liệu nữa'
+    noMoreData: 'Không còn dữ liệu nữa',
+    operationFailed: 'Thao tác thất bại'
   },
   theme,
   route: {
@@ -379,7 +380,9 @@ const local: App.I18n.Schema = {
     'alarm_notification-group': 'Nhóm thông báo',
     'alarm_notification-record': 'Lịch sử thông báo',
     'alarm_warning-message': 'Thông báo cảnh báo',
+    'walarm_arning-message': 'Thông báo cảnh báo',
     management_notification: 'Cấu hình dịch vụ thông báo',
+    device_access: 'Truy cập thiết bị',
     irrigation: 'Kế hoạch tưới nước',
     irrigation_time: 'Tưới nước theo lịch trình',
     irrigation_group: 'Kế hoạch tưới nhóm',

@@ -1,6 +1,6 @@
 <script lang="tsx" setup>
 import { nextTick, onMounted, onUnmounted, reactive, ref, watch } from 'vue';
-import { useDialog } from 'naive-ui';
+import { useDialog, useMessage } from 'naive-ui';
 import { useFullscreen } from '@vueuse/core';
 import { debounce } from 'lodash';
 // eslint-disable-next-line vue/prefer-import-from-vue
@@ -16,6 +16,7 @@ const logger = createLogger('PanelManage');
 
 const NO_THEME = '--no--theme--';
 const dialog = useDialog();
+const message = useMessage();
 
 const props = defineProps<{ panelId: string }>();
 const panelDate = ref<Panel.Board>();
@@ -25,6 +26,7 @@ const fullui = ref();
 const showingCardList = ref(false);
 const isEditing = ref(false);
 const editingCard = ref(false);
+const isSaving = ref(false);
 const deviceOptions = ref<UnwrapRefSimple<any>[]>();
 
 const getDeviceOptions = async () => {
@@ -174,25 +176,38 @@ const showCardList = () => {
 };
 
 const savePanel = async () => {
-  let resultStr = '';
-  if (theme.value !== NO_THEME) {
-    resultStr = JSON.stringify({
-      layout: layout.value,
-      theme: theme.value
+  try {
+    isSaving.value = true;
+    let resultStr = '';
+    if (theme.value !== NO_THEME) {
+      resultStr = JSON.stringify({
+        layout: layout.value,
+        theme: theme.value
+      });
+    } else {
+      resultStr = JSON.stringify(layout.value);
+    }
+
+    await PutBoard({
+      id: props.panelId,
+      config: resultStr,
+      name: panelDate.value?.name,
+      home_flag: panelDate.value?.home_flag
     });
-  } else {
-    resultStr = JSON.stringify(layout.value);
+
+    preLayout.value = layout.value;
+    preTheme.value = theme.value;
+    message.success($t('generate.saveSuccess') || 'Dashboard saved successfully');
+
+    // Add a small delay to show the loading effect
+    setTimeout(() => {
+      isSaving.value = false;
+    }, 800);
+  } catch (error) {
+    console.error('Save panel error:', error);
+    message.error($t('generate.saveFail') || 'Failed to save dashboard');
+    isSaving.value = false;
   }
-
-  await PutBoard({
-    id: props.panelId,
-    config: resultStr,
-    name: panelDate.value?.name,
-    home_flag: panelDate.value?.home_flag
-  });
-
-  preLayout.value = layout.value;
-  preTheme.value = theme.value;
 };
 
 watch(
@@ -259,7 +274,9 @@ onUnmounted(() => {
           ]"
         ></NSelect>
         <NButton v-if="isEditing" @click="quitEditMode">{{ $t('card.quitEdit') }}</NButton>
-        <NButton v-show="isEditing" @click="savePanel">{{ $t('common.save') }}</NButton>
+        <NButton v-show="isEditing" :loading="isSaving" :disabled="isSaving" @click="savePanel">
+          {{ isSaving ? $t('generate.saving') || 'Saving...' : $t('common.save') }}
+        </NButton>
         <FullScreen
           :full="isFullscreen"
           @click="

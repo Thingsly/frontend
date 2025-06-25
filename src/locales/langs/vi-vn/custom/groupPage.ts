@@ -20,6 +20,6 @@ export default {
   // Added missing keys based on linter error
   deviceNumberMax: 'Mã thiết bị không được vượt quá 100 ký tự', // Placeholder from devicePage, seems related
   deviceNumberNotAvailable: 'Mã thiết bị không khả dụng', // Placeholder from devicePage, seems related
-  confirmDelete: 'Bạn có chắc chắn muốn xóa không?' // Placeholder from common
-  // delete: 'Xóa' // Placeholder from common - Assuming this is handled elsewhere or redundant
+  confirmDelete: 'Bạn có chắc chắn muốn xóa không?', // Placeholder from common
+  delete: 'Xóa' // Placeholder from common - Assuming this is handled elsewhere or redundant
 };

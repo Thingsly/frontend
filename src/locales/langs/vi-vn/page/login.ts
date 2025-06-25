@@ -32,6 +32,7 @@ export default {
   },
   codeLogin: {
     title: 'Đăng nhập bằng mã xác thực',
+    getCode: 'Lấy mã xác thực',
     imageCodePlaceholder: 'Vui lòng nhập mã xác thực hình ảnh'
   },
   register: {

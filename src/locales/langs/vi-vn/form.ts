@@ -2,6 +2,7 @@ export default {
   required: 'Không được để trống',
   userName: {
     required: 'Vui lòng nhập tên người dùng',
+    invalid: 'Định dạng tên người dùng không hợp lệ',
     invalidFormat: 'Định dạng tên người dùng không hợp lệ',
     lenMin6: 'Tên người dùng phải có ít nhất 6 ký tự',
     tip: 'Tên người dùng phải có ít nhất 6 ký tự'

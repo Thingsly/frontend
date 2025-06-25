@@ -95,5 +95,7 @@ export default {
   secretRequired: 'Khóa bí mật là bắt buộc',
   secretLength: 'Khóa bí mật phải có độ dài từ 8 đến 128 ký tự',
   secretFormat: 'Khóa bí mật chỉ được phép chứa chữ cái và số',
-  saveSuccess: 'Lưu thành công'
+  saveSuccess: 'Lưu thành công',
+  saveFail: 'Lưu thất bại',
+  saving: 'Đang lưu...'
 };

@@ -32,6 +32,7 @@ export default {
   },
   codeLogin: {
     title: 'Phone Code Login',
+    getCode: 'Get Code',
     imageCodePlaceholder: 'Enter image verification code'
   },
   register: {

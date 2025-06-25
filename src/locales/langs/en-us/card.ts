@@ -36,6 +36,8 @@ export default {
   statusCard: 'Status Card',
   deviceStateController: 'Device State Controller',
   firmVersion: 'Firmware Version',
+  version: 'Version',
+  enterDescription: 'Enter description',
   textInfo: 'Text Information',
   notSelected: 'Not Selected',
   collapse: 'Collapse',

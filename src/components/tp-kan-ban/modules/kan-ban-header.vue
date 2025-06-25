@@ -6,7 +6,13 @@ defineOptions({ name: 'KanBanHeader' });
 const active = defineModel<boolean>('active', { required: true, default: false });
 const responsive = defineModel<boolean>('responsive', { required: true, default: false });
 
-defineProps<{ saveKanBan: () => Promise<void>; isFullscreen: boolean; toggle: () => Promise<void>; tittle: string }>();
+defineProps<{
+  saveKanBan: () => Promise<void>;
+  isFullscreen: boolean;
+  toggle: () => Promise<void>;
+  tittle: string;
+  isSaving?: boolean;
+}>();
 </script>
 
 <template>
@@ -28,7 +34,13 @@ defineProps<{ saveKanBan: () => Promise<void>; isFullscreen: boolean; toggle: ()
     <div class="flex items-center justify-end">
       <n-space align="center">
         <n-checkbox v-model:checked="responsive">{{ $t('card.responsive') }}</n-checkbox>
-        <NButton @click="saveKanBan">{{ $t('common.save') }}</NButton>
+        <NButton
+          :loading="isSaving"
+          :disabled="isSaving"
+          @click="saveKanBan"
+        >
+          {{ isSaving ? $t('common.saving') || 'Saving...' : $t('common.save') }}
+        </NButton>
         <FullScreen
           :full="isFullscreen"
           @click="
