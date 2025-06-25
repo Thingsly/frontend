@@ -11,7 +11,7 @@ export function createServiceConfig(env: Env.ImportMeta) {
   // const devURL = 'http://demo.mitras.cloud/api/v1';
 
   const testURL = '';
-  const prodURL = 'http://103.124.93.210:9999/api/v1';
+  const prodURL = 'https://dangky.app';
 
   const serviceConfigMap: App.Service.ServiceConfigMap = {
     dev: {
